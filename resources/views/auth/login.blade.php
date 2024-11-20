@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
-    @vite('resources/css/app.css')
+    {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> --}}
+    @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 <body>
     <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
