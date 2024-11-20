@@ -9,10 +9,10 @@ Route::get('/', function () {
 
 // Route::get('/user', [UserController::class, 'index']);
 
-Route::controller(AuthController::class)->group(function (){
-    Route::get('register', 'register')->name('register');
-});
+// Route::controller(AuthController::class)->group(function (){
+//     Route::get('register', 'register')->name('register');
+// });
 
-Route::controller(AuthController::class)->group(function (){
-    Route::get('login', 'login')->name('login');
-});
+// Route::controller(AuthController::class)->group(function (){
+//     Route::get('login', 'login')->name('login');
+// });
