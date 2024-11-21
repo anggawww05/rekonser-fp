@@ -10,11 +10,12 @@
 
 </head>
 
-<body>
-    @include ('admin.partials.aside')
+<body class="">
+    @include('admin.partials.aside')
     <main>
         @yield('container')
     </main>
+
 </body>
 
 </html>
