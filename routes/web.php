@@ -16,3 +16,7 @@ Route::get('/', function () {
 // Route::controller(AuthController::class)->group(function (){
 //     Route::get('login', 'login')->name('login');
 // });
+
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+});
