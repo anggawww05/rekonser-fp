@@ -7,13 +7,11 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $products = Product::all();
-        return view('admin.products', compact('products'));
+        return view('users/products', compact('products'));
 
     }
 

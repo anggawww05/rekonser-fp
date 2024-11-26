@@ -24,7 +24,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('auth') }}" method="POST" class="space-y-6">
+            <form action="{{ route('login') }}" method="POST" class="space-y-6">
                 @csrf
                 <div>
                     <label for="email" class="block text-[20px] text-black">Email</label>
@@ -51,7 +51,7 @@
                 <a href="{{ route('register') }}" class="text-[#008CDC] text-[20px]">daftar disini</a>
             </p>
         </div>
-        
+
         <!-- Right Section: Image -->
         <div class="w-1/2 bg-purple-200 flex items-center justify-center h-full">
             <img src="{{ asset('assets/images/backgroundMain.jpg') }}" alt="Illustration"

@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+{{-- @extends('admin.layouts.app')
 
 @section('container')
     <div class="p-4 sm:ml-64">
@@ -54,4 +54,4 @@
             </form>
         </div>
     </div>
-@endsection
+@endsection --}}

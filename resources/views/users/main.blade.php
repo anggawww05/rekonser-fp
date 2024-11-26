@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -15,11 +15,10 @@
 </head>
 
 <body class="font-['Poppins']">
-    @include('partials.header')
+    @include('components.header')
     <main class="mt-16">
         @yield('container')
     </main>
-    @include('partials.footer')
+    @include('components.footer')
 </body>
-
 </html>

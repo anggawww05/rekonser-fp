@@ -5,7 +5,7 @@
             <div class="flex md:order-2 space-x-3 md:space-x-1 rtl:space-x-reverse">
                 <a href="{{route('register')}}"
                     class="bg-white ring-1 ring-[#002B43] text-[#002B43] hover:text-white hover:bg-[#004870] focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-8 py-2 text-center dark:bg-blue-600 dark:hover:bg-[#004870] dark:focus:ring-blue-800">Daftar</a>
-                <a href="{{ route('login') }}"
+                <a href="{{route('login')}}"
                     class="text-white ring-1 bg-[#002B43] hover:bg-[#004870] focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-8 py-2 text-center dark:bg-blue-600 dark:hover:bg-[#003552] dark:focus:ring-blue-800">Masuk</a>
                 <button data-collapse-toggle="navbar-sticky" type="button"
                     class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -31,7 +31,7 @@
                             class="block py-2 px-3 text-white bg-[#002B43] rounded md:bg-transparent md:text-[#002B43] md:p-0 md:dark:text-blue-500 hover:text-[#0067A0]">Produk</a>
                     </li>
                     <li>
-                        <a href="#tentangKami"
+                        <a href="#"
                             class="block py-2 px-3 text-white bg-[#002B43] rounded md:bg-transparent md:text-[#002B43] md:p-0 md:dark:text-blue-500 hover:text-[#0067A0]">Penyewaan</a>
                     </li>
                     <li>

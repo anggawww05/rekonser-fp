@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('users.main')
 
 @section('container')
     <div class="container mx-auto px-4 pt-16 w-[1440px]">
