@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+// namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 
-class AuthController extends Controller
-{
-    public function register()
-    {
-        return view('auth/register');
-    }
+// class AuthController extends Controller
+// {
+//     public function register()
+//     {
+//         return view('auth/register');
+//     }
 
-    public function login()
-    {
-        return view('auth/login');
-    }
-}
+//     public function login()
+//     {
+//         return view('auth/login');
+//     }
+// }

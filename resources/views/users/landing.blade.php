@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('users.main')
 
 @section('container')
     <section id="beranda" class="mb-[60px]">
@@ -12,7 +12,7 @@
                     teknis hingga layanan tambahan yang dirancang untuk memberikan pengalaman terbaik bagi penyelenggara dan
                     penonton.</p>
                 <div class="flex flex-col mb-8 space-y-4 lg:mb-16 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-                    <a href="{{route('products.index')}}"
+                    <a href="{{route('landing')}}"
                         class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white bg-[#002B43] rounded-lg hover:bg-[#004870] focus:ring-1 focus:ring-blue-300 dark:focus:ring-blue-900">
                         Cari produk
                         <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"
