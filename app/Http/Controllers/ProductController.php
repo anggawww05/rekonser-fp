@@ -11,28 +11,23 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('users/products', compact('products'));
+        return view('admin/manageproducts', compact('products'));
 
     }
+
 
     public function indexUser()
     {
         $products = Product::all();
-        return view('listProducts', compact('products'));
+        return view('users/Products', compact('products'));
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('admin/createProduct');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -54,7 +49,7 @@ class ProductController extends Controller
             'product_img' => $image_url,
         ]);
 
-        return redirect()->route('products.index')->with('success', 'Product created successfully.');
+        return redirect()->route('store')->with('success', 'Product created successfully.');
     }
 
     /**

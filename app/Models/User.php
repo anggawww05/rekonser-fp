@@ -55,13 +55,5 @@ class User extends Authenticatable
         return $this->belongsToMany(Product::class);
     }
 
-    // public function fines()
-    // {
-    //     return $this->hasMany(Fine::class);
-    // }
 
-    // public function returneds()
-    // {
-    //     return $this->hasMany(Returned::class);
-    // }
 }

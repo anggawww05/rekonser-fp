@@ -1,4 +1,4 @@
-{{-- @extends('admin.layouts.app')
+@extends('admin.main')
 
 @section('container')
     <div class="p-4 sm:ml-64">
@@ -12,7 +12,7 @@
                     </ul>
                 </div>
             @endif
-            <form action='{{route('products.store')}}' method='POST' enctype="multipart/form-data">
+            <form action='{{ route('store') }}' method='POST' enctype="multipart/form-data">
                 @csrf
                 <div>
                     <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Unggah Foto
@@ -54,4 +54,4 @@
             </form>
         </div>
     </div>
-@endsection --}}
+@endsection

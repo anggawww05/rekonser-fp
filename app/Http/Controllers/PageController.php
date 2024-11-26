@@ -17,10 +17,10 @@ class PageController extends Controller
     //     return view('users/products');
     // }
 
-    public function login()
-    {
-        return view('auth/login');
-    }
+    // public function login()
+    // {
+    //     return view('auth/login');
+    // }
 
     public function register()
     {
@@ -29,7 +29,7 @@ class PageController extends Controller
 
     public function dashboard()
     {
-        return view('dashboard');
+        return view('admin.dashboard');
     }
 
 

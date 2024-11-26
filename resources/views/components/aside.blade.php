@@ -7,7 +7,7 @@
         <hr class="my-4 border-gray-200 dark:border-gray-700">
         <ul class="space-y-2 font-medium">
             <li>
-                <a href="#"
+                <a href="{{route('dashboard')}}"
                     class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93]">
                     <svg class="w-5 h-5 text-[#DFDFDF] transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('admin.products')}}"
+                <a href="{{route('products')}}"
                     class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93] dark:hover:bg-gray-700 group">
                     <svg class="flex-shrink-0 w-5 h-5 text-[#DFDFDF] transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
@@ -65,7 +65,7 @@
             </li>
         </ul>
         <div class="mt-5">
-            <form action="{{ route('logout') }}" method="POST">
+            <form action="{{route('logout')}}" method="POST">
                 @csrf
                 <button type="submit"
                     class="w-full px-4 py-2 text-white bg-red-600 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">

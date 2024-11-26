@@ -8,8 +8,8 @@ use App\Models\User;
 class UserController extends Controller
 {
     public function index(){
-        $data = User::all();
-        // dd($data);
-        return view('user', compact('data'));
+        $users = User::all();
+
+        return view('admin/manageUsers', compact('users'));
     }
 }
