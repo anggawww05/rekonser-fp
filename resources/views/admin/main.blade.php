@@ -11,7 +11,7 @@
 </head>
 
 <body class="">
-    @include('admin.partials.aside')
+    @include('components.aside')
     <main>
         @yield('container')
     </main>
