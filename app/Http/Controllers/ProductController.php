@@ -2,70 +2,92 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    //
-public function index()
-{
-    $products = Product::all();
-    return view('products.index', compact('products'));
-}
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $products = Product::all();
+        return view('admin.products', compact('products'));
 
-public function create()
-{
-    return view('products.create');
-}
+    }
 
-public function store(Request $request)
-{
-    $request->validate([
-        'name' => 'required',
-        'price' => 'required|numeric',
-        'description' => 'required',
-    ]);
+    public function indexUser()
+    {
+        $products = Product::all();
+        return view('listProducts', compact('products'));
 
-    Product::create($request->all());
+    }
 
-    return redirect()->route('products.index')
-                     ->with('success', 'Product created successfully.');
-}
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('admin/createProduct');
+    }
 
-public function show($id)
-{
-    $product = Product::find($id);
-    return view('products.show', compact('product'));
-}
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'product_name' => ['required'],
+            'price' => ['required','numeric'],
+            'stock' => ['required','numeric'],
+            'product_img' => ['required','image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
 
-public function edit($id)
-{
-    $product = Product::find($id);
-    return view('products.edit', compact('product'));
-}
+        ]);
 
-public function update(Request $request, $id)
-{
-    $request->validate([
-        'name' => 'required',
-        'price' => 'required|numeric',
-        'description' => 'required',
-    ]);
+        $image = $request->file('product_img');
+        $image_url = $image->storeAs('product_img', $image->hashName(), 'public');
 
-    $product = Product::find($id);
-    $product->update($request->all());
+        Product::create([
+            'product_name' => $request->product_name,
+            'price' => $request->price,
+            'description' => $request->description,
+            'stock' => $request->stock,
+            'product_img' => $image_url,
+        ]);
 
-    return redirect()->route('products.index')
-                     ->with('success', 'Product updated successfully.');
-}
+        return redirect()->route('products.index')->with('success', 'Product created successfully.');
+    }
 
-public function destroy($id)
-{
-    $product = Product::find($id);
-    $product->delete();
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
 
-    return redirect()->route('products.index')
-                     ->with('success', 'Product deleted successfully.');
-}
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        return view('products.edit', compact('product'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
 }
