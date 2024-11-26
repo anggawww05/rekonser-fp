@@ -1,27 +1,52 @@
-<footer class="bg-white rounded-lg shadow dark:bg-gray-900 m-4">
-    <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-        <div class="sm:flex sm:items-center sm:justify-between">
-            <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+<footer class="bg-[#002134] text-white py-8">
+    <div class="container mx-auto text-center space-y-4">
+        <!-- Social Media Links -->
+        <div class="flex justify-center space-x-6">
+            <a href="#" class="text-white hover:text-red-500">
+                <i class="fab fa-linkedin"></i>
             </a>
-            <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
-                <li>
-                    <a href="#" class="hover:underline me-4 md:me-6">About</a>
-                </li>
-                <li>
-                    <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
-                </li>
-                <li>
-                    <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
-                </li>
-                <li>
-                    <a href="#" class="hover:underline">Contact</a>
-                </li>
-            </ul>
+            <a href="#" class="text-white hover:text-red-500">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="text-white hover:text-red-500">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" class="text-white hover:text-red-500">
+                <i class="fab fa-pinterest"></i>
+            </a>
+            <a href="#" class="text-white hover:text-red-500">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-white hover:text-red-500">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="text-white hover:text-red-500">
+                <i class="fab fa-google"></i>
+            </a>
         </div>
-        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a
-                href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.</span>
+        <div class="flex justify-center space-x-6 mt-4">
+            <img src="{{ asset('assets/images/instagramLogo.png') }}" alt="Instagram" class="w-12 h-12">
+            <img src="{{ asset('assets/images/whatsappLogo.png') }}" alt="Instagram" class="w-12 h-12">
+            <img src="{{ asset('assets/images/lineLogo.png') }}" alt="Instagram" class="w-12 h-12">
+        </div>
+        <!-- Company Location and Info -->
+        <p class="text-[20px] text-gray-400 text-center">
+            Kami berlokasi di Denpasar, Bali.<br>
+            Siap melayani klien dari seluruh penjuru.<br>
+            Percayakan kebutuhan peralatan konser Anda kepada kami.
+        </p>
+        <!-- Social Media Photos -->
+        <div class="text-[20px] flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-6">
+            <!-- Contact Info -->
+            <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 [20px]">
+                <p>rekonser@gmail.com</p>
+                <p>+62 812-3456-7890</p>
+                <p>Jalan Teuku Umar No. 50, Denpasar, Bali, 80113</p>
+            </div>
+        </div>
+        <!-- Footer Note -->
+        <p class="text-gray-600 text-[20px]">
+            © 2023 Rekonser™. All Rights Reserved.
+        </p>
     </div>
 </footer>

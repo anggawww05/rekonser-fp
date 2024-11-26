@@ -2,37 +2,28 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 
 Route::get('/', function () {
     return view('landing');
+})->name('landing');
+
+
+
+
+Route::middleware('guest')->group(function() {
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'authenticate'])->name('auth');
+    Route::get('/register', [RegisterController::class, 'index']);
+    Route::post('/register', [RegisterController::class, 'store'])->name('register');
+    Route::get('/products', [ProductController::class, 'indexUser'])->name('products.index');
 });
 
-
-
-
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout']);
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::post('/register', [RegisterController::class, 'store']);
-
-// Route::get('/dashboard', [RegisterController::class, 'store']);
-
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
+Route::middleware('auth')->group(function(){
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/kelolaProduk', [ProductController::class, 'index'])->name('kelolaProduk');
 });
-
-Route::get('/read', function () {
-    return view('admin.read');
-});
-
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-});
-
-// Route::get('/admin/read', [AdminController::class, 'read'])->name('admin.read');
-
-
-

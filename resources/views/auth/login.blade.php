@@ -1,51 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> --}}
-    @vite(['resources/css/app.css','resources/js/app.js'])
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
-          <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Sign in to your account</h2>
-        </div>
 
-        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form class="space-y-6" action="/login" method="POST">
-            @csrf
-            <div>
-              <label for="email" class="block text-sm/6 font-medium text-gray-900">Email address</label>
-              <div class="mt-2">
-                <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
-              </div>
-            </div>
+<body class="bg-gray-100 h-screen">
+    <div class="flex h-full">
+        <!-- Left Section: Form -->
+        <div class="w-1/2 bg-white flex flex-col justify-center p-12">
+            <h2 class="text-[40px] font-bold text-[#023552] mb-4 text-center">Selamat Datang Kembali!</h2>
 
-            <div>
-              <div class="flex items-center justify-between">
-                <label for="password" class="block text-sm/6 font-medium text-gray-900">Password</label>
-                <div class="text-sm">
-                  <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
-              </div>
-              <div class="mt-2">
-                <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
-              </div>
-            </div>
+            @endif
 
-            <div>
-              <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
-            </div>
-          </form>
+            <form action="{{ route('auth') }}" method="POST" class="space-y-6">
+                @csrf
+                <div>
+                    <label for="email" class="block text-[20px] text-black">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Masukkan email"
+                        class="w-full border border-gray-300 rounded-lg px-4 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-[#025E93] h-14">
+                </div>
 
-          <p class="mt-10 text-center text-sm/6 text-gray-500">
-            belum punya akun?
-            <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">daftar disini</a>
-          </p>
+                <div>
+                    <label for="password" class="block text-[20px] text-black">Kata Sandi</label>
+                    <input type="password" id="password" name="password" placeholder="Masukkan kata sandi"
+                        class="w-full border border-gray-300 rounded-lg px-4 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-[#025E93] h-14">
+                </div>
+
+                <div class="flex justify-center items-center">
+                    <button type="submit"
+                        class="w-1/2 bg-[#023552] text-[15px] text-white py-3 rounded-lg hover:bg-[#025E93] transition ">
+                        Masuk
+                    </button>
+                </div>
+            </form>
+
+            <p class="text-black text-[20px] text-center mt-8">
+                Belum memiliki akun?
+                <a href="{{ route('register') }}" class="text-[#008CDC] text-[20px]">daftar disini</a>
+            </p>
         </div>
-      </div>
+        
+        <!-- Right Section: Image -->
+        <div class="w-1/2 bg-purple-200 flex items-center justify-center h-full">
+            <img src="{{ asset('assets/images/backgroundMain.jpg') }}" alt="Illustration"
+                class="h-full w-full object-cover">
+        </div>
+    </div>
 </body>
+
 </html>

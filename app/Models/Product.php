@@ -14,19 +14,10 @@ class Product extends Model
         'product_img',
     ];
 
-    // public function users()
-    // {
-    //     return $this->belongsToMany(User::class);
-    // }
+    public function category()
+    {
+        return $this->hasOne(Category::class);
+    }
 
-    // public function favorites()
-    // {
-    //     return $this->belongsToMany(Favorite::class);
-    // }
-
-    // public function payments()
-    // {
-    //     return $this->hasOne(Payment::class);
-    // }
 }
 
