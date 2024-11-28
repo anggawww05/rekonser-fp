@@ -1,29 +1,5 @@
 <footer class="bg-[#002134] text-white py-8">
     <div class="container mx-auto text-center space-y-4">
-        <!-- Social Media Links -->
-        {{-- <div class="flex justify-center space-x-6">
-            <a href="#" class="text-white hover:text-red-500">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="#" class="text-white hover:text-red-500">
-                <i class="fab fa-youtube"></i>
-            </a>
-            <a href="#" class="text-white hover:text-red-500">
-                <i class="fab fa-facebook"></i>
-            </a>
-            <a href="#" class="text-white hover:text-red-500">
-                <i class="fab fa-pinterest"></i>
-            </a>
-            <a href="#" class="text-white hover:text-red-500">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" class="text-white hover:text-red-500">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#" class="text-white hover:text-red-500">
-                <i class="fab fa-google"></i>
-            </a>
-        </div> --}}
         <div class="flex justify-center space-x-6 mt-4">
             <img src="{{ asset('assets/images/instagramLogo.png') }}" alt="Instagram" class="w-12 h-12">
             <img src="{{ asset('assets/images/whatsappLogo.png') }}" alt="Instagram" class="w-12 h-12">
