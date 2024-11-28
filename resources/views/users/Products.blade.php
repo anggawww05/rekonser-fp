@@ -19,7 +19,6 @@
             <h1 class="text-3xl font-semibold text-gray-900 mt-8 mb-4">List Produk</h1>
         </div>
 
-
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
             @foreach ($products as $product)
             <div class="bg-white p-4 rounded-lg shadow-md outline-6">
