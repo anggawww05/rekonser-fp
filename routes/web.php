@@ -25,7 +25,7 @@ Route::get('/products', [ProductController::class, 'indexProducts'])->name('inde
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('auth');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('/register', [PageController::class, 'register'])->name('register');
+Route::get('/register', [RegisterController::class, 'index'])->name('indexRegister');
 Route::post('/register', [RegisterController::class, 'store'])->name('register');
 
 Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
@@ -41,4 +41,10 @@ Route::get('/confirmationRent', [PageController::class, 'confirmRent'])->name('c
 Route::get('/confirmationReturn', [PageController::class, 'confirmReturn'])->name('confirmReturn');
 
 
+Route::get('/profile', function() {
+    return view ('users/profile');
+});
 
+Route::get('/detailprofile', function(){
+    return view ('users/detailprofile');
+});

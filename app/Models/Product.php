@@ -14,10 +14,19 @@ class Product extends Model
         'product_img',
     ];
 
-    public function category()
+    public function users()
     {
-        return $this->hasOne(Category::class);
+        return $this->hasOne(User::class);
     }
 
+    public function payments()
+    {
+        return $this->hasOne(Payment::class);
+    }
+
+    public function returneds()
+    {
+        return $this->hasOne(Returned::class);
+    }
 }
 

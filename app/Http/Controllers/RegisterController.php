@@ -17,14 +17,14 @@ class RegisterController extends Controller
     {
         // dd($request->all());
         $request->validate([
-            'name' => 'required',
+            'user_name' => 'required',
             'email' => 'required|email',
             'password' => 'required|confirmed',
         ]);
         // dd($request);
         // dd($request->error());
         $user = User::create([
-            'name' => $request->name,
+            'user_name' => $request->user_name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => 'user'

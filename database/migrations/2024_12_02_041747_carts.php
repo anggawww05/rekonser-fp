@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('carts', function (Blueprint $table) {
             $table->id();
             //fk product id
             //fk user id

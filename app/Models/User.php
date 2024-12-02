@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'user_name',
         'email',
         'password',
         'address',
@@ -50,11 +50,10 @@ class User extends Authenticatable
         ];
     }
 
-    // public function products()
-    // {
-    //     return $this->belongsToMany(Product::class);
-    // }
-
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 
 }
 
