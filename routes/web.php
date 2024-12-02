@@ -45,4 +45,6 @@ Route::get('/profile', function() {
     return view ('users/profile');
 });
 
-
+Route::get('/detailprofile', function(){
+    return view ('users/detailprofile');
+});
