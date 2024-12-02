@@ -46,10 +46,10 @@
                                 </td>
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{$users->name}}"
+                                    {{$user->name}}"
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{$Users->role}}
+                                    {{$user->role}}
                                 </td>
                                 {{-- <td class="px-6 py-4">
                                     {{$product->stock}}p
