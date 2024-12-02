@@ -21,8 +21,9 @@
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
             @foreach ($products as $product)
-            <div class="bg-white p-4 rounded-lg shadow-md outline-6">
-                    <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-48 object-cover mb-4 rounded">
+                <div class="bg-white p-4 rounded-lg shadow-md outline-6">
+                    <img src="{{ $product->image_url }}" alt="{{ $product->name }}"
+                        class="w-full h-48 object-cover mb-4 rounded">
                     <h2 class="text-xl font-bold mb-2">{{ $product->name }}</h2>
                     <p class="text-gray-700 mb-4">{{ $product->description }}</p>
                     <p class="text-gray-900 font-semibold">{{ $product->price }}</p>

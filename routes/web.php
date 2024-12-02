@@ -41,4 +41,8 @@ Route::get('/confirmationRent', [PageController::class, 'confirmRent'])->name('c
 Route::get('/confirmationReturn', [PageController::class, 'confirmReturn'])->name('confirmReturn');
 
 
+Route::get('/profile', function() {
+    return view ('users/profile');
+});
+
 
