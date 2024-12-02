@@ -23,5 +23,10 @@ class Product extends Model
     {
         return $this->hasOne(Payment::class);
     }
+
+    public function returneds()
+    {
+        return $this->hasOne(Returned::class);
+    }
 }
 

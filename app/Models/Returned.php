@@ -13,10 +13,10 @@ class Returned extends Model
         'status_id',
     ];
 
-    // public function products()
-    // {
-    //     return $this->belongsTo(Product::class);
-    // }
+    public function products()
+    {
+        return $this->belongsTo(Product::class);
+    }
 
     // public function users()
     // {

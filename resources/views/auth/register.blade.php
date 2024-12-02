@@ -30,8 +30,8 @@
                         class="w-full border border-gray-300 rounded-lg px-4 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-[#025E93] h-14">
                 </div>
                 <div>
-                    <label for="name" class="block text-[20px] text-black">Nama</label>
-                    <input type="name" id="name" name="name" placeholder="Masukkan email"
+                    <label for="user_name" class="block text-[20px] text-black">Nama</label>
+                    <input type="text" id="user_name" name="user_name" placeholder="Masukkan nama"
                         class="w-full border border-gray-300 rounded-lg px-4 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-[#025E93] h-14">
                 </div>
                 <div>
