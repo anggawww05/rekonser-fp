@@ -52,3 +52,7 @@ Route::get('/editprofile', function(){
 Route::get('/pesanan', function(){
     return view ('users/listOrder');
 });
+
+Route::get('/detailproduk', function(){
+    return view ('users/detailProduct');
+});
