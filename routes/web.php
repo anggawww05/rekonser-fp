@@ -45,6 +45,10 @@ Route::get('/profile', function() {
     return view ('users/profile');
 });
 
-Route::get('/detailprofile', function(){
+Route::get('/editprofile', function(){
     return view ('users/detailprofile');
+});
+
+Route::get('/pesanan', function(){
+    return view ('users/listOrder');
 });
