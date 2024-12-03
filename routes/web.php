@@ -56,3 +56,7 @@ Route::get('/pesanan', function(){
 Route::get('/detailproduk', function(){
     return view ('users/detailProduct');
 });
+
+Route::get('/pengembalian', function(){
+    return view ('users/listReturned');
+});
