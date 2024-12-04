@@ -12,6 +12,7 @@
 
 <body class="">
     @include('components.aside')
+    @include('components.topbar')
     <main>
         @yield('container')
     </main>

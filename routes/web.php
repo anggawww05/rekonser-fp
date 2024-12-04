@@ -60,3 +60,7 @@ Route::get('/detailproduk', function(){
 Route::get('/pengembalian', function(){
     return view ('users/listReturned');
 });
+
+Route::get('/favorit', function(){
+    return view ('users/listFavorite');
+});

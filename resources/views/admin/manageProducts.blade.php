@@ -1,12 +1,18 @@
 @extends('admin.main')
 
+@section('topbar')
+    <div class="bg-black w-6 h-4">
+
+    </div>
+@endsection
+
 @section('container')
     <div class="p-4 sm:ml-64">
-        <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 min-h-screen">
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <div class="pb-4 bg-white dark:bg-gray-900">
+        <div class="p-4 min-h-screen">
+            <div class="sm:rounded-lg">
+                <div class="pb-4 ">
                     <label for="table-search" class="sr-only">Search</label>
-                    <div class="relative mt-1">
+                    <div class="relative">
                         <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
                             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -14,34 +20,36 @@
                                     d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>
                         </div>
-                        <input type="text" id="table-search"
-                            class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Search for items">
+                        <div class="flex items-center space-x-4">
+                            <input type="text" id="table-search"
+                                class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Search for items">
+                            <a href="{{ route('products.create') }}"
+                                class="inline-flex items-center px-4 py-2 bg-[#003A5B] border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                                Tambah Produk
+                            </a>
+                        </div>
                     </div>
-                    <a href="{{ route('products.create') }}"
-                        class="inline-flex items-center px-4 py-2 bg-blue-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150">
-                        Tambah Produk
-                    </a>
 
                 </div>
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
                                     Id
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Product
+                                    Produk
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Price
+                                    Harga
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Stock
+                                    Stok
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Action
+                                    Aksi
                                 </th>
                             </tr>
                         </thead>
@@ -62,22 +70,23 @@
                                         {{ $product->stock }}
                                     </td>
                                     <td class="flex gap-2">
-                                        <form action="{{route('products.delete', $product->id)}}" method="post">
+                                        <form action="{{ route('products.delete', $product->id) }}" method="post">
                                             @csrf
                                             @method('delete')
                                             <button type="submit">
                                                 Delete
                                             </button>
                                         </form>
-                                        {{-- <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                                        <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
                                             class="block text-white bg-red-600 hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
                                             Hapus
-                                        </button> --}}
-                                        <a href="{{route('products.edit', $product->id)}}" class="block text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        </button>
+                                        <a href="{{ route('products.edit', $product->id) }}"
+                                            class="block text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
                                             Edit
-                                        </button>
+                                            </button>
                                     </td>
                                     {{-- <td class="px-6 py-4">
                                     <a href="#"
@@ -114,15 +123,13 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
-                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete
-                        this product?</h3>
+                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Yakin ingin menghapus produk</h3>
                     <button data-modal-hide="popup-modal" type="button"
                         class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                        Yes, I'm sure
+                        Yakin
                     </button>
                     <button data-modal-hide="popup-modal" type="button"
-                        class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No,
-                        cancel</button>
+                        class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Batal</button>
                 </div>
             </div>
         </div>
