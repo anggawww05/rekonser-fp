@@ -58,10 +58,8 @@
                                 class="w-[120px] h-[40px] bg-[#003A5B] text-white rounded-lg hover:bg-[#004A73] transition">Simpan</button>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
     </div>
 @endsection

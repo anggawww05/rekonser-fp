@@ -10,4 +10,9 @@ class PageController extends Controller
     {
         return view('users/landing');
     }
+
+    public function dashboard()
+    {
+        return view('admin/dashboard');
+    }
 }
