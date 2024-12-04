@@ -11,7 +11,6 @@
                     <label for="productName" class="block text-sm font-medium text-gray-700">Nama Produk</label>
                     <textarea id="productName" name="product_name" required
                         class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50">{{ $product->product_name }}</textarea>
-
                 </div>
                 <div class="mb-4">
                     <label for="productDescription" class="block text-sm font-medium text-gray-700">Deskripsi Produk</label>
