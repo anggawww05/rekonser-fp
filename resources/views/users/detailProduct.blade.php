@@ -2,7 +2,7 @@
 
 @section('container')
     <div class="w-full bg-[#F6F6F6] flex justify-center items-center">
-        <div class="mt-72 w-[1200px] bg-white rounded-xl shadow-lg border border-[#AAAAAA] p-8">
+        <div class="mt-16 mb-10 w-[1200px] bg-white rounded-xl shadow-lg border border-[#AAAAAA] p-8">
             <!-- Container utama -->
             <div class="w-full flex bg-slate-500">
                 <!-- Bagian kiri: Foto utama dan foto kecil -->
@@ -64,10 +64,10 @@
                     </div>
                     <!-- Tombol aksi -->
                     <div class="flex gap-4 mt-6">
-                        <button class="px-4 py-2 bg-gray-200 rounded-md shadow hover:bg-gray-300">
+                        <button class="px-4 py-2 w-full bg-gray-200 rounded-md shadow hover:bg-gray-300">
                             Tambah ke Favorit
                         </button>
-                        <button class="px-4 py-2 bg-blue-500 text-white rounded-md shadow hover:bg-blue-600">
+                        <button class="px-4 py-2 w-full bg-blue-500 text-white rounded-md shadow hover:bg-blue-600">
                             Sewa Sekarang
                         </button>
                     </div>
