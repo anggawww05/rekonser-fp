@@ -64,3 +64,7 @@ Route::get('/pengembalian', function(){
 Route::get('/favorit', function(){
     return view ('users/listFavorite');
 });
+
+Route::get('/detailtransaksi', function(){
+    return view ('users/detailTransaction');
+});
