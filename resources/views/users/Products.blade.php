@@ -3,27 +3,20 @@
 @section('container')
     <div class="container mx-auto px-4 pt-16 w-[1440px]">
         <div class="flex justify-center w-full">
-            <div class="flex items-center w-1/2">
-                <input type="text"
-                    class="px-4 py-2 rounded-l-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#023552] focus:border-transparent w-full"
-                    placeholder="Cari produk    ..." />
-                <button class="bg-[#023552] hover:bg-[#025E93] text-white px-4 py-3 rounded-r-md ring-1 ring-[#023552]">
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                </button>
+            <div class="flex items-center w-1/2 mb-7">
+                <input type="text" id="table-search"
+                    class="block p-2 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#003A5B] focus:border-[#003A5B]"
+                    placeholder="Cari produk">
             </div>
-        </div>
-        <div>
-            <h1 class="text-3xl font-semibold text-gray-900 mt-8 mb-4">List Produk</h1>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
             @foreach ($products as $product)
-                <div class="bg-white p-4 rounded-lg shadow-md outline-6">
-                    <img src="{{ $product->image_url }}" alt="{{ $product->name }}"
-                        class="w-full h-48 object-cover mb-4 rounded">
+                <div class="bg-white p-4 rounded-lg shadow-md border-2 mb-5">
+                    <div class="flex justify-center">
+                        <img src="{{ $product->image_url }}" alt="{{ $product->name }}"
+                            class="h-[290px] w-[290px] object-cover mb-4 rounded">
+                    </div>
                     <h2 class="text-xl font-bold mb-2">{{ $product->name }}</h2>
                     <p class="text-gray-700 mb-4">{{ $product->description }}</p>
                     <p class="text-gray-900 font-semibold">{{ $product->price }}</p>

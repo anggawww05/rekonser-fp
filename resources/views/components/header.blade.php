@@ -9,7 +9,7 @@
                 <a href="{{ route('register') }}"
                     class="bg-white ring-1 ring-[#002B43] text-[#002B43] hover:text-white hover:bg-[#004870] focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-8 py-2 text-center dark:bg-blue-600 dark:hover:bg-[#004870] dark:focus:ring-blue-800">Daftar</a>
                 <a href="{{ route('login') }}"
-                    class="text-white ring-1 bg-[#002B43] hover:bg-[#004870] focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-8 py-2 text-center dark:bg-blue-600 dark:hover:bg-[#003552] dark:focus:ring-blue-800">Masuk</a>
+                    class="text-white ring-1 bg-[#002B43] hover:bg-[#004870] focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-8 py-2 text-center">Masuk</a>
 
                 {{-- gatau yg dibawah ni apa, jgn dihapus ya! --}}
                 {{-- <button data-collapse-toggle="navbar-sticky" type="button"
