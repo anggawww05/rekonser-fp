@@ -73,7 +73,7 @@
                     </svg>
                     <span class="flex-1 ms-3 whitespace-nowrap">Laporan Transaksi</span>
                 </a>
-            </li>
+            </li> 
         </ul>
         <div class="mt-5">
             <form action="{{route('logout')}}" method="POST">
