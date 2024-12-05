@@ -56,7 +56,3 @@ Route::get('/pesanan', function(){
 Route::get('/detailproduk', function(){
     return view ('users/detailProduct');
 });
-
-Route::get('/detailtransaksi', function(){
-    return view ('users/detailTransaction');
-});

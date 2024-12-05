@@ -2,8 +2,7 @@
 
 @section('container')
     <div class="p-4 sm:ml-64">
-        <div class="p-8 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 min-h-screen">
-            <h1 class="text-center">Edit Product</h1>
+        <div class="p-8  min-h-screen">
             <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
@@ -11,7 +10,6 @@
                     <label for="productName" class="block text-sm font-medium text-gray-700">Nama Produk</label>
                     <textarea id="productName" name="product_name" required
                         class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50">{{ $product->product_name }}</textarea>
-
                 </div>
                 <div class="mb-4">
                     <label for="productDescription" class="block text-sm font-medium text-gray-700">Deskripsi Produk</label>
@@ -30,9 +28,9 @@
                 </div>
                 <div class="mb-4">
                     <label for="productImage" class="block text-sm font-medium text-gray-700">Edit Foto</label>
-                    <img src="{{asset('storage/' . $product->product_img)}}" alt="image" class="img-preview w-[100px] h-[100px] object-cover">
+                    <img src="{{asset('storage/' . $product->product_img)}}" alt="image" class="img-preview w-[300px] h-[300px] object-cover border-2 border-black rounded-lg">
                     <input type="file" id="productImage" name="product_img" accept="image/*"
-                        class="input-file mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50">
+                        class="input-file mt-1 block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-50 border-2 border-black">
                 </div>
                 <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Simpan
                     Perubahan</button>
