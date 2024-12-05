@@ -16,26 +16,29 @@
                     <p>angga@gmail.com</p>
                 </div>
             </div>
-            <button class="bg-[#003A5B] h-[35px] w-[100px] text-[15px] text-white px-4 py-2 rounded hover:bg-[#004A73] transition">Edit Profil</button>
+            <a href="{{route('indexedit')}}" class="bg-[#003A5B] h-[35px] w-[100px] text-[15px] text-white px-4 py-2 rounded hover:bg-[#004A73] transition">Edit Profil</a>
+
+            {{-- <button class="bg-[#003A5B] h-[35px] w-[100px] text-[15px] text-white px-4 py-2 rounded hover:bg-[#004A73] transition">Edit Profil</button> --}}
+
         </div>
 
         {{-- Menu Profil --}}
-        <a href="">
+        <a href="{{route("indexorder")}}">
             <div class="flex items-center mt-4 mx-auto w-[600px] h-[40px] bg-white outline outline-1 outline-[#AAAAAA] rounded-lg p-2 hover:bg-slate-200">
                 <h1>Pesanan Saya</h1>
             </div>
         </a>
-        <a href="">
+        <a href="{{route("indexreturns")}}">
             <div class="flex items-center mt-2 mx-auto w-[600px] h-[40px] bg-white outline outline-1 outline-[#AAAAAA] rounded-lg p-2 hover:bg-slate-200">
                 <h1>Pengembalian</h1>
             </div>
         </a>
-        <a href="">
+        <a href="{{route("indexfavorites")}}">
             <div class="flex items-center mt-2 mx-auto w-[600px] h-[40px] bg-white outline outline-1 outline-[#AAAAAA] rounded-lg p-2 hover:bg-slate-200">
                 <h1>Favorit</h1>
             </div>
         </a>
-        <a href="">
+        <a href="{{route("indexhistorys")}}">
             <div class="flex items-center mt-2 mx-auto w-[600px] h-[40px] bg-white outline outline-1 outline-[#AAAAAA] rounded-lg p-2 hover:bg-slate-200">
                 <h1>Riwayat Transaksi</h1>
             </div>

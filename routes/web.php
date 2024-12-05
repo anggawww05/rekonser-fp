@@ -1,10 +1,15 @@
 <?php
 
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\HistoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ReturnedController;
 use App\Http\Controllers\UserController;
 
 // Route::middleware('guest')->group(function() {
@@ -39,32 +44,31 @@ Route::put('/products/edit/{id}', [ProductController::class, 'update'])->name('p
 Route::get('/users', [UserController::class, 'index'])->name('users');
 Route::get('/confirmationRent', [PageController::class, 'confirmRent'])->name('confirmRent');
 Route::get('/confirmationReturn', [PageController::class, 'confirmReturn'])->name('confirmReturn');
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::get('/profile/edit', [ProfileController::class, 'indexedit'])->name('indexedit');
+Route::get('/profile/orders', [OrderController::class, 'indexorder'])->name('indexorder');
+Route::get('/profile/returns', [ReturnedController::class, 'indexreturns'])->name('indexreturns');
+Route::get('/profile/favorites', [FavoriteController::class, 'indexfavorite'])->name('indexfavorites');
+Route::get('/profile/historys', [HistoryController::class, 'indexhistorys'])->name('indexhistorys');
 
-
-Route::get('/profile', function() {
-    return view ('users/profile');
-});
 
 Route::get('/editprofile', function(){
     return view ('users/detailprofile');
 });
 
-Route::get('/pesanan', function(){
-    return view ('users/listOrder');
-});
+
 
 Route::get('/detailproduk', function(){
     return view ('users/detailProduct');
 });
 
-Route::get('/pengembalian', function(){
-    return view ('users/listReturned');
-});
 
-Route::get('/favorit', function(){
-    return view ('users/listFavorite');
-});
+
 
 Route::get('/detailtransaksi', function(){
     return view ('users/detailTransaction');
+});
+
+Route::get('/detailAdmin', function(){
+    return view ('admin/detailAdmin');
 });

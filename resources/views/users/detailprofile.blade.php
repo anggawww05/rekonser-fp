@@ -7,7 +7,7 @@
                 <h1>Edit Profil</h1>
             </div> --}}
             <div class="w-[1200px] text-[28px] font-semibold flex items-center gap-4">
-                <a href="#">
+                <a href="{{route('profile')}}">
                     <img class="h-6 " src="{{asset('assets/images/backbutton.png')}}" alt="#">
                 </a>
                 <h1>Edit Profil</h1>
