@@ -58,5 +58,5 @@ Route::get('/detailproduk', function(){
 });
 
 Route::get('/detailtransaksi', function(){
-    return view ('users/detailTransaksi');
+    return view ('users/detailTransaction');
 });
