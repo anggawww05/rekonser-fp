@@ -1,78 +1,75 @@
 @extends('users.main')
 
 @section('container')
-    <div class="w-full bg-[#F6F6F6] flex justify-center items-center">
-        <div class="mt-16 mb-10 w-[1200px] bg-white rounded-xl shadow-lg border border-[#AAAAAA] p-8">
-            <!-- Container utama -->
-            <div class="w-full flex bg-slate-500">
-                <!-- Bagian kiri: Foto utama dan foto kecil -->
-                <div class="flex flex-col items-center">
-                    <!-- Foto utama -->
-                    <div
-                        class="aspect-square w-[400px] bg-gray-300 flex items-center justify-center text-gray-500 border rounded-lg">
-                        FOTO 1X1
+    <div class="w-full bg-[#F6F6F6] flex flex-col justify-center items-center">
+        <div class="w-[1200px] text-[28px] font-semibold flex items-center gap-4 mb-5 mt-16">
+            <a href="{{ route('listProducts') }}">
+                <img class="h-6 " src="{{ asset('assets/images/backbutton.png') }}" alt="#">
+            </a>
+            <h1>Detail Produk</h1>
+        </div>
+        <div class="mb-10 w-[1200px] bg-white rounded-xl shadow-lg border border-[#AAAAAA] p-8">
+            <div class="w-full flex">
+                <div class="flex flex-col items-start">
+                    <div class="w-[400px] h-[400px] flex items-center justify-center text-gray-500 rounded-lg">
+                        <img src="{{ asset('storage/' . $product->product_img) }}" alt="{{ $product->name }}" class="h-full object-cover rounded-lg border-2 border-[#5C5C5C]">
                     </div>
-                    <!-- Foto kecil sejajar di bawah foto besar -->
                     <div class="flex justify-between gap-4 mt-4 w-[400px]">
-                        <div
-                            class="aspect-square w-[120px] bg-gray-300 flex items-center justify-center text-gray-500 border rounded-lg">
-                            FOTO 1X1
+                        <div class="aspect-square w-[120px]  flex items-center justify-center text-gray-500  *:rounded-lg">
+                            <img src="{{ asset('assets\images\1.png') }}" alt="#" class="object-cover rounded-lg">
                         </div>
-                        <div
-                            class="aspect-square w-[120px] bg-gray-300 flex items-center justify-center text-gray-500 border rounded-lg">
-                            FOTO 1X1
+                        <div class="aspect-square w-[120px]  flex items-center justify-center text-gray-500  *:rounded-lg">
+                            <img src="{{ asset('assets\images\1.png') }}" alt="#" class="object-cover rounded-lg">
                         </div>
-                        <div
-                            class="aspect-square w-[120px] bg-gray-300 flex items-center justify-center text-gray-500 border rounded-lg">
-                            FOTO 1X1
+                        <div class="aspect-square w-[120px]  flex justify-start text-gray-500  *:rounded-lg">
+                            <img src="{{ asset('assets\images\1.png') }}" alt="#" class="object-cover rounded-lg">
                         </div>
                     </div>
-                    <!-- Kontak -->
                     <div
-                        class="bg-gray-100 border border-gray-300 p-2 rounded-lg h-auto flex items-center justify-center mt-6">
-                        <p class="text-sm text-gray-600 font-medium">082148667077</p>
+                        class="mt-6 w-48 flex justify-center bg-gray-100 border border-gray-300 p-2 rounded-lg  mb-4 text-[20px] text-black">
+                        082148667077</p>
                     </div>
-
                 </div>
-                <!-- Bagian kanan: Informasi produk -->
                 <div class="ml-8 flex flex-col w-full">
-                    <!-- Nama produk dan harga -->
-                    <div>
-                        <h1 class="text-2xl font-bold">Nama Produk</h1>
-                        <p class="text-xl text-gray-600">Harga Produk</p>
+                    <div class="text-[38px]">
+                        <div class="font-bold">{{$product->product_name}}</div>
+                        <div>Rp. {{$product->price}}</div>
                     </div>
-                    <!-- Detail ketersediaan dan kondisi -->
-                    <div class="mt-4">
-                        <p class="text-sm text-gray-600">Tersedia: <span class="font-semibold">5 item</span></p>
-                        <p class="text-sm text-gray-600">Kondisi: <span class="font-semibold">Baik</span></p>
+                    <div class="mt-4 text-[20px] flex flex-col gap-3">
+                        <div>Tersedia: {{$product->stock}}</div>
+                        <div>Kondisi: Baik</div>
                     </div>
-                    <!-- Judul Deskripsi -->
-                    <div class="mt-4">
-                        <h3 class="font-semibold text-lg">Deskripsi</h3>
+                    <div class="mt-4 text-[20px]">Deskripsi:
+                        <div class="bg-white border-2 border-[#C6C6C6] rounded-lg w-[700px] h-48 text-[10px] overflow-scroll">
+                            <div class="p-2 w-full text-[14px] text-justify ">{{$product->description}}
+                            </div>
+                        </div>
                     </div>
-                    <!-- Deskripsi dalam kotak -->
-                    <div class="bg-gray-100 border border-gray-300 p-4 rounded-lg h-[200px] overflow-auto">
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ultricies turpis nec nisl
-                            sodales,
-                            nec suscipit purus vehicula. Pellentesque habitant morbi tristique senectus et netus et
-                            malesuada fames
-                            ac turpis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                            ultricies turpis nec nisl sodales,
-                            nec suscipit purus vehicula.
-                        </p>
+                    <div class="w-full flex gap-4">
+                        <div class="mt-4">
+                            <label for="start_date" class="block text-sm font-medium text-black">Tanggal Mulai</label>
+                            <input type="date" id="start_date" name="start_date"
+                                class="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#003A5B]">
+                        </div>
+                        <div class="mt-4">
+                            <label for="end_date" class="block text-sm font-medium text-black">Tanggal Kembali</label>
+                            <input type="date" id="end_date" name="end_date"
+                                class="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#003A5B]">
+                        </div>
                     </div>
-                    <!-- Tombol aksi -->
-                    <div class="flex gap-4 mt-6">
-                        <button class="px-4 py-2 w-full bg-gray-200 rounded-md shadow hover:bg-gray-300">
-                            Tambah ke Favorit
-                        </button>
-                        <button class="px-4 py-2 w-full bg-blue-500 text-white rounded-md shadow hover:bg-blue-600">
-                            Sewa Sekarang
-                        </button>
-                    </div>
+                    <form action="#">
+                        <div class="flex gap-4 mt-6">
+                            <button class="px-4 py-2 w-full bg-[#003A5B] text-white rounded-md shadow hover:bg-[#005484]">
+                                Tambah ke Favorit
+                            </button>
+                            <button
+                                class="px-4 py-2 w-full bg-[#FFDD00] text-black font-semibold rounded-md shadow hover:bg-[#B49C00]">
+                                Sewa Sekarang
+                            </button>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection

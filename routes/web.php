@@ -42,14 +42,26 @@ Route::delete('/products/delete/{id}', [ProductController::class, 'delete'])->na
 Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/edit/{id}', [ProductController::class, 'update'])->name('products.update');
 Route::get('/users', [UserController::class, 'index'])->name('users');
+
+Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
+
+// Route::put('/users/edit/{id}', [UserController::class, 'update'])->name('users.update');
+
+Route::get('/products/detail/{id}', [ProductController::class, 'indexdetailProducts'])->name('detailProduct');
+
 Route::get('/confirmationRent', [PageController::class, 'confirmRent'])->name('confirmRent');
 Route::get('/confirmationReturn', [PageController::class, 'confirmReturn'])->name('confirmReturn');
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-Route::get('/profile/edit', [ProfileController::class, 'indexedit'])->name('indexedit');
+Route::get('/profile', [UserController::class, 'indexprofile'])->name('profile');
+Route::get('/profile/edit/{id}', [UserController::class, 'indexeditprofile'])->name('indexedit');
+Route::post('/profile/edit/{id}', [UserController::class, 'update'])->name('update');
+
 Route::get('/profile/orders', [OrderController::class, 'indexorder'])->name('indexorder');
 Route::get('/profile/returns', [ReturnedController::class, 'indexreturns'])->name('indexreturns');
 Route::get('/profile/favorites', [FavoriteController::class, 'indexfavorite'])->name('indexfavorites');
 Route::get('/profile/historys', [HistoryController::class, 'indexhistorys'])->name('indexhistorys');
+
+
+
 
 
 Route::get('/editprofile', function(){
@@ -58,9 +70,9 @@ Route::get('/editprofile', function(){
 
 
 
-Route::get('/detailproduk', function(){
-    return view ('users/detailProduct');
-});
+// Route::get('/detailproduk', function(){
+//     return view ('users/detailProduct');
+// });
 
 
 

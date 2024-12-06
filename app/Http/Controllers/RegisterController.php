@@ -22,10 +22,10 @@ class RegisterController extends Controller
             'password' => 'required|confirmed',
         ]);
         // dd($request);
-        // dd($request->error());
         $user = User::create([
             'user_name' => $request->user_name,
             'email' => $request->email,
+            // 'password' => $request->password,
             'password' => Hash::make($request->password),
             'role' => 'user'
         ]);

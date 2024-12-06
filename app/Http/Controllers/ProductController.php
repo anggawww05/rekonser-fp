@@ -14,7 +14,6 @@ class ProductController extends Controller
         $products = Product::paginate(10);
         // $products = Product::where('status', 'active')->paginate(10);
         return view('admin/manageproducts', compact('products'));
-
     }
 
 
@@ -22,7 +21,12 @@ class ProductController extends Controller
     {
         $products = Product::all();
         return view('users/Products', compact('products'));
+    }
 
+    public function indexdetailProducts($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('users.detailProduct', compact('product'));
     }
 
     public function create()
@@ -34,9 +38,9 @@ class ProductController extends Controller
     {
         $request->validate([
             'product_name' => ['required'],
-            'price' => ['required','numeric'],
-            'stock' => ['required','numeric'],
-            'product_img' => ['required','image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
+            'price' => ['required', 'numeric'],
+            'stock' => ['required', 'numeric'],
+            'product_img' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
 
         ]);
 
@@ -62,26 +66,22 @@ class ProductController extends Controller
         return view('admin/editProduct', compact('product'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $product = Product::find($id);
         $request->validate([
             'product_name' => ['required'],
-            'price' => ['required','integer'],
-            'stock' => ['required','integer'],
+            'price' => ['required', 'integer'],
+            'stock' => ['required', 'integer'],
             'product_description' => ['nullable'],
-            'product_img' => ['nullable','image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
+            'product_img' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ]);
 
         if ($request->hasFile('product_img')) {
             $image = $request->file('product_img');
             $image_url = $image->storeAs('product_img', $image->hashName(), 'public');
             File::delete(storage_path('app/public/' . $product->product_img));
-        }
-        else {
+        } else {
             $image_url = $product->product_img;
         }
 

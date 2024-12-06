@@ -6,25 +6,26 @@
             <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <div class="mb-4">
+                {{-- <div class="mb-4">
                     <label for="productName" class="block text-sm font-medium text-gray-700">Nama Produk</label>
                     <textarea id="productName" name="product_name" required
                         class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50">{{ $product->product_name }}</textarea>
+                </div> --}}
+                <div>
+                    <label for="username" class="text-lg font-medium">Nama Produk</label>
+                    <input type="text" id="username" name="username" value="{{ $product->product_name }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50">
                 </div>
-                <div class="mb-4">
-                    <label for="productDescription" class="block text-sm font-medium text-gray-700">Deskripsi Produk</label>
-                    <textarea id="productDescription" name="product_description" required
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50">{{ $product->description }}</textarea>
+                <div>
+                    <label for="username" class="text-lg font-medium">Deskripsi</label>
+                    <input type="text" id="username" name="username" value="{{ $product->description }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50">
                 </div>
-                <div class="mb-4">
-                    <label for="stock" class="block text-sm font-medium text-gray-700">Stok</label>
-                    <textarea id="productStock" name="stock" required
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50">{{ $product->stock }}</textarea>
+                <div>
+                    <label for="username" class="text-lg font-medium">Stok</label>
+                    <input type="text" id="username" name="username" value="{{ $product->stock }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50">
                 </div>
-                <div class="mb-4">
-                    <label for="price" class="block text-sm font-medium text-gray-700">Harga</label>
-                    <textarea id="productPrice" name="price" required
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50">{{ $product->price }}</textarea>
+                <div>
+                    <label for="username" class="text-lg font-medium">Harga</label>
+                    <input type="text" id="username" name="username" value="{{ $product->price }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50">
                 </div>
                 <div class="mb-4">
                     <label for="productImage" class="block text-sm font-medium text-gray-700">Edit Foto</label>
