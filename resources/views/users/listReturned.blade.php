@@ -8,7 +8,7 @@
                     <a href="{{route('profile')}}">
                         <img class="h-6 " src="{{ asset('assets/images/backbutton.png') }}" alt="#">
                     </a>
-                    <h1>Pesanan Saya</h1>
+                    <h1>Pengembalian</h1>
                 </div>
                 <div class=" flex items-center flex-col gap-8">
                     <table class="w-[1220px] table-auto ">
@@ -23,23 +23,6 @@
                             </tr>
                         </thead>
                         <tbody class="">
-                            <tr class="text-center w-full bg-white ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg ">
-                                <td class=" w-[5%] p-4">11</td>
-                                <td class=" w-[20%] p-4">Sony a6400</td>
-                                <td class=" w-[10%] p-4">11/12/2024</td>
-                                <td class=" w-[15%] p-4">13/12/2024</td>
-                                <td class=" w-[15%] p-4">
-                                    <div
-                                        class=" w-36 mx-auto m-2 box-border bg-[#FFF8CD] text-[#655800] rounded-lg py-1 border-2 border-[#655800]">
-                                        Menunggu
-                                    </div>
-                                </td>
-                                <td class="w-[20%] p-4">
-                                    <button class="bg-[#003A5B] py-2 px-9 rounded-lg text-white hover:bg-[#004870]">
-                                        Ajukan
-                                    </button>
-                                </td>
-                            </tr>
                             <tr
                                 class="text-center w-full bg-white border-lg ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg">
                                 <td class=" w-[5%] p-4">11</td>
@@ -56,7 +39,7 @@
                                     <button class="bg-[#003A5B] py-2 px-9 rounded-lg text-white hover:bg-[#004870]">
                                         Ajukan
                                     </button>
-                                </td
+                                </td>
                             </tr>
                             <tr
                                 class="text-center w-full bg-white border-lg ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg">
@@ -74,7 +57,7 @@
                                     <button class="bg-[#003A5B] py-2 px-9 rounded-lg text-white hover:bg-[#004870]">
                                         Ajukan
                                     </button>
-                                </td
+                                </td>
                             </tr>
                         </tbody>
                     </table>
