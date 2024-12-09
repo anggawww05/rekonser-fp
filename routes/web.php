@@ -48,8 +48,17 @@ Route::get('/users', [UserController::class, 'index'])->name('users');
 
 Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
 Route::get('/products/detail/{id}', [ProductController::class, 'indexdetailProducts'])->name('detailProduct');
-Route::get('/products/detail/{product}/transaction', [TransactionController::class, 'indexTransaction'])->name('index.transaction');
-Route::post('/products/detail/transaction/order', [TransactionController::class, 'storeTransaction'])->name('store.transaction');
+
+Route::get('/products/detail/{product}/transaction', [TransactionController::class, 'indexTransaction'])->name('transaction.index');
+Route::post('/products/detail/{product}/transaction', [TransactionController::class, 'storeTransaction'])->name('transaction.store');
+
+Route::get('/profil/returns', [ReturnedController::class, 'indexListreturn'])->name('returns.list');
+Route::get('/profil/returns/detail-return', [ReturnedController::class, 'indexreturn'])->name('returns.index');
+Route::post('/profil/returns/detail-return)', [ReturnedController::class, 'storereturned'])->name('returns.store');
+
+
+
+
 Route::get('/confirm-rent', [Confirm1Controller::class, 'indexConfirm1'])->name('confirm-rent');
 Route::post('/confirm-rent/{payment}', [Confirm1Controller::class, 'edit'])->name('confirm-rent.edit');
 
@@ -58,8 +67,6 @@ Route::get('/profile/edit/{id}', [UserController::class, 'indexeditprofile'])->n
 Route::post('/profile/edit/{id}', [UserController::class, 'update'])->name('update');
 
 Route::get('/profile/orders', [OrderController::class, 'indexorder'])->name('indexorder');
-Route::get('/profile/returns', [ReturnedController::class, 'indexreturns'])->name('indexreturns');
-
 
 
 Route::post('/products/{product}/add-to-favorites', [FavoriteController::class, 'addToFavorites'])->name('favorites.add');
@@ -68,6 +75,10 @@ Route::post('/products/{favorite}/remove-from-favorites', [FavoriteController::c
 Route::get('/profile/favorite', [FavoriteController::class, 'viewFavorites'])->name('favorites.view');
 
 Route::get('/profile/historys', [HistoryController::class, 'indexhistorys'])->name('indexhistorys');
+
+Route::get('/detailreturned', function (){
+    return view('users/detailReturned');
+});
 
 
 

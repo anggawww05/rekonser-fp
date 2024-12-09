@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Payment;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
     public function indexTransaction(Product $product)
     {
-        return view('users/detailTransaction', compact('product'));
+        $user = Auth::user();
+        return view('users/detailTransaction', compact('product', 'user'));
     }
 
     public function storeTransaction(Request $request)

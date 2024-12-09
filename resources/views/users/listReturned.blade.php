@@ -5,7 +5,7 @@
         <div class="w-[1200px] h-screen flex justify-center mx-auto">
             <div>
                 <div class="w-[1200px] text-[28px] font-semibold flex items-center gap-4 mb-5">
-                    <a href="{{route('profile')}}">
+                    <a href="{{ route('profile') }}">
                         <img class="h-6 " src="{{ asset('assets/images/backbutton.png') }}" alt="#">
                     </a>
                     <h1>Pengembalian</h1>
@@ -22,43 +22,41 @@
                                 <th class="w-[20%] p-4">Pengembalian</th>
                             </tr>
                         </thead>
-                        <tbody class="">
-                            <tr
-                                class="text-center w-full bg-white border-lg ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg">
-                                <td class=" w-[5%] p-4">11</td>
-                                <td class=" w-[20%] p-4">Sony a6400</td>
-                                <td class=" w-[10%] p-4">11/12/2024</td>
-                                <td class=" w-[15%] p-4">13/12/2024</td>
-                                <td class=" w-[15%] p-4">
-                                    <div
-                                        class="w-36 mx-auto m-2 bg-[#E5FFE7] text-[#007F00] rounded-lg py-1 border-2 border-[#007F00]">
-                                        Aktif
-                                    </div>
-                                </td>
-                                <td class="w-[20%] p-4">
-                                    <button class="bg-[#003A5B] py-2 px-9 rounded-lg text-white hover:bg-[#004870]">
-                                        Ajukan
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr
-                                class="text-center w-full bg-white border-lg ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg">
-                                <td class=" w-[5%] p-4">11</td>
-                                <td class=" w-[20%] p-4">Sony a6400</td>
-                                <td class=" w-[10%] p-4">11/12/2024</td>
-                                <td class=" w-[15%] p-4">13/12/2024</td>
-                                <td class=" w-[15%] p-4">
-                                    <div
-                                        class="w-36 mx-auto m-2 bg-[#FFE5E5] text-[#7F0000] rounded-lg py-1 border-2 border-[#7F0000]">
-                                        Terlambat
-                                    </div>
-                                </td>
-                                <td class="w-[20%] p-4">
-                                    <button class="bg-[#003A5B] py-2 px-9 rounded-lg text-white hover:bg-[#004870]">
-                                        Ajukan
-                                    </button>
-                                </td>
-                            </tr>
+                        <tbody>
+                            @foreach ($returns as $return)
+                                <tr
+                                    class="text-center w-full bg-white border-lg ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg">
+                                    <td class=" w-[5%] p-4">{{ $return->id }}</td>
+                                    <td class=" w-[20%] p-4">{{ $return->product->product_name }}</td>
+                                    <td class=" w-[10%] p-4">{{ $return->payment->start_date }}</td>
+                                    <td class=" w-[15%] p-4">{{ $return->payment->end_date }}</td>
+                                    <td class=" w-[15%] p-4">
+                                        @switch($return->status)
+                                            @case('pending')
+                                                <div
+                                                    class=" w-36 mx-auto m-2 box-border bg-[#FFF8CD] text-[#655800] rounded-lg py-1 border-2 border-[#655800]">
+                                                    Menunggu
+                                                </div>
+                                            @break
+
+                                            @case('active')
+                                                <div
+                                                    class="w-36 mx-auto m-2 bg-[#E5FFE7] text-[#007F00] rounded-lg py-1 border-2 border-[#007F00]">
+                                                    Aktif
+                                                </div>
+                                            @break
+
+                                            @default
+                                                <div
+                                                    class="w-36 mx-auto m-2 bg-[#E5FFE7] text-[#007F00] rounded-lg py-1 border-2 border-[#007F00]">
+                                                    Aktif
+                                                </div>
+                                        @endswitch
+                                    </td>
+                                    <td class="w-[20%] p-4">
+                                        <a href="{{route('returns.index')}}">Ajukan</a>
+                                    </td>
+                            @endforeach
                         </tbody>
                     </table>
                     <nav aria-label="Page navigation example">

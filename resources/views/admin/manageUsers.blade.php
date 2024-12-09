@@ -6,7 +6,7 @@
             <div class="sm:rounded-lg">
                 <div class="pb-4 ">
                     <label for="table-search" class="sr-only">Search</label>
-                    <div class="relative flex flex-row gap-3">
+                    <div class="relative flex flex-row gap-3 w-1/3">
                         <input type="text" id="table-search"
                             class="block p-2 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#003A5B] focus:border-[#003A5B]"
                             placeholder="Cari pengguna">
@@ -16,11 +16,6 @@
                                 d="M12.9 14.32a8 8 0 111.414-1.414l4.387 4.387a1 1 0 01-1.414 1.414l-4.387-4.387zM8 14a6 6 0 100-12 6 6 0 000 12z"
                                 clip-rule="evenodd"></path>
                         </svg>
-
-                        <a href="{{ route('products.create') }}"
-                            class="flex items-center justify-center px-4 py-2 bg-[#003A5B] w-36 rounded-md font-semibold text-xs text-white hover:bg-[#004870] active:bg-blue-900 transition">
-                            Tambah Produk
-                        </a>
                     </div>
                 </div>
 
@@ -48,7 +43,7 @@
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <td class="px-6 py-4">
                                     {{-- {{ ($users->currentPage() - 1) * $users->perPage() + $loop->iteration }} --}}
-                                    {{$loop->iteration}}
+                                    {{ $loop->iteration }}
                                 </td>
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -74,7 +69,7 @@
                                             Hapus
                                         </button>
                                     </form>
-                                    <a href="{{route('users.edit', $user->id)}}"
+                                    <a href="{{ route('users.edit', $user->id) }}"
                                         class="block text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                         type="button">
                                         Edit

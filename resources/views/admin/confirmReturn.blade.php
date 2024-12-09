@@ -2,7 +2,7 @@
 
 @section('container')
     <div class="p-4 sm:ml-64">
-        <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 min-h-screen">
+        <div class="p-4">
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <div class="pb-4 bg-white dark:bg-gray-900">
                     <label for="table-search" class="sr-only">Search</label>

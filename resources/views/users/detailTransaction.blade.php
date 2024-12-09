@@ -4,16 +4,16 @@
     <section id="detail-transaksi" class="bg-gray-100 min-h-screen py-8">
         <div class="max-w-4xl mx-auto space-y-6">
             <!-- Header -->
-            <div class="w-[1200px] text-[28px] font-semibold flex items-center gap-4 mb-3">
-                <a href="#">
+            <div class="w-[1200px] text-[28px] font-semibold flex items-center gap-4 mt-9 mb-3">
+                <a href="{{route('detailProduct', $product->id)}}">
                     <img class="h-6 " src="{{ asset('assets/images/backbutton.png') }}" alt="#">
                 </a>
-                <h1>Bukti Transaksi</h1>
+                <h1>Detail Transaksi</h1>
             </div>
-            <form action="{{ route('store.transaction') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('transaction.store', $product->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
-                <div class="max-w-4xl mx-auto space-y-6">
+                <div class="max-w-4xl mx-auto flex flex-col gap-3">
                     <!-- Informasi Pribadi -->
                     <div class="border rounded-lg shadow-sm p-4 bg-white">
                         <h2 class="text-lg font-semibold mb-3">Informasi Pribadi</h2>
@@ -26,7 +26,7 @@
                                 </svg>
                                 <div>
                                     <p class="text-[15px] ">Nama</p>
-                                    <p class="text-[18px] font-semibold">tes</p>
+                                    <p class="text-[18px] font-semibold">{{$user->user_name}}</p>
                                 </div>
                             </div>
 
@@ -39,7 +39,7 @@
 
                                 <div>
                                     <p class="text-[15px] ">No Telepon</p>
-                                    <p class="text-[18px] font-semibold">0821373892</p>
+                                    <p class="text-[18px] font-semibold">{{$user->phone_number}}</p>
                                 </div>
                             </div>
 
@@ -53,9 +53,7 @@
                                 </svg>
                                 <div>
                                     <p class="text-[15px] ">Alamat</p>
-                                    <p class="text-[18px] font-semibold">
-                                        Jalan Ken Umang Barat Timur Kaja Kangin Kauh No.60
-                                    </p>
+                                    <p class="text-[18px] font-semibold">{{$user->address}}</p>
                                 </div>
                             </div>
 
@@ -77,7 +75,7 @@
                                 </svg>
                                 <div>
                                     <p class="text-[15px]">Produk</p>
-                                    <p class="text-[18px] font-semibold">Kamera Sony A6400</p>
+                                    <p class="text-[18px] font-semibold">{{$product->product_name}}</p>
                                 </div>
                             </div>
 
@@ -91,7 +89,7 @@
 
                                 <div>
                                     <p class="text-[15px] ">Mulai Sewa</p>
-                                    <input type="date" name="start_date">
+                                    <input type="date" name="start_date" class="start-date">
                                 </div>
                             </div>
 
@@ -120,7 +118,7 @@
 
                                 <div>
                                     <p class="text-[15px] ">Harga per hari</p>
-                                    <p class="text-[18px] font-semibold">Rp. 90.000</p>
+                                    <p class="text-[18px] font-semibold">Rp. {{$product->price}}</p>
                                 </div>
                             </div>
 
@@ -134,7 +132,7 @@
                                 </svg>
                                 <div>
                                     <p class="text-[15px] ">Sewa Kembali</p>
-                                    <input type="date" name="end_date">
+                                    <input type="date" name="end_date" class="end-date">
                                 </div>
                             </div>
 
@@ -146,7 +144,8 @@
                                 </svg>
                                 <div>
                                     <p class="text-[15px]">Durasi Sewa</p>
-                                    <p class="text-[18px] font-semibold">3 Hari</p>
+                                    <p class="text-[18px] font-semibold"><span class="duration">0</span> hari</p>
+
                                 </div>
                             </div>
                         </div>
@@ -161,7 +160,7 @@
                                 <input type="radio" name="rent_method" value="antar-jemput" class="w-4 h-4">
                                 <span class=" font-semibold text-[18px]">Antar-Jemput</span>
                             </div>
-                            <span class=" font-semibold text-[18px]">Rp. 100.000</span>
+                            <span class=" font-semibold text-[18px]">Rp. 200.000</span>
                         </label>
                         <!-- Ambil di Lokasi -->
                         <label class="flex items-center justify-between border-2 rounded-lg px-4 py-2 cursor-pointer">
@@ -246,14 +245,37 @@
                         </div>
                     </div>
 
-                    <!-- Tombol Kirim -->
                     <div class="text-center">
                         <button type="submit"
-                            class="w-full bg-blue-600 text-white py-3 rounded-lg shadow-lg hover:bg-blue-700">
+                            class="w-full bg-[#002B43] text-white py-3 rounded-lg shadow-lg hover:bg-[#003654]">
                             Kirim
                         </button>
                     </div>
             </form>
         </div>
     </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const startDateInput = document.querySelector('.start-date');
+            const endDateInput = document.querySelector('.end-date');
+            const durationOutput = document.querySelector('.duration');
+
+
+            function calculateDuration() {
+                const startDate = new Date(startDateInput.value);
+                const endDate = new Date(endDateInput.value);
+
+                if (startDate && endDate && endDate >= startDate) {
+                    const duration = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)); // Hitung selisih dalam hari
+                    durationOutput.textContent = duration;
+                } else {
+                    durationOutput.textContent = 0;
+                }
+            }
+
+            startDateInput.addEventListener('change', calculateDuration);
+            endDateInput.addEventListener('change', calculateDuration);
+        });
+    </script>
+
 @endsection

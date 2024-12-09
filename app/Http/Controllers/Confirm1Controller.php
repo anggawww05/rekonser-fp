@@ -9,6 +9,7 @@ class Confirm1Controller extends Controller
 {
     public function indexConfirm1()
     {
+        // $payments = Payment::paginate(10);
         $payments = Payment::where('status', 'pending')->get();
         return view('admin/confirmRent', compact('payments'));
     }

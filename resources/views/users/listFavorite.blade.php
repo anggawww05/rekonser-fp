@@ -22,14 +22,14 @@
                                     </td>
                                     <td class=" w-[80%] p-4 text-left ">
                                         <p class=" font-extrabold">{{ $favoriteItem->product->product_name }}</p>
-                                        <p>{{ $favoriteItem->product->price }}</p>
+                                        <p>Rp. {{ $favoriteItem->product->price }}/hari</p>
                                     <td class="w-[20%]  p-4 text-center">
-                                        <div class=" w-[120px]">
+                                        <div class=" w-[120px] flex flex-row gap-2 ">
                                             <a href="{{route("detailProduct", $favoriteItem->product->id)}}",  class="w-[180px] h-[40px] bg-[#003A5B] text-white rounded-lg hover:bg-[#004A73] transition">Lihat Detail</a>
                                             <form action="{{route('favorites.remove', $favoriteItem->id)}}" method="POST">
                                                 @csrf
                                                 <button type="submit"
-                                                    class="w-[180px] h-[40px] bg-red-700 text-white rounded-lg hover:bg-[#004A73] transition">Hapus
+                                                    class="w-[100px] h-[40px] bg-red-700 text-white rounded-lg hover:bg-red-500 transition">Hapus
                                                 </button>
                                             </form>
                                         </div>

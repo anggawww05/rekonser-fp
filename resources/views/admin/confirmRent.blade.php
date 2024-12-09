@@ -2,7 +2,7 @@
 
 @section('container')
     <div class="p-4 sm:ml-64">
-        <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 min-h-screen">
+        <div class="p-4">
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <div class="pb-4 bg-white dark:bg-gray-900">
                     <label for="table-search" class="sr-only">Search</label>
@@ -22,7 +22,7 @@
                 </div>
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <thead class="text-xs text-white bg-[#002B43] dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
                                     Id
@@ -46,16 +46,16 @@
                         </thead>
                         <tbody>
                             @foreach ($payments as $payment)
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-black">
                                     <td class="px-6 py-4">
                                         {{$payment->id}}
                                     </td>
                                     <th scope="row"
-                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        class="px-6 py-4 font-medium">
                                         {{$payment->user->user_name}}
                                     </th>
                                     <td class="px-6 py-4">
-                                        {{$payment->product->name}}
+                                        {{$payment->product->product_name}}
                                     </td>
                                     <td class="px-6 py-4">
                                         {{$payment->start_date}}
@@ -67,7 +67,7 @@
                                         <form action="{{ route('confirm-rent.edit', $payment->id)}}" method="POST">
                                             @csrf
                                             <input type="hidden" name="status" value="active">
-                                            <button class = "text-green-500" type="submit">
+                                            <button class = "bg-green-500 p-4 w-20 h-5 flex items-center justify-center rounded-lg text-white hover:bg-green-400" type="submit">
                                                 Setuju
                                             </button>
                                         </form>

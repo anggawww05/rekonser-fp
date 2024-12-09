@@ -24,7 +24,7 @@
                 <h1>Pesanan Saya</h1>
             </div>
         </a>
-        <a href="{{route("indexreturns")}}">
+        <a href="{{route('returns.list')}}">
             <div class="flex items-center mt-2 mx-auto w-[600px] h-[40px] bg-white outline outline-1 outline-[#AAAAAA] rounded-lg p-2 hover:bg-slate-200">
                 <h1>Pengembalian</h1>
             </div>
