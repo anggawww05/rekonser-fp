@@ -12,7 +12,7 @@
             </div>
             <form action="{{ route('store.transaction') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="product_id" value="{{ $product->id}}">
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
                 <div class="max-w-4xl mx-auto space-y-6">
                     <!-- Informasi Pribadi -->
                     <div class="border rounded-lg shadow-sm p-4 bg-white">
@@ -26,7 +26,7 @@
                                 </svg>
                                 <div>
                                     <p class="text-[15px] ">Nama</p>
-                                    <p class="text-[18px] font-semibold">Gung Angga</p>
+                                    <p class="text-[18px] font-semibold">tes</p>
                                 </div>
                             </div>
 
@@ -173,8 +173,6 @@
                         </label>
                     </div>
 
-
-
                     <!-- Total Pembayaran -->
                     <div class="border rounded-lg shadow-sm p-4 bg-white">
                         <h2 class="text-lg font-semibold mb-3">Total Pembayaran</h2>
@@ -205,7 +203,8 @@
                                     <span class="font-semibold">Transfer Bank BCA</span>
                                     <span class="font-[18px] ">Nomor Rekening: 123456789 (PT. Rekonser)</span>
                                 </div>
-                                <input type="radio" id="bca" name="payment_method" value="bca" class="w-5 h-5">
+                                <input type="radio" id="bca" name="payment_method" value="bca"
+                                    class="w-5 h-5">
                             </label>
 
                             <!-- Transfer Bank BNI -->
@@ -214,7 +213,8 @@
                                     <span class=" font-semibold">Transfer Bank BNI</span>
                                     <span class="font-[18px]">Nomor Rekening: 123456789 (PT. Rekonser)</span>
                                 </div>
-                                <input type="radio" id="bni" name="payment_method" value="bni" class="w-5 h-5">
+                                <input type="radio" id="bni" name="payment_method" value="bni"
+                                    class="w-5 h-5">
                             </label>
 
                             <!-- Transfer Bank Mandiri -->
@@ -223,7 +223,8 @@
                                     <span class=" font-semibold">Transfer Bank Mandiri</span>
                                     <span class="font-[18px] ">Nomor Rekening: 123456789 (PT. Rekonser)</span>
                                 </div>
-                                <input type="radio" id="mandiri" name="payment_method" value="mandiri" class="w-5 h-5">
+                                <input type="radio" id="mandiri" name="payment_method" value="mandiri"
+                                    class="w-5 h-5">
                             </label>
                         </form>
                     </div>
@@ -234,7 +235,8 @@
                         <h2 class="text-lg font-semibold mb-3">Bukti Pembayaran</h2>
                         <div class="relative">
                             <label class="block">
-                                <input type="file" name="transaction_img" class="sr-only"> <!-- Input file tetap disembunyikan -->
+                                <input type="file" name="transaction_img" class="sr-only">
+                                <!-- Input file tetap disembunyikan -->
                                 <div
                                     class="flex justify-between items-center w-60 py-2 px-4 text-sm text-gray-500 bg-gray-100 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-200">
                                     <span class="font-[18px]">Upload Bukti Pembayaran</span>
@@ -243,8 +245,6 @@
                             </label>
                         </div>
                     </div>
-
-
 
                     <!-- Tombol Kirim -->
                     <div class="text-center">

@@ -50,34 +50,6 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr
-                                class="text-center w-full bg-white border-lg ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg">
-                                <td class=" w-[5%] p-4">11</td>
-                                <td class=" w-[25%] p-4">Sony a6400</td>
-                                <td class=" w-[10%] p-4">2</td>
-                                <td class=" w-[15%] p-4">Rp. 200.000</td>
-                                <td class=" w-[25%] p-4">antar jemput</td>
-                                <td class="w-[20%]  p-4   text-center">
-                                    <div
-                                        class="w-36 mx-auto m-2 bg-[#FFE5E5] text-[#7F0000] rounded-lg py-1 border-2 border-[#7F0000]">
-                                        Terlambat
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr
-                                class="text-center w-full bg-white border-lg ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg">
-                                <td class=" w-[5%] p-4">11</td>
-                                <td class=" w-[25%] p-4">Sony a6400</td>
-                                <td class=" w-[10%] p-4">2</td>
-                                <td class=" w-[15%] p-4">Rp. 200.000</td>
-                                <td class=" w-[25%] p-4">antar jemput</td>
-                                <td class="w-[20%]  p-4   text-center">
-                                    <div
-                                        class="w-36 mx-auto m-2 bg-[#FFE5E5] text-[#7F0000] rounded-lg py-1 border-2 border-[#7F0000]">
-                                        Terlambat
-                                    </div>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                     <nav aria-label="Page navigation example">
