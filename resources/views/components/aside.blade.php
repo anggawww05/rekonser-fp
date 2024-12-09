@@ -42,7 +42,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('confirmRent')}}"
+                <a href="{{route('confirm-rent')}}"
                     class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93] dark:hover:bg-gray-700 group">
                     <svg class="flex-shrink-0 w-5 h-5 text-[#DFDFDF] transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
@@ -53,7 +53,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('confirmReturn')}}"
+                <a href="#"
                     class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93] dark:hover:bg-gray-700 group">
                     <svg class="flex-shrink-0 w-5 h-5 text-[#DFDFDF] transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
@@ -64,7 +64,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('confirmReturn')}}"
+                <a href="#"
                     class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93] dark:hover:bg-gray-700 group">
                     <svg class="flex-shrink-0 w-5 h-5 text-[#DFDFDF] transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
@@ -73,7 +73,7 @@
                     </svg>
                     <span class="flex-1 ms-3 whitespace-nowrap">Laporan Transaksi</span>
                 </a>
-            </li> 
+            </li>
         </ul>
         <div class="mt-5">
             <form action="{{route('logout')}}" method="POST">

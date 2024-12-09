@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -31,7 +33,8 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('admin/createProduct');
+        $category = Category::all();
+        return view('admin/createProduct', compact('category'));
     }
 
     public function store(Request $request)
@@ -39,22 +42,37 @@ class ProductController extends Controller
         $request->validate([
             'product_name' => ['required'],
             'price' => ['required', 'numeric'],
+            'description' => ['required'],
+            'category' => ['required'],
+            'condition' => ['required'],
             'stock' => ['required', 'numeric'],
-            'product_img' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'product_img*' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
 
         ]);
 
-        $image = $request->file('product_img');
-        $image_url = $image->storeAs('product_img', $image->hashName(), 'public');
+        $filePath = [];
+        foreach ($request->file('product_img') as $key => $image) {
+            // Menyimpan gambar ke public storage dan mendapatkan path
+            $filePath[$key] = $image->storeAs('product_img', $image->hashName(), 'public');
+        }
 
-        Product::create([
+        // dd($request->all());
+
+        $product = Product::create([
             'product_name' => $request->product_name,
             'price' => $request->price,
             'description' => $request->description,
             'stock' => $request->stock,
-            'product_img' => $image_url,
+            'condition' => $request->condition,
+            'category_id' => $request->category,
         ]);
 
+        $product_img = ProductImage::create([
+            'product_id' => $product->id,
+            'image_url1' => $filePath[0]??null,
+            'image_url2' => $filePath[1]??null,
+            'image_url3' => $filePath[2]??null,
+        ]);
         return redirect()->route('products')->with('success', 'Product created successfully.');
     }
 
@@ -77,6 +95,7 @@ class ProductController extends Controller
             'product_img' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ]);
 
+        // dd($request->hasFile('product_img'));
         if ($request->hasFile('product_img')) {
             $image = $request->file('product_img');
             $image_url = $image->storeAs('product_img', $image->hashName(), 'public');

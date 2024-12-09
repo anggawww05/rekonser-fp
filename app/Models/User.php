@@ -24,7 +24,7 @@ class User extends Authenticatable
         'address',
         'phone_number',
         'picture_profile',
-        'role',
+        'role_id',
     ];
 
     /**
@@ -50,10 +50,24 @@ class User extends Authenticatable
         ];
     }
 
-    public function products()
+    public function favorites()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Favorite::class);
     }
 
+    public function payment()
+    {
+        return $this->hasOne(Payment::class);
+    }
+
+    public function roles()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
+
+    public function returned()
+    {
+        return $this->hasOne(Returned::class);
+    }
 }
 

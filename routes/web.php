@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Confirm1Controller;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\HistoryController;
 use Illuminate\Support\Facades\Route;
@@ -10,7 +11,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReturnedController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
+use App\Models\Payment;
 
 // Route::middleware('guest')->group(function() {
 // });
@@ -44,43 +47,29 @@ Route::put('/products/edit/{id}', [ProductController::class, 'update'])->name('p
 Route::get('/users', [UserController::class, 'index'])->name('users');
 
 Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
-
-// Route::put('/users/edit/{id}', [UserController::class, 'update'])->name('users.update');
-
 Route::get('/products/detail/{id}', [ProductController::class, 'indexdetailProducts'])->name('detailProduct');
+Route::get('/products/detail/{product}/transaction', [TransactionController::class, 'indexTransaction'])->name('index.transaction');
+Route::post('/products/detail/transaction/order', [TransactionController::class, 'storeTransaction'])->name('store.transaction');
+Route::get('/confirm-rent', [Confirm1Controller::class, 'indexConfirm1'])->name('confirm-rent');
+Route::post('/confirm-rent/{payment}', [Confirm1Controller::class, 'edit'])->name('confirm-rent.edit');
 
-Route::get('/confirmationRent', [PageController::class, 'confirmRent'])->name('confirmRent');
-Route::get('/confirmationReturn', [PageController::class, 'confirmReturn'])->name('confirmReturn');
 Route::get('/profile', [UserController::class, 'indexprofile'])->name('profile');
 Route::get('/profile/edit/{id}', [UserController::class, 'indexeditprofile'])->name('indexedit');
 Route::post('/profile/edit/{id}', [UserController::class, 'update'])->name('update');
 
 Route::get('/profile/orders', [OrderController::class, 'indexorder'])->name('indexorder');
 Route::get('/profile/returns', [ReturnedController::class, 'indexreturns'])->name('indexreturns');
-Route::get('/profile/favorites', [FavoriteController::class, 'indexfavorite'])->name('indexfavorites');
+
+
+
+Route::post('/products/{product}/add-to-favorites', [FavoriteController::class, 'addToFavorites'])->name('favorites.add');
+Route::post('/products/{favorite}/remove-from-favorites', [FavoriteController::class, 'removeFromFavorites'])->name('favorites.remove');
+
+Route::get('/profile/favorite', [FavoriteController::class, 'viewFavorites'])->name('favorites.view');
+
 Route::get('/profile/historys', [HistoryController::class, 'indexhistorys'])->name('indexhistorys');
 
 
 
 
 
-Route::get('/editprofile', function(){
-    return view ('users/detailprofile');
-});
-
-
-
-// Route::get('/detailproduk', function(){
-//     return view ('users/detailProduct');
-// });
-
-
-
-
-Route::get('/detailtransaksi', function(){
-    return view ('users/detailTransaction');
-});
-
-Route::get('/detailAdmin', function(){
-    return view ('admin/detailAdmin');
-});

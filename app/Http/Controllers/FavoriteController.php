@@ -3,29 +3,41 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Favorite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
-    public function indexfavorite()
-    {
-        return view('users/listFavorite');
-    }
 
-    public function addfavorite(Request $request, Product $product)
+    public function addToFavorites(Product $product)
     {
-        $quantity = $request->input('quantity', 1); // Jumlah buku yang ingin ditambahkan
-
-        // Dapatkan user yang sedang login
         $user = Auth::user();
 
-        // Dapatkan keranjang atau buat baru jika belum ada
-        // $cart = $user->cart ?: $user->cart()->create();
+        if (Favorite::where('user_id', $user->id)->where('product_id', $product->id)->first()) {
+            return redirect()->back()->with('error', 'Produk sudah ada di favorit.');
+        }
 
-        // Tambahkan buku ke keranjang
-        // $cart->addBook($book, $quantity);
+        $data = [
+            'user_id' => $user->id,
+            'product_id' => $product->id,
+        ];
 
-        return redirect()->back()->with('success', 'Buku berhasil ditambahkan ke keranjang.');
+        Favorite::create($data);
+        return redirect()->back()->with('success', 'Produk berhasil ditambahkan ke favorit.');
+    }
+
+    // Menghapus produk dari favorit
+    public function removeFromFavorites(Favorite $favorite)
+    {
+        $favorite->delete();
+        return redirect()->back()->with('message', 'Produk tidak ditemukan dalam favorit.');
+    }
+
+    // Melihat daftar produk favorit
+    public function viewFavorites()
+    {
+        $user = Auth::user();
+        return view('users/listFavorite', compact('user'));
     }
 }

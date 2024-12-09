@@ -16,6 +16,7 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+        $id_user = 2;
         $request->validate([
             'user_name' => 'required',
             'email' => 'required|email',
@@ -25,9 +26,8 @@ class RegisterController extends Controller
         $user = User::create([
             'user_name' => $request->user_name,
             'email' => $request->email,
-            // 'password' => $request->password,
             'password' => Hash::make($request->password),
-            'role' => 'user'
+            'role_id' => $id_user,
         ]);
         return redirect('/login');
     }

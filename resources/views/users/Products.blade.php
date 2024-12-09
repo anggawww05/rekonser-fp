@@ -16,7 +16,7 @@
                     {{-- <form action="{{ route('detailProduct', $product->id) }}"> --}}
                     @csrf
                     <div class="flex justify-center">
-                        <img src="{{ asset('storage/' . $product->product_img) }}" alt="{{ $product->name }}"
+                        <img src="{{ asset('storage/' . $product->productImage->image_url1) }}" alt="{{ $product->name }}"
                             class="h-[290px] w-[290px] object-cover rounded border-2 border-black">
                     </div>
                     <div class="text-[22px] font-semibold">{{ $product->product_name }}</div>

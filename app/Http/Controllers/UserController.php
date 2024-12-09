@@ -41,8 +41,12 @@ class UserController extends Controller
             return redirect()->route('profile')->with('error', 'User not found.');
         }
 
-        $image = $request->file('picture_profile');
-        $image_url = $image->storeAs('picture_profile', $image->hashName(), 'public');
+        if ($request->has('picture_profile')){
+            $image = $request->file('picture_profile');
+            $image_url = $image->storeAs('picture_profile', $image->hashName(), 'public');
+        } else {
+            $image_url = $user->picture_profile;
+        }
 
         $user->update([
             'user_name' => $request->user_name,

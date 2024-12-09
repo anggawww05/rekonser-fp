@@ -10,21 +10,16 @@ class Returned extends Model
         'product_id',
         'user_id',
         'quantity',
-        'status_id',
     ];
 
-    public function products()
+    public function product()
     {
         return $this->belongsTo(Product::class);
     }
 
-    // public function users()
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
-    // public function statuses()
-    // {
-    //     return $this->belongsTo(Status::class);
-    // }
 }

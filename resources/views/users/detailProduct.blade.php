@@ -8,11 +8,18 @@
             </a>
             <h1>Detail Produk</h1>
         </div>
+        @if (session()->has('success'))
+            <p>{{session('success')}}</p>
+        @else
+            <p>{{session('error')}}</p>
+
+        @endif
         <div class="mb-10 w-[1200px] bg-white rounded-xl shadow-lg border border-[#AAAAAA] p-8">
             <div class="w-full flex">
                 <div class="flex flex-col items-start">
                     <div class="w-[400px] h-[400px] flex items-center justify-center text-gray-500 rounded-lg">
-                        <img src="{{ asset('storage/' . $product->product_img) }}" alt="{{ $product->name }}" class="h-full object-cover rounded-lg border-2 border-[#5C5C5C]">
+                        <img src="{{ asset('storage/' . $product->productImage->image_url1) }}" alt="{{ $product->name }}"
+                            class="h-full object-cover rounded-lg border-2 border-[#5C5C5C]">
                     </div>
                     <div class="flex justify-between gap-4 mt-4 w-[400px]">
                         <div class="aspect-square w-[120px]  flex items-center justify-center text-gray-500  *:rounded-lg">
@@ -32,20 +39,25 @@
                 </div>
                 <div class="ml-8 flex flex-col w-full">
                     <div class="text-[38px]">
-                        <div class="font-bold">{{$product->product_name}}</div>
-                        <div>Rp. {{$product->price}}</div>
+                        <div class="font-bold">{{ $product->product_name }}</div>
+                        <div>Rp. {{ $product->price }}</div>
                     </div>
                     <div class="mt-4 text-[20px] flex flex-col gap-3">
-                        <div>Tersedia: {{$product->stock}}</div>
-                        <div>Kondisi: Baik</div>
+                        <div>Tersedia: {{ $product->stock }}</div>
+                        <div>Kondisi: {{ $product->condition }}</div>
                     </div>
                     <div class="mt-4 text-[20px]">Deskripsi:
-                        <div class="bg-white border-2 border-[#C6C6C6] rounded-lg w-[700px] h-48 text-[10px] overflow-scroll">
-                            <div class="p-2 w-full text-[14px] text-justify ">{{$product->description}}
+                        <div
+                            class="bg-white border-2 border-[#C6C6C6] rounded-lg w-[700px] h-48 text-[10px] overflow-scroll">
+                            <div class="p-2 w-full text-[14px] text-justify ">{{ $product->description }}
                             </div>
                         </div>
                     </div>
-                    <div class="w-full flex gap-4">
+                    {{-- <div class="w-full flex gap-4">
+                        <div class="mt-4">
+                            <label for="quantity" class="block text-sm font-medium text-black">Jumlah</label>
+                            <input type="number" id="quantity" name="quantity" class="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#003A5B]">
+                        </div>
                         <div class="mt-4">
                             <label for="start_date" class="block text-sm font-medium text-black">Tanggal Mulai</label>
                             <input type="date" id="start_date" name="start_date"
@@ -56,20 +68,18 @@
                             <input type="date" id="end_date" name="end_date"
                                 class="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#003A5B]">
                         </div>
-                    </div>
-                    <form action="#">
-                        <div class="flex gap-4 mt-6">
+                    </div> --}}
+                    <div class="flex gap-4 mt-6">
+                        <form action="{{route('favorites.add', $product->id)}}" method="POST">
+                            @csrf
                             <button class="px-4 py-2 w-full bg-[#003A5B] text-white rounded-md shadow hover:bg-[#005484]">
                                 Tambah ke Favorit
                             </button>
-                            <button
-                                class="px-4 py-2 w-full bg-[#FFDD00] text-black font-semibold rounded-md shadow hover:bg-[#B49C00]">
-                                Sewa Sekarang
-                            </button>
-                    </form>
+                        </form>
+                        <a href="{{route('index.transaction', $product->id)}}" class="px-4 py-2 w-full bg-[#FFDD00] text-black font-semibold rounded-md shadow hover:bg-[#B49C00]">Sewa Sekarang</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection

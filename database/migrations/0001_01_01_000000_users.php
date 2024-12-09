@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('address')->nullable();
             $table->string('phone_number')->nullable();
             $table->text('picture_profile')->nullable();
-            $table->enum('role', ['admin', 'user'])->default('user');
+            $table->foreignId('role_id')->constrained()->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });
