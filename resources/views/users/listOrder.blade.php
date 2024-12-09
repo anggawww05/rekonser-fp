@@ -32,7 +32,7 @@
                                 <td class="w-[20%]  p-4 text-center">
                                     <div
                                         class=" w-36 mx-auto m-2 box-border bg-[#FFF8CD] text-[#655800] rounded-lg py-1 border-2 border-[#655800]">
-                                        Menunggu
+                                        Menungguu
                                     </div>
                                 </td>
                             </tr>
