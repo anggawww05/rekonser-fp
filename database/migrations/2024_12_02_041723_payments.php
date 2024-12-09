@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            //fk product id
-            //fk user id
-            $table->string('start_rent');
-            $table->string('end_rent');
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('start_date');
+            $table->string('end_date');
             $table->integer('quantity');
             $table->string('payment_method');
             $table->string('rent_method');
             $table->string('delivery_price')->nullable();
+            $table->enum('status', ['pending', 'active', 'success', 'failed'])->default('pending');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('payments');
     }
 };

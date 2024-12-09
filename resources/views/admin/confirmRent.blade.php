@@ -31,10 +31,13 @@
                                     Nama
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Bukti Pembayaran
+                                    Produk
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Detail Sewa
+                                    Mulai Sewa
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Sewa Sampai
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Aksi
@@ -42,31 +45,35 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($products as $product) --}}
-
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <td class="px-6 py-4">
-                                    1
-                                </td>
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    awakkwkaka
-                                </th>
-                                <td class="px-6 py-4">
-                                    iqwndwqin
-                                </td>
-                                <td class="px-6 py-4">
-                                    oqdwmodmwodwmq
-                                </td>
-                                <td class="px-6 py-4">
-                                    <a href="#"
-                                        class="font-medium text-red-600 hover:underline">Decline</a>
-                                    <span class="px-2">
-                                        <a href="#" class="font-medium text-green-600 hover:underline">Accept</a></span>
-                                </td>
-                            </tr>
-
-                            {{-- @endforeach --}}
+                            @foreach ($payments as $payment)
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <td class="px-6 py-4">
+                                        {{$payment->id}}
+                                    </td>
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{$payment->user->user_name}}
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        {{$payment->product->name}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{$payment->start_date}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{$payment->end_date}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <form action="{{ route('confirm-rent.edit', $payment->id)}}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="status" value="active">
+                                            <button class = "text-green-500" type="submit">
+                                                Setuju
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                     {{-- {{$products->links()}} --}}

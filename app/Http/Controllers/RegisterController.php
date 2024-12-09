@@ -16,18 +16,18 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+        $id_user = 2;
         $request->validate([
             'user_name' => 'required',
             'email' => 'required|email',
             'password' => 'required|confirmed',
         ]);
         // dd($request);
-        // dd($request->error());
         $user = User::create([
             'user_name' => $request->user_name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'user'
+            'role_id' => $id_user,
         ]);
         return redirect('/login');
     }

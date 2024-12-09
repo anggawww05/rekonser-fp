@@ -5,7 +5,7 @@
         <div class="w-[1200px] h-screen flex justify-center mx-auto">
             <div>
                 <div class= "w-[1200px] text-[28px] font-semibold flex items-center gap-4 mb-5 ">
-                    <a href="{{route('profile')}}">
+                    <a href="{{ route('profile') }}">
                         <img class="h-6 " src="{{ asset('assets/images/backbutton.png') }}" alt="#">
                     </a>
                     <h1>Favorit</h1>
@@ -13,101 +13,29 @@
                 <div class="flex items-center flex-col gap-8 min-h-screen">
                     <table class="w-[1220px] table-auto ">
                         <tbody class="">
-                            <tr class="text-center w-full bg-white ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg ">
-                                <td
-                                    class="aspect-square w-[100px] h-[100px] bg-gray-300 flex items-center justify-center text-gray-500 border rounded-lg m-4">
-                                    Foto 1x1</td>
-                                <td class=" w-[80%] p-4 text-left ">
-                                    <p class=" font-extrabold">Sony a6400</p>
-                                    <p>Rp. 95.000/hari</p>
-                                <td class="w-[20%]  p-4 text-center">
-                                    <div class=" w-[120px]">
-                                        <button type="Lihat Detail"
-                                            class="w-[180px] h-[40px] bg-[#003A5B] text-white rounded-lg hover:bg-[#004A73] transition">Lihat
-                                            Detail</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="text-center w-full bg-white ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg ">
-                                <td
-                                    class="aspect-square w-[100px] h-[100px] bg-gray-300 flex items-center justify-center text-gray-500 border rounded-lg m-4">
-                                    Foto 1x1</td>
-                                <td class=" w-[80%] p-4 text-left ">
-                                    <p class=" font-extrabold">Sony a6400</p>
-                                    <p>Rp. 95.000/hari</p>
-                                <td class="w-[20%]  p-4 text-center">
-                                    <div class=" w-[120px]">
-                                        <button type="Lihat Detail"
-                                            class="w-[180px] h-[40px] bg-[#003A5B] text-white rounded-lg hover:bg-[#004A73] transition">Lihat
-                                            Detail</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr
-                                class="text-center w-full bg-white border-lg ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg">
-                                <td
-                                    class="aspect-square w-[100px] h-[100px] bg-gray-300 flex items-center justify-center text-gray-500 border rounded-lg m-4">
-                                    Foto 1x1</td>
-                                <td class=" w-[80%] p-4 text-left ">
-                                    <p class=" font-extrabold">Sony a6400</p>
-                                    <p>Rp. 95.000/hari</p>
-                                </td>
-                                <td class="w-[20%]  p-4   text-center">
-                                    <div class=" w-[120px]">
-                                        <button type="Lihat Detail"
-                                            class="w-[180px] h-[40px] bg-[#003A5B] text-white rounded-lg hover:bg-[#004A73] transition">Lihat
-                                            Detail</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr
-                                class="text-center w-full bg-white border-lg ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg">
-                                <td
-                                    class="aspect-square w-[100px] h-[100px] bg-gray-300 flex items-center justify-center text-gray-500 border rounded-lg m-4">
-                                    Foto 1x1</td>
-                                <td class=" w-[80%] p-4 text-left ">
-                                    <p class=" font-extrabold">Sony a6400</p>
-                                    <p>Rp. 95.000/hari</p>
-                                <td class="w-[20%]  p-4   text-center">
-                                    <div class=" w-[120px]">
-                                        <button type="Lihat Detail"
-                                            class="w-[180px] h-[40px] bg-[#003A5B] text-white rounded-lg hover:bg-[#004A73] transition">Lihat
-                                            Detail</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr
-                                class="text-center w-full bg-white border-lg ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg">
-                                <td
-                                    class="aspect-square w-[100px] h-[100px] bg-gray-300 flex items-center justify-center text-gray-500 border rounded-lg m-4">
-                                    Foto 1x1</td>
-                                <td class=" w-[80%] p-4 text-left ">
-                                    <p class=" font-extrabold">Sony a6400</p>
-                                    <p>Rp. 95.000/hari</p>
-                                <td class="w-[20%]  p-4   text-center">
-                                    <div class=" w-[120px]">
-                                        <button type="Lihat Detail"
-                                            class="w-[180px] h-[40px] bg-[#003A5B] text-white rounded-lg hover:bg-[#004A73] transition">Lihat
-                                            Detail</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr
-                                class="text-center w-full bg-white border-lg ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg">
-                                <td
-                                    class="aspect-square w-[100px] h-[100px] bg-gray-300 flex items-center justify-center text-gray-500 border rounded-lg m-4">
-                                    Foto 1x1</td>
-                                <td class=" w-[80%] p-4 text-left ">
-                                    <p class=" font-extrabold">Sony a6400</p>
-                                    <p>Rp. 95.000/hari</p>
-                                <td class="w-[20%]  p-4   text-center">
-                                    <div class=" w-[120px]">
-                                        <button type="Lihat Detail"
-                                            class="w-[180px] h-[40px] bg-[#003A5B] text-white rounded-lg hover:bg-[#004A73] transition">Lihat
-                                            Detail</button>
-                                    </div>
-                                </td>
-                            </tr>
+                            @foreach ($user->favorites as $favoriteItem)
+                                <tr class="text-center w-full bg-white ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg ">
+                                    <td>
+                                        <img src="{{ asset('storage/' . $favoriteItem->product->image) }}"
+                                            alt="{{ $favoriteItem->product->name }}"
+                                            class="aspect-square w-[100px] h-[100px] bg-gray-300 flex items-center justify-center text-gray-500 border rounded-lg m-4">
+                                    </td>
+                                    <td class=" w-[80%] p-4 text-left ">
+                                        <p class=" font-extrabold">{{ $favoriteItem->product->product_name }}</p>
+                                        <p>{{ $favoriteItem->product->price }}</p>
+                                    <td class="w-[20%]  p-4 text-center">
+                                        <div class=" w-[120px]">
+                                            <a href="{{route("detailProduct", $favoriteItem->product->id)}}",  class="w-[180px] h-[40px] bg-[#003A5B] text-white rounded-lg hover:bg-[#004A73] transition">Lihat Detail</a>
+                                            <form action="{{route('favorites.remove', $favoriteItem->id)}}" method="POST">
+                                                @csrf
+                                                <button type="submit"
+                                                    class="w-[180px] h-[40px] bg-red-700 text-white rounded-lg hover:bg-[#004A73] transition">Hapus
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                     <nav aria-label="Page navigation example" class="mb-5">

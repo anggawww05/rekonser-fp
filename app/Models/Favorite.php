@@ -4,19 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Payment extends Model
+class Favorite extends Model
 {
     protected $fillable = [
-        'product_id',
         'user_id',
-        'start_date',
-        'end_date',
-        'quantity',
-        'payment_method',
-        'rent_method',
-        'delivery_price',
-        'transaction_img',
-        'status',
+        'product_id',
     ];
 
     public function user()
@@ -28,4 +20,5 @@ class Payment extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
 }

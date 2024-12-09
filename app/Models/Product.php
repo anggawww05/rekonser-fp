@@ -10,9 +10,15 @@ class Product extends Model
         'product_name',
         'description',
         'price',
+        'condition',
         'stock',
-        'product_img',
+        'category_id',
     ];
+
+    public function productImage()
+    {
+        return $this->hasOne(ProductImage::class);
+    }
 
     public function users()
     {
@@ -27,6 +33,11 @@ class Product extends Model
     public function returneds()
     {
         return $this->hasOne(Returned::class);
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
     }
 }
 
