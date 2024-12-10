@@ -29,12 +29,6 @@
                                         class="w-[140px] h-[40px] bg-[#F4F4F4] border-[2px] border-[#A4A4A4] rounded-lg text-[#A4A4A4] flex items-center justify-center cursor-pointer">
                                         Pilih Gambar
                                     </label>
-                                    {{-- <div class="mb-4">
-                                        <label for="productImage" class="block text-sm font-medium text-gray-700">Edit Foto</label>
-                                        <img src="{{asset('storage/' . $product->product_img)}}" alt="image" class="img-preview w-[300px] h-[300px] object-cover border-2 border-black rounded-lg">
-                                        <input type="file" id="productImage" name="product_img" accept="image/*"
-                                        class="input-file mt-1 block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-50 border-2 border-black">
-                                    </div> --}}
                                 </div>
 
                                 <div>
@@ -60,7 +54,7 @@
                                 </div>
                             </div>
                             <button type="w-[120px] submit"
-                                class="w-[120px] h-[40px] bg-[#003A5B] text-white rounded-lg hover:bg-[#004A73] transition">
+                                class="w-[120px] h-[40px] bg-[#002B43] text-white rounded-lg hover:bg-[#004A73] transition">
                                 Simpan
                             </button>
                     </form>

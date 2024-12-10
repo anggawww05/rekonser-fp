@@ -54,7 +54,7 @@
                                         @endswitch
                                     </td>
                                     <td class="w-[20%] p-4">
-                                        <a href="{{route('returns.index')}}">Ajukan</a>
+                                        <a href="{{route('returns.index', $return->product)}}">Ajukan</a>
                                     </td>
                             @endforeach
                         </tbody>

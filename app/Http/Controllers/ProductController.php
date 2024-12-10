@@ -92,7 +92,9 @@ class ProductController extends Controller
             'price' => ['required', 'integer'],
             'stock' => ['required', 'integer'],
             'product_description' => ['nullable'],
-            'product_img' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'image_url1' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'image_url2' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'image_url3' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ]);
 
         // dd($request->hasFile('product_img'));
@@ -119,7 +121,6 @@ class ProductController extends Controller
         $product = Product::find($id);
         // dd($product);
         $product->delete();
-
 
         return redirect()->route('products')->with('success', 'Product deleted successfully.');
     }

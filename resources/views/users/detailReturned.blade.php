@@ -13,6 +13,7 @@
             <form action="{{route('returns.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
+                <input type="hidden" name="payment" value="{{ $payment->id }}">
                 <div class="max-w-4xl mx-auto flex flex-col gap-3">
 
                     <!-- Peringatan -->
@@ -75,7 +76,6 @@
                                     </p>
                                 </div>
                             </div>
-
                         </div>
                     </div>
 

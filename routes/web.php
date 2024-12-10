@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Confirm1Controller;
+use App\Http\Controllers\Confirm2Controller;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\HistoryController;
 use Illuminate\Support\Facades\Route;
@@ -53,14 +54,18 @@ Route::get('/products/detail/{product}/transaction', [TransactionController::cla
 Route::post('/products/detail/{product}/transaction', [TransactionController::class, 'storeTransaction'])->name('transaction.store');
 
 Route::get('/profil/returns', [ReturnedController::class, 'indexListreturn'])->name('returns.list');
-Route::get('/profil/returns/detail-return', [ReturnedController::class, 'indexreturn'])->name('returns.index');
-Route::post('/profil/returns/detail-return)', [ReturnedController::class, 'storereturned'])->name('returns.store');
+Route::get('/profil/returns/detail-return/{product}', [ReturnedController::class, 'indexreturn'])->name('returns.index');
+Route::post('/profil/returns/detail-return', [ReturnedController::class, 'storereturned'])->name('returns.store');
 
 
 
 
 Route::get('/confirm-rent', [Confirm1Controller::class, 'indexConfirm1'])->name('confirm-rent');
 Route::post('/confirm-rent/{payment}', [Confirm1Controller::class, 'edit'])->name('confirm-rent.edit');
+Route::get('/confirm-return', [Confirm2Controller::class, 'indexConfirm2'])->name('confirm-return');
+Route::post('/confirm-return/{returned}', [Confirm2Controller::class, 'edit'])->name('confirm-return.edit');
+Route::get('/confirm-return/detail-return', [ReturnedController::class, 'indexdetail'])->name('index.detail.return');
+Route::get('/confirm-return/detail-rent', [TransactionController::class, 'indexdetail'])->name('index.detail.rent');
 
 Route::get('/profile', [UserController::class, 'indexprofile'])->name('profile');
 Route::get('/profile/edit/{id}', [UserController::class, 'indexeditprofile'])->name('indexedit');
@@ -76,8 +81,10 @@ Route::get('/profile/favorite', [FavoriteController::class, 'viewFavorites'])->n
 
 Route::get('/profile/historys', [HistoryController::class, 'indexhistorys'])->name('indexhistorys');
 
-Route::get('/detailreturned', function (){
-    return view('users/detailReturned');
+
+
+Route::get('/detailproof', function (){
+    return view('admin/proofTransaction');
 });
 
 

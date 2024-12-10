@@ -5,14 +5,13 @@
             <img src="{{ asset('assets/images/logoRekonser.png') }}"
                 class="h-12 flex items-center space-x-3 rtl:space-x-reverse" alt="Rekonser logo">
             <div class="flex md:order-2 space-x-3 md:space-x-1 rtl:space-x-reverse">
-                {{-- disable sementara --}}
+
                 @if (!auth()->user())
                 <a href="{{ route('register') }}"
                     class="bg-white ring-1 ring-[#002B43] text-[#002B43] hover:text-white hover:bg-[#004870] focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-8 py-2 text-center dark:bg-blue-600 dark:hover:bg-[#004870] dark:focus:ring-blue-800">Daftar</a>
                 <a href="{{ route('login') }}"
                     class="text-white ring-1 bg-[#002B43] hover:bg-[#004870] focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-8 py-2 text-center">Masuk</a>
 
-                {{-- gatau yg dibawah ni apa, jgn dihapus ya! --}}
                 <button data-collapse-toggle="navbar-sticky" type="button"
                     class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                     aria-controls="navbar-sticky" aria-expanded="false">
@@ -26,7 +25,7 @@
                 @else
                 <div class="flex md:order-2 space-x-3 md:space-x-1 rtl:space-x-reverse">
                     <a href="{{route('profile')}}"
-                    class="text-white ring-1 bg-[#002B43] hover:bg-[#004870] focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-4 py-[6px] dark:bg-blue-600 dark:hover:bg-[#003552] dark:focus:ring-blue-800 flex gap-3 items-center">
+                    class="text-white ring-1 bg-[#002B43] hover:bg-[#004870] font-semibold rounded-lg text-sm px-4 py-[6px] dark:bg-blue-600 dark:hover:bg-[#003552] dark:focus:ring-blue-800 flex gap-3 items-center">
                     <img src="{{ asset('assets\images\1.png') }}" alt="#" class="h-8 w-8 object-cover rounded-full ">Profil</a>
                 </div>
                 @endif

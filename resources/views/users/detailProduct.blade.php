@@ -16,21 +16,24 @@
         <div class="mb-10 w-[1200px] bg-white rounded-xl shadow-lg border border-[#AAAAAA] p-8">
             <div class="w-full flex">
                 <div class="flex flex-col items-start">
-                    <div class="w-[400px] h-[400px] flex items-center justify-center text-gray-500 rounded-lg">
-                        {{-- <img src="{{ asset('storage/' . $product->productImage->image_url1) }}" alt="{{ $product->name }}"
-                            class="h-full object-cover rounded-lg border-2 border-[#5C5C5C]"> --}}
+                    <div class="container rounded-lg mb-2">
+                        <span onclick="this.parentElement.style.display='none'" class="closebtn"></span>
+                        <img id="expandedImg" src="{{ asset('storage/' . $product->productImage->image_url1) }}" style="width:100%" class="w-full object-cover cursor-pointer rounded-lg border-2 border-[5C5C5C]">
                     </div>
-                    {{-- <div class="flex justify-between gap-4 mt-4 w-[400px]">
-                        <div class="aspect-square w-[120px]  flex items-center justify-center text-gray-500  *:rounded-lg">
-                            <img src="{{ asset('assets\images\1.png') }}" alt="#" class="object-cover rounded-lg">
+                    <div class="grid grid-cols-3 gap-3">
+                        <div>
+                            <img src="{{ asset('storage/' . $product->productImage->image_url1) }}" alt="" class="w-full object-cover cursor-pointer rounded-lg border-2 border-[#5C5C5C]"
+                                onclick="myFunction(this);">
                         </div>
-                        <div class="aspect-square w-[120px]  flex items-center justify-center text-gray-500  *:rounded-lg">
-                            <img src="{{ asset('assets\images\1.png') }}" alt="#" class="object-cover rounded-lg">
+                        <div>
+                            <img src="{{ asset('storage/' . $product->productImage->image_url2) }}" alt="" class="w-full object-cover cursor-pointer rounded-lg border-2 border-[#5C5C5C]"
+                                onclick="myFunction(this);">
                         </div>
-                        <div class="aspect-square w-[120px]  flex justify-start text-gray-500  *:rounded-lg">
-                            <img src="{{ asset('assets\images\1.png') }}" alt="#" class="object-cover rounded-lg">
+                        <div>
+                            <img src="{{ asset('storage/' . $product->productImage->image_url3) }}" alt="" class="w-full object-cover cursor-pointer rounded-lg border-2 border-[#5C5C5C]"
+                                onclick="myFunction(this);">
                         </div>
-                    </div> --}}
+                    </div>
                     <div
                         class="mt-6 w-48 flex justify-center bg-gray-100 border border-gray-300 p-2 rounded-lg  mb-4 text-[20px] text-black">
                         082148667077</p>
@@ -67,32 +70,13 @@
             </div>
         </div>
     </div>
-
-    <swiper-container style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="mySwiper"
-        thumbs-swiper=".mySwiper2" loop="true" space-between="10" navigation="true">
-        <swiper-slide>
-            <img src="{{ asset('storage/' . $product->productImage->image_url1) }}" />
-        </swiper-slide>
-        <swiper-slide>
-            <img src="{{ asset('storage/' . $product->productImage->image_url2) }}" />
-        </swiper-slide>
-        <swiper-slide>
-            <img src="{{ asset('storage/' . $product->productImage->image_url3) }}" />
-        </swiper-slide>
-    </swiper-container>
-
-    <swiper-container class="mySwiper2" loop="true" space-between="10" slides-per-view="4" free-mode="true"
-        watch-slides-progress="true">
-        <swiper-slide>
-            <img src="{{ asset('storage/' . $product->productImage->image_url1) }}" />
-        </swiper-slide>
-        <swiper-slide>
-            <img src="{{ asset('storage/' . $product->productImage->image_url2) }}" />
-        </swiper-slide>
-        <swiper-slide>
-            <img src="{{ asset('storage/' . $product->productImage->image_url3) }}" />
-        </swiper-slide>
-    </swiper-container>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    <script>
+        function myFunction(imgs) {
+            var expandImg = document.getElementById("expandedImg");
+            var imgText = document.getElementById("imgtext");
+            expandImg.src = imgs.src;
+            imgText.innerHTML = imgs.alt;
+            expandImg.parentElement.style.display = "block";
+        }
+    </script>
 @endsection

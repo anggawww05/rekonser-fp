@@ -3,8 +3,8 @@
 @section('container')
     <div class="p-4 sm:ml-64">
         <div class="p-4">
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <div class="pb-4 bg-white dark:bg-gray-900">
+            <div class="sm:rounded-lg">
+                <div class="pb-4">
                     <label for="table-search" class="sr-only">Search</label>
                     <div class="relative mt-1">
                         <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -34,10 +34,7 @@
                                     Produk
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Mulai Sewa
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Sewa Sampai
+                                    Detail Sewa
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Aksi
@@ -58,7 +55,9 @@
                                         {{$payment->product->product_name}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{$payment->start_date}}
+                                        <a href="{{route('index.detail.rent')}}" class="bg-[#002B43] w-16 h-7 p-2 rounded-lg text-white hover:bg-[#003654]">
+                                            Lihat Detail
+                                        </a>
                                     </td>
                                     <td class="px-6 py-4">
                                         {{$payment->end_date}}

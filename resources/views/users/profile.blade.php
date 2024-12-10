@@ -20,27 +20,27 @@
         </div>
 
         <a href="{{route("indexorder")}}">
-            <div class="flex items-center mt-4 mx-auto w-[600px] h-[40px] bg-white outline outline-1 outline-[#AAAAAA] rounded-lg p-2 hover:bg-slate-200">
+            <div class="flex items-center mt-4 mx-auto w-[600px] h-[40px] bg-white outline outline-1 outline-[#AAAAAA] rounded-lg p-2 hover:bg-[#003654] hover:text-white transition">
                 <h1>Pesanan Saya</h1>
             </div>
         </a>
         <a href="{{route('returns.list')}}">
-            <div class="flex items-center mt-2 mx-auto w-[600px] h-[40px] bg-white outline outline-1 outline-[#AAAAAA] rounded-lg p-2 hover:bg-slate-200">
+            <div class="flex items-center mt-2 mx-auto w-[600px] h-[40px] bg-white outline outline-1 outline-[#AAAAAA] rounded-lg p-2 hover:bg-[#003654] hover:text-white transition">
                 <h1>Pengembalian</h1>
             </div>
         </a>
         <a href="{{route("favorites.view")}}">
-            <div class="flex items-center mt-2 mx-auto w-[600px] h-[40px] bg-white outline outline-1 outline-[#AAAAAA] rounded-lg p-2 hover:bg-slate-200">
+            <div class="flex items-center mt-2 mx-auto w-[600px] h-[40px] bg-white outline outline-1 outline-[#AAAAAA] rounded-lg p-2 hover:bg-[#003654] hover:text-white transition">
                 <h1>Favorit</h1>
             </div>
         </a>
         <a href="{{route("indexhistorys")}}">
-            <div class="flex items-center mt-2 mx-auto w-[600px] h-[40px] bg-white outline outline-1 outline-[#AAAAAA] rounded-lg p-2 hover:bg-slate-200">
+            <div class="flex items-center mt-2 mx-auto w-[600px] h-[40px] bg-white outline outline-1 outline-[#AAAAAA] rounded-lg p-2 hover:bg-[#003654] hover:text-white transition">
                 <h1>Riwayat Transaksi</h1>
             </div>
         </a>
         <a href="">
-            <div class="flex items-center mt-2 mx-auto w-[600px] h-[40px] bg-white outline outline-1 outline-[#AAAAAA] rounded-lg p-2 hover:bg-slate-200">
+            <div class="flex items-center mt-2 mx-auto w-[600px] h-[40px] bg-white outline outline-1 outline-[#AAAAAA] rounded-lg p-2 hover:bg-[#DB2F27] hover:text-white transition">
                 <h1>Log out</h1>
             </div>
         </a>

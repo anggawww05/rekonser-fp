@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Payment;
 use App\Models\Returned;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -19,7 +20,16 @@ class ReturnedController extends Controller
 
     public function indexreturn(Product $product)
     {
-        return view('users/detailReturned', compact('product'));
+        // dd($product);
+        $user_id = Auth::user()->id;
+        $payment = Payment::where('user_id', $user_id)->where('product_id', $product->id)->first();
+        // dd($payments);
+        return view('users/detailReturned', compact('product', 'payment'));
+    }
+
+    public function indexdetail()
+    {
+        return view('admin/proofReturn');
     }
 
     public function storereturned(Request $request)
@@ -42,6 +52,7 @@ class ReturnedController extends Controller
             'status' => 'pending',
             'user_id' => auth()->user()->id,
             'product_id' => $request->product_id,
+            'payment_id' => $request->payment,
         ]);
         return redirect()->back()->with('success', 'Product created successfully.');
     }

@@ -1,7 +1,7 @@
 @extends('users.main')
 
 @section('container')
-    <div class="container mx-auto px-4 pt-16 w-[1440px]">
+    <div class="container mx-auto px-4 pt-16 w-[1440px] active-navbar">
         <div class="flex justify-center w-full">
             <div class="flex items-center w-1/2 mb-7">
                 <input type="text" id="table-search"

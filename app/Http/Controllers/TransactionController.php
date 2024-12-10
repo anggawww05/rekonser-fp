@@ -43,6 +43,11 @@ class TransactionController extends Controller
             'product_id' => $request->product_id,
             'user_id' => auth()->user()->id,
         ]);
-        return redirect()->back()->with('success', 'Product created successfully.');
+        return redirect()->route('indexorder')->with('success', 'Product created successfully.');
+    }
+
+    public function indexdetail()
+    {
+        return view('admin/proofRent');
     }
 }
