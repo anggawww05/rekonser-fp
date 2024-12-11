@@ -8,7 +8,7 @@
         <ul class="space-y-2 font-medium">
             <li>
                 <a href="{{ route('dashboard') }}"
-                    class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93]">
+                    class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93] @if(Route::is('dashboard')) bg-[#025E93] @endif">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="#ffffff" stroke-width="2" class="size-6">
                         <rect x="3" y="3" width="7" height="7"></rect>
@@ -20,8 +20,8 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('products') }}"
-                    class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93] dark:hover:bg-gray-700 group">
+                <a href="{{ route('manage.products') }}"
+                    class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93] @if(Route::is('manage.products')) bg-[#025E93] @endif">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="#ffffff" stroke-width="2" class="size-6">
                         <circle cx="10" cy="20.5" r="1" />
@@ -33,7 +33,7 @@
             </li>
             <li>
                 <a href="{{ route('users') }}"
-                    class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93] dark:hover:bg-gray-700 group">
+                    class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93] @if(Route::is('users')) bg-[#025E93] @endif">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="#ffffff" stroke-width="2" class="size-6">
                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -46,7 +46,7 @@
             </li>
             <li>
                 <a href="{{ route('confirm-rent') }}"
-                    class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93] dark:hover:bg-gray-700 group">
+                    class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93] @if(Route::is('confirm-rent')) bg-[#025E93] @endif">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="#ffffff" stroke-width="2" class="size-6">
                         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
@@ -57,7 +57,7 @@
             </li>
             <li>
                 <a href="{{ route('confirm-return') }}"
-                    class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93] dark:hover:bg-gray-700 group">
+                    class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93] @if(Route::is('confirm-return')) bg-[#025E93] @endif">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="#ffffff" stroke-width="2" class="size-6">
                         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>

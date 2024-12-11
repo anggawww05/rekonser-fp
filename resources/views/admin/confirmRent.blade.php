@@ -60,9 +60,6 @@
                                         </a>
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{$payment->end_date}}
-                                    </td>
-                                    <td class="px-6 py-4">
                                         <form action="{{ route('confirm-rent.edit', $payment->id)}}" method="POST">
                                             @csrf
                                             <input type="hidden" name="status" value="active">

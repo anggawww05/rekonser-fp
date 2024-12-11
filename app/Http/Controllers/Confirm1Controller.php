@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Payment;
+use App\Models\Returned;
 use Illuminate\Http\Request;
 
 class Confirm1Controller extends Controller
@@ -20,6 +21,16 @@ class Confirm1Controller extends Controller
             'status' => ['required', 'string'],
         ]);
         $payment->update(['status' => $request->status]);
+
+        Returned::create([
+            'delay_payment_img' => NULL,
+            'product_condition_img' => NULL,
+            'status' => $request->status,
+            'user_id' => auth()->user()->id,
+            'product_id' => $payment->product_id,
+            'payment_id' => $payment->id,
+        ]);
+
         return redirect()->back()->with('success', 'Product created successfully.');
     }
 }

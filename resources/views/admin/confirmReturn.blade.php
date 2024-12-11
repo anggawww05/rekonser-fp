@@ -62,7 +62,7 @@
                                     <td class="px-6 py-4">
                                         <form action="{{ route('confirm-return.edit', $returned->id)}}" method="POST">
                                             @csrf
-                                            <input type="hidden" name="status" value="active">
+                                            <input type="hidden" name="status" value="success">
                                             <button class = "bg-green-500 p-4 w-20 h-5 flex items-center justify-center rounded-lg text-white hover:bg-green-400" type="submit">
                                                 Setuju
                                             </button>

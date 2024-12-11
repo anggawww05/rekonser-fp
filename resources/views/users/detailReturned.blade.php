@@ -10,27 +10,28 @@
                 </a>
                 <h1>Detail Pengembalian</h1>
             </div>
-            <form action="{{route('returns.store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('returns.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
-                <input type="hidden" name="payment" value="{{ $payment->id }}">
+                <input type="hidden" name="payment_id" value="{{ $payment->id }}">
                 <div class="max-w-4xl mx-auto flex flex-col gap-3">
+                    @if ($delay == true)
+                        <div class="border rounded-lg shadow-sm p-4 bg-yellow-100">
+                            <div class="flex items-center gap-4 mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-12 flex-shrink-0">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                                </svg>
 
-                    <!-- Peringatan -->
-                    <div class="border rounded-lg shadow-sm p-4 bg-yellow-100">
-                        <div class="flex items-center gap-4 mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="size-12 flex-shrink-0">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
-                            </svg>
-
-                            <div>
-                                <p class="text-[18px] font-semibold text-yellow-800">Peringatan!</p>
-                                <p class="text-[18px] text-yellow-800">Anda melewati batas waktu periode penyewaan</p>
+                                <div>
+                                    <p class="text-[18px] font-semibold text-yellow-800">Peringatan!</p>
+                                    <p class="text-[18px] text-yellow-800">Anda melewati batas waktu periode penyewaan</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
+                    {{-- @dd($delay) --}}
 
                     <!-- Informasi Pribadi -->
                     <div class="border rounded-lg shadow-sm p-4 bg-white">
@@ -191,7 +192,8 @@
                         <h2 class="text-lg font-semibold mb-3">Bukti Pembayaran</h2>
                         <div class="relative">
                             <label class="block">
-                                <input type="file" class="sr-only" name="delay_payment_img"> <!-- Input file tetap disembunyikan -->
+                                <input type="file" class="sr-only" name="delay_payment_img">
+                                <!-- Input file tetap disembunyikan -->
                                 <div
                                     class="flex justify-between items-center w-60 py-2 px-4 text-sm text-gray-500 bg-gray-100 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-200">
                                     <span class="font-[18px]">Upload Bukti Pembayaran</span>
@@ -206,7 +208,8 @@
                         <h2 class="text-lg font-semibold mb-3">Kondisi Produk</h2>
                         <div class="relative">
                             <label class="block">
-                                <input type="file" class="sr-only" name="product_condition_img"> <!-- Input file tetap disembunyikan -->
+                                <input type="file" class="sr-only" name="product_condition_img">
+                                <!-- Input file tetap disembunyikan -->
                                 <div
                                     class="flex justify-between items-center w-60 py-2 px-4 text-sm text-gray-500 bg-gray-100 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-200">
                                     <span class="font-[18px]">Upload Kondisi Produk</span>

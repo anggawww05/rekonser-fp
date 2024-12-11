@@ -2,7 +2,7 @@
 
 @section('container')
     <div class="w-full h-screen bg-[#F6F6F6] pt-[80px]">
-        <div class="w-[1200px] h-screen flex justify-center mx-auto">
+        <div class="w-[1200px] h-[screen] flex justify-center mx-auto">
             <div>
                 <div class="w-[1200px] text-[28px] font-semibold flex items-center gap-4 mb-5">
                     <a href="{{ route('profile') }}">
@@ -10,7 +10,7 @@
                     </a>
                     <h1>Pesanan Saya</h1>
                 </div>
-                <div class=" flex items-center flex-col gap-8">
+                <div class=" flex items-center flex-col gap-8   ">
                     <table class="w-[1220px] table-auto ">
                         <thead>
                             <tr class = "text-center w-full bg-[#003A5B] text-white inline-table rounded-lg mb-1">
@@ -22,14 +22,14 @@
                                 <th class="w-[20%] p-4">Status Sewa</th>
                             </tr>
                         </thead>
-                        <tbody class="">
+                        <tbody>
                             @foreach ($payments as $payment)
                                 <tr class="text-center w-full bg-white ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg ">
                                     <td class=" w-[5%] p-4">{{ $loop->iteration }}</td>
                                     <td class=" w-[25%] p-4">{{ $payment->product->product_name }}</td>
                                     <td class=" w-[10%] p-4">{{ $payment->quantity }}</td>
                                     <td class=" w-[15%] p-4">Rp.
-                                        {{ number_format($payment->product->price * $payment->quantity + $payment->delivery_price, 0, ',', '.') }}
+                                        {{ number_format($payment->product->price * $payment->quantity * $payment->duration + $payment->delivery_price, 0, ',', '.') }}
                                     </td>
                                     <td class=" w-[25%] p-4">{{ $payment->rent_method }}</td>
                                     <td class="w-[20%]  p-4 text-center">

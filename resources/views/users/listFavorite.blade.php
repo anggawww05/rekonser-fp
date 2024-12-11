@@ -2,7 +2,7 @@
 
 @section('container')
     <div class="w-full min-h-screen bg-[#F6F6F6] pt-[80px] pb-[50px]">
-        <div class="w-[1200px] h-screen flex justify-center mx-auto">
+        <div class="w-[1200px] h-[screen] flex justify-center mx-auto">
             <div>
                 <div class= "w-[1200px] text-[28px] font-semibold flex items-center gap-4 mb-5 ">
                     <a href="{{ route('profile') }}">
@@ -12,12 +12,12 @@
                 </div>
                 <div class="flex items-center flex-col gap-8 min-h-screen">
                     <table class="w-[1220px] table-auto ">
-                        <tbody class="">
+                        <tbody>
                             @foreach ($user->favorites as $favoriteItem)
                                 <tr class="text-center w-full bg-white ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg ">
                                     <td>
-                                        <img src="{{ asset('storage/' . $favoriteItem->product->image) }}"
-                                            alt="{{ $favoriteItem->product->name }}"
+                                        <img src="{{ asset('storage/' . $product->productImage->image_url1) }}"
+                                            alt="{{ $product->productImage->image_url1 }}"
                                             class="aspect-square w-[100px] h-[100px] bg-gray-300 flex items-center justify-center text-gray-500 border rounded-lg m-4">
                                     </td>
                                     <td class=" w-[80%] p-4 text-left ">

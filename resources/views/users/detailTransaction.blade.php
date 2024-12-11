@@ -5,7 +5,7 @@
         <div class="max-w-4xl mx-auto space-y-6">
             <!-- Header -->
             <div class="w-[1200px] text-[28px] font-semibold flex items-center gap-4 mt-9 mb-3">
-                <a href="{{route('detailProduct', $product->id)}}">
+                <a href="{{ route('detailProduct', $product->id) }}">
                     <img class="h-6 " src="{{ asset('assets/images/backbutton.png') }}" alt="#">
                 </a>
                 <h1>Detail Transaksi</h1>
@@ -26,7 +26,7 @@
                                 </svg>
                                 <div>
                                     <p class="text-[15px] ">Nama</p>
-                                    <p class="text-[18px] font-semibold">{{$user->user_name}}</p>
+                                    <p class="text-[18px] font-semibold">{{ $user->user_name }}</p>
                                 </div>
                             </div>
 
@@ -39,7 +39,7 @@
 
                                 <div>
                                     <p class="text-[15px] ">No Telepon</p>
-                                    <p class="text-[18px] font-semibold">{{$user->phone_number}}</p>
+                                    <p class="text-[18px] font-semibold">{{ $user->phone_number }}</p>
                                 </div>
                             </div>
 
@@ -53,7 +53,7 @@
                                 </svg>
                                 <div>
                                     <p class="text-[15px] ">Alamat</p>
-                                    <p class="text-[18px] font-semibold">{{$user->address}}</p>
+                                    <p class="text-[18px] font-semibold">{{ $user->address }}</p>
                                 </div>
                             </div>
 
@@ -75,7 +75,7 @@
                                 </svg>
                                 <div>
                                     <p class="text-[15px]">Produk</p>
-                                    <p class="text-[18px] font-semibold">{{$product->product_name}}</p>
+                                    <p class="text-[18px] font-semibold">{{ $product->product_name }}</p>
                                 </div>
                             </div>
 
@@ -89,7 +89,7 @@
 
                                 <div>
                                     <p class="text-[15px] ">Mulai Sewa</p>
-                                    <input type="date" name="start_date" class="start-date">
+                                    <input type="date" name="start_date" class="start_date">
                                 </div>
                             </div>
 
@@ -102,7 +102,7 @@
                                 </svg>
                                 <div>
                                     <p class="text-[15px]">Jumlah Produk</p>
-                                    <input type="number" name="quantity">
+                                    <input type="number" name="quantity" class="quantity">
                                 </div>
                             </div>
 
@@ -118,7 +118,8 @@
 
                                 <div>
                                     <p class="text-[15px] ">Harga per hari</p>
-                                    <p class="text-[18px] font-semibold">Rp. {{$product->price}}</p>
+                                    <p class="text-[18px] font-semibold price">Rp. <span
+                                            id="product_price">{{ $product->price }}</span></p>
                                 </div>
                             </div>
 
@@ -132,7 +133,7 @@
                                 </svg>
                                 <div>
                                     <p class="text-[15px] ">Sewa Kembali</p>
-                                    <input type="date" name="end_date" class="end-date">
+                                    <input type="date" name="end_date" class="end_date">
                                 </div>
                             </div>
 
@@ -144,8 +145,10 @@
                                 </svg>
                                 <div>
                                     <p class="text-[15px]">Durasi Sewa</p>
-                                    <p class="text-[18px] font-semibold"><span class="duration">0</span> hari</p>
-
+                                    <div class="flex">
+                                        <input type="text" name="duration" class="text-[18px] font-semibold duration" value="0" disabled>
+                                        <p> hari</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -178,16 +181,16 @@
                         <div class="space-y-2">
                             <div class="flex justify-between">
                                 <p class="font-[18px]">Subtotal Produk</p>
-                                <p class="font-semibold text-[18px]">Rp. 720.000</p>
+                                <p class="font-semibold text-[18px] total">Rp. 0</p>
                             </div>
                             <div class="flex justify-between">
                                 <p class="font-[18px]">Subtotal Pengiriman</p>
-                                <p class="font-semibold text-[18px]">Rp. -</p>
+                                <p class="font-semibold text-[18px] shipping-subtotal">Rp. 0</p>
                             </div>
                             <hr class="my-2 border-black">
                             <div class="flex justify-between text-lg">
                                 <p class="font-[18px]">Total Pembayaran</p>
-                                <p class="font-semibold text-[18px]">Rp. 720.000</p>
+                                <p class="font-semibold text-[18px] final-total">Rp. 0</p>
                             </div>
                         </div>
                     </div>
@@ -255,11 +258,85 @@
         </div>
     </section>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const startDateInput = document.querySelector('.start-date');
-            const endDateInput = document.querySelector('.end-date');
+        document.addEventListener('DOMContentLoaded', function() {
+            const startDateInput = document.querySelector('.start_date');
+            const endDateInput = document.querySelector('.end_date');
             const durationOutput = document.querySelector('.duration');
+            const quantityInput = document.querySelector('.quantity');
+            const priceElement = document.querySelector('.price');
+            const totalElement = document.querySelector('.total');
+            const shippingOptions = document.querySelectorAll('input[name="rent_method"]');
+            const shippingSubtotalElement = document.querySelector('.shipping-subtotal');
+            const finalTotalElement = document.querySelector('.final-total');
 
+            const productPriceElement = document.getElementById('product_price'); // Harga dari database
+            const productPrice = parseInt(productPriceElement.textContent);
+
+            let shippingCost = 0; // Nilai pengiriman awal (default)
+
+            function calculateDuration() {
+                const startDate = new Date(startDateInput.value);
+                const endDate = new Date(endDateInput.value);
+
+                if (startDate && endDate && endDate >= startDate) {
+                    const duration = Math.ceil((endDate - startDate) / (1000 * 60 * 60 *
+                    24)); // Hitung selisih dalam hari
+                    durationOutput.value = duration;
+                    return parseInt(duration);
+                } else {
+                    durationOutput.value = 0;
+                    return 0;
+                }
+            }
+
+            function calculateTotal() {
+                const quantity = parseInt(quantityInput.value) || 0;
+                const duration = calculateDuration();
+                const productSubtotal = quantity * productPrice * duration;
+
+                totalElement.textContent = productSubtotal.toLocaleString('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                });
+
+                const finalTotal = productSubtotal + shippingCost;
+
+                finalTotalElement.textContent = finalTotal.toLocaleString('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                });
+            }
+
+            // Update biaya pengiriman berdasarkan opsi yang dipilih
+            shippingOptions.forEach(option => {
+                option.addEventListener('change', function() {
+                    shippingCost = parseInt(this.value === 'antar-jemput' ? 200000 : 0);
+                    shippingSubtotalElement.textContent = shippingCost.toLocaleString('id-ID', {
+                        style: 'currency',
+                        currency: 'IDR',
+                    });
+
+                    calculateTotal();
+                });
+            });
+
+            startDateInput.addEventListener('change', calculateTotal);
+            endDateInput.addEventListener('change', calculateTotal);
+            quantityInput.addEventListener('input', calculateTotal);
+        });
+    </script>
+    {{-- <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const startDateInput = document.querySelector('.start_date');
+            const endDateInput = document.querySelector('.end_date');
+            const durationOutput = document.querySelector('.duration');
+            const quantityInput = document.querySelector('.quantity');
+            const priceElement = document.querySelector('.price');
+            const totalElement = document.querySelector('.total');
+
+            const productPriceElement = document.getElementById('product_price'); // Harga dari database
+            const productPrice = parseInt(productPriceElement.textContent);
+            // console.log(productPrice.textContent);
 
             function calculateDuration() {
                 const startDate = new Date(startDateInput.value);
@@ -268,14 +345,32 @@
                 if (startDate && endDate && endDate >= startDate) {
                     const duration = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)); // Hitung selisih dalam hari
                     durationOutput.textContent = duration;
+                    return parseInt(duration);
                 } else {
                     durationOutput.textContent = 0;
+                    return 0;
                 }
             }
 
-            startDateInput.addEventListener('change', calculateDuration);
-            endDateInput.addEventListener('change', calculateDuration);
-        });
-    </script>
+            function calculateTotal() {
+                const quantity = parseInt(quantityInput.value) || 0;
+                // console.log(quantity);
+                const duration = calculateDuration();
+                // console.log(duration);
+                const total = quantity * productPrice * duration;
+                console.log(total);
 
+
+
+                totalElement.textContent = total.toLocaleString('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                }); // Format ke Rupiah
+            }
+
+            startDateInput.addEventListener('change', calculateTotal);
+            endDateInput.addEventListener('change', calculateTotal);
+            quantityInput.addEventListener('input', calculateTotal);
+        });
+    </script> --}}
 @endsection

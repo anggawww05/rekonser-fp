@@ -7,6 +7,7 @@ use App\Models\Returned;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ReturnedController extends Controller
 {
@@ -23,8 +24,22 @@ class ReturnedController extends Controller
         // dd($product);
         $user_id = Auth::user()->id;
         $payment = Payment::where('user_id', $user_id)->where('product_id', $product->id)->first();
-        // dd($payments);
-        return view('users/detailReturned', compact('product', 'payment'));
+        $payment->start_date = Carbon::parse($payment->start_date)->translatedFormat('d F Y');
+        $end_date = Carbon::parse($payment->end_date);
+        // dd($payment->end_date);
+        // dd(Carbon::now()->format('d F Y'));
+        if ($end_date->lessThan(Carbon::now()))
+        {
+            $delay = true;
+            // return 1;
+        }
+        else
+        {
+            $delay = false;
+            // return 0;
+        }
+
+        return view('users/detailReturned', compact('product', 'payment', 'delay'));
     }
 
     public function indexdetail()
@@ -34,7 +49,8 @@ class ReturnedController extends Controller
 
     public function storereturned(Request $request)
     {
-        // dd($request->all());
+        $returned = Returned::where('payment_id', $request->payment_id)->first();
+        // dd($returned);
         $request->validate([
             'delay_payment_img' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             'product_condition_img' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
@@ -46,13 +62,13 @@ class ReturnedController extends Controller
         $image2 = $request->file('product_condition_img');
         $image_url2 = $image2->storeAs('product_condition_img', $image2->hashName(), 'public');
 
-        Returned::create([
+        $returned->update([
             'delay_payment_img' => $image_url1,
             'product_condition_img' => $image_url2,
             'status' => 'pending',
-            'user_id' => auth()->user()->id,
-            'product_id' => $request->product_id,
-            'payment_id' => $request->payment,
+            // 'user_id' => auth()->user()->id,
+            // 'product_id' => $request->product_id,
+            // 'payment_id' => $request->payment,
         ]);
         return redirect()->back()->with('success', 'Product created successfully.');
     }

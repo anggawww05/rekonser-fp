@@ -10,7 +10,8 @@ class Confirm2Controller extends Controller
     public function indexConfirm2()
     {
         // $payments = Payment::paginate(10);
-        $returneds = Returned::where('status', 'pending')->get();
+        // $returneds = Returned::where('status', 'pending')->get();
+        $returneds = Returned::whereNotIn('status', ['active', 'success'])->get();
         return view('admin/confirmReturn', compact('returneds'));
     }
 

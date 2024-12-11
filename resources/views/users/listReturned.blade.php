@@ -1,8 +1,8 @@
 @extends('users.main')
 
 @section('container')
-    <div class="w-full h-screen bg-[#F6F6F6] pt-[80px]">
-        <div class="w-[1200px] h-screen flex justify-center mx-auto">
+    <div class="w-full bg-[#F6F6F6] pt-[80px] pb-24">
+        <div class="w-[1200px] flex justify-center mx-auto">
             <div>
                 <div class="w-[1200px] text-[28px] font-semibold flex items-center gap-4 mb-5">
                     <a href="{{ route('profile') }}">
@@ -32,13 +32,6 @@
                                     <td class=" w-[15%] p-4">{{ $return->payment->end_date }}</td>
                                     <td class=" w-[15%] p-4">
                                         @switch($return->status)
-                                            @case('pending')
-                                                <div
-                                                    class=" w-36 mx-auto m-2 box-border bg-[#FFF8CD] text-[#655800] rounded-lg py-1 border-2 border-[#655800]">
-                                                    Menunggu
-                                                </div>
-                                            @break
-
                                             @case('active')
                                                 <div
                                                     class="w-36 mx-auto m-2 bg-[#E5FFE7] text-[#007F00] rounded-lg py-1 border-2 border-[#007F00]">
@@ -46,15 +39,31 @@
                                                 </div>
                                             @break
 
+                                            @case('delay')
+                                                <div
+                                                    class=" w-36 mx-auto m-2 box-border bg-[#FFF8CD] text-[#655800] rounded-lg py-1 border-2 border-[#655800]">
+                                                    Terlambat
+                                                </div>
+                                            @break
+
+                                            @case('pending')
+                                                <div
+                                                    class=" w-36 mx-auto m-2 box-border bg-[#FFF8CD] text-[#655800] rounded-lg py-1 border-2 border-[#655800]">
+                                                    Menunggu
+                                                </div>
+                                            @break
+
                                             @default
                                                 <div
                                                     class="w-36 mx-auto m-2 bg-[#E5FFE7] text-[#007F00] rounded-lg py-1 border-2 border-[#007F00]">
-                                                    Aktif
+                                                    Selesai
                                                 </div>
                                         @endswitch
                                     </td>
                                     <td class="w-[20%] p-4">
-                                        <a href="{{route('returns.index', $return->product)}}">Ajukan</a>
+                                        @if ($return->status == 'active')
+                                            <a href="{{ route('returns.index', $return->product) }}">Ajukan</a>
+                                        @endif
                                     </td>
                             @endforeach
                         </tbody>

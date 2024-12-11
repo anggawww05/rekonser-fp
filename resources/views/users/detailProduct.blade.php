@@ -3,7 +3,7 @@
 @section('container')
     <div class="w-full bg-[#F6F6F6] flex flex-col justify-center items-center">
         <div class="w-[1200px] text-[28px] font-semibold flex items-center gap-4 mb-5 mt-16">
-            <a href="{{ route('listProducts') }}">
+            <a href="{{ route('products') }}">
                 <img class="h-6 " src="{{ asset('assets/images/backbutton.png') }}" alt="#">
             </a>
             <h1>Detail Produk</h1>
@@ -47,6 +47,7 @@
                     <div class="mt-4 text-[20px] flex flex-col gap-3">
                         <div>Tersedia: {{ $product->stock }} stok</div>
                         <div>Kondisi: {{ $product->condition }}</div>
+                        <div>Kategori: {{ $product->category->category_name }}</div>
                     </div>
                     <div class="mt-4 text-[20px]">Deskripsi:
                         <div

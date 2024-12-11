@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('start_date');
             $table->string('end_date');
+            $table->integer('duration');
             $table->integer('quantity');
             $table->string('payment_method');
             $table->string('rent_method');

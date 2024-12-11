@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Payment;
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,12 +25,16 @@ class TransactionController extends Controller
             'quantity' => ['required', 'numeric'],
             'rent_method' => ['required'],
             'payment_method' => ['required'],
+            'duration' => ['required'],
             'transaction_img' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             'product_id' => ['required', 'numeric'],
         ]);
 
         $image = $request->file('transaction_img');
         $image_url = $image->storeAs('transaction_img', $image->hashName(), 'public');
+
+        // $date = Carbon::parse($request->start_date)->translatedFormat('d F Y');
+        // dd($date);
 
         Payment::create([
             'start_date' => $request->start_date,
@@ -40,6 +45,7 @@ class TransactionController extends Controller
             'transaction_img' => $image_url,
             'delivery_price' => $request->rent_method == 'antar-jemput' ? 200000 : 0,
             'status' => 'pending',
+            'duration' => $request->duration,
             'product_id' => $request->product_id,
             'user_id' => auth()->user()->id,
         ]);

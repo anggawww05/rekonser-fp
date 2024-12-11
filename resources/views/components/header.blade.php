@@ -49,7 +49,7 @@
                             Kami</a>
                     </li>
                     <li>
-                        <a href="{{ route('listProducts') }}"
+                        <a href="{{ route('products') }}"
                             class="block py-2 px-3 text-white bg-[#002B43] rounded md:bg-transparent md:text-[#002B43] md:p-0 md:dark:text-blue-500 hover:text-[#0067A0]">Produk</a>
                     </li>
                 </ul>
