@@ -26,7 +26,7 @@
                 <div class="flex md:order-2 space-x-3 md:space-x-1 rtl:space-x-reverse">
                     <a href="{{route('profile')}}"
                     class="text-white ring-1 bg-[#002B43] hover:bg-[#004870] font-semibold rounded-lg text-sm px-4 py-[6px] dark:bg-blue-600 dark:hover:bg-[#003552] dark:focus:ring-blue-800 flex gap-3 items-center">
-                    <img src="{{ asset('assets\images\1.png') }}" alt="#" class="h-8 w-8 object-cover rounded-full ">Profil</a>
+                    <img src="{{ asset('storage/' . auth()->user()->picture_profile) }}" alt="#" class="h-8 w-8 object-cover rounded-full ">Profil</a>
                 </div>
                 @endif
             </div>

@@ -39,6 +39,8 @@ Route::get('/profile/historys', [HistoryController::class, 'indexhistorys'])->na
 
 //admin
 Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
+Route::get('/profile-admin/edit/{id}', [UserController::class, 'profileAdmin'])->name('edit-profile-admin');
+Route::post('/profile-admin/edit/{id}', [UserController::class, 'updateadmin'])->name('update-profile-admin');
 Route::get('/manage-products', [ProductController::class, 'index'])->name('manage.products');
 Route::get('/manage-products/create', [ProductController::class, 'create'])->name('products.create');
 Route::post('/manage-products/store', [ProductController::class, 'store'])->name('products.store');
@@ -48,11 +50,12 @@ Route::put('/manage-products/edit/{id}', [ProductController::class, 'update'])->
 Route::get('/manage-users', [UserController::class, 'index'])->name('users');
 Route::get('/manage-users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
 Route::get('/manage-confirm-rent', [Confirm1Controller::class, 'indexConfirm1'])->name('confirm-rent');
-Route::post('/confirm-rent/{payment}', [Confirm1Controller::class, 'edit'])->name('confirm-rent.edit');
-Route::get('/confirm-return', [Confirm2Controller::class, 'indexConfirm2'])->name('confirm-return');
-Route::post('/confirm-return/{returned}', [Confirm2Controller::class, 'edit'])->name('confirm-return.edit');
-Route::get('/confirm-return/detail-return', [ReturnedController::class, 'indexdetail'])->name('index.detail.return');
-Route::get('/confirm-return/detail-rent', [TransactionController::class, 'indexdetail'])->name('index.detail.rent');
+Route::post('/manage-confirm-rent/{payment}', [Confirm1Controller::class, 'edit'])->name('confirm-rent.edit');
+Route::get('/manage-confirm-rent/proof-rent/{payment}', [Confirm1Controller::class, 'indexdetail'])->name('index.proof.rent');
+Route::get('/manage-confirm-return', [Confirm2Controller::class, 'indexConfirm2'])->name('confirm-return');
+Route::post('/manage-confirm-return/{returned}', [Confirm2Controller::class, 'edit'])->name('confirm-return.edit');
+Route::get('/manage-confirm-return/proof-return/{returned}', [Confirm2Controller::class, 'indexdetail'])->name('index.proof.return');
+
 
 
 

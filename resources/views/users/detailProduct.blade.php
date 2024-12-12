@@ -42,14 +42,15 @@
                 <div class="ml-8 flex flex-col w-full">
                     <div class="text-[38px]">
                         <div class="font-bold">{{ $product->product_name }}</div>
-                        <div>Rp. {{ $product->price }}/hari</div>
+                        <div>Rp. {{ number_format($product->price, 2, ',', '.') }}/hari</div>
+
                     </div>
                     <div class="mt-4 text-[20px] flex flex-col gap-3">
                         <div>Tersedia: {{ $product->stock }} stok</div>
                         <div>Kondisi: {{ $product->condition }}</div>
                         <div>Kategori: {{ $product->category->category_name }}</div>
                     </div>
-                    <div class="mt-4 text-[20px]">Deskripsi:
+                    <div class="mt-3 text-[20px]">Deskripsi:
                         <div
                             class="bg-white border-2 border-[#C6C6C6] rounded-lg w-[700px] h-48 text-[10px] overflow-scroll">
                             <div class="p-2 w-full text-[14px] text-justify ">{{ $product->description }}

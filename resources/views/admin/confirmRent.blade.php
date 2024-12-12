@@ -25,7 +25,7 @@
                         <thead class="text-xs text-white bg-[#002B43] dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
-                                    Id
+                                    ID
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Nama
@@ -55,7 +55,7 @@
                                         {{$payment->product->product_name}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <a href="{{route('index.detail.rent')}}" class="bg-[#002B43] w-16 h-7 p-2 rounded-lg text-white hover:bg-[#003654]">
+                                        <a href="{{route('index.proof.rent', $payment->id)}}" class="bg-[#002B43] w-16 h-7 p-2 rounded-lg text-white hover:bg-[#003654]">
                                             Lihat Detail
                                         </a>
                                     </td>

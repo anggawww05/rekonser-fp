@@ -29,7 +29,7 @@
                                     <td class=" w-[25%] p-4">{{ $payment->product->product_name }}</td>
                                     <td class=" w-[10%] p-4">{{ $payment->quantity }}</td>
                                     <td class=" w-[15%] p-4">Rp.
-                                        {{ number_format($payment->product->price * $payment->quantity * $payment->duration + $payment->delivery_price, 0, ',', '.') }}
+                                        {{ number_format($payment->product->price * $payment->quantity * $payment->duration + $payment->delivery_price, 2, ',', '.') }}
                                     </td>
                                     <td class=" w-[25%] p-4">{{ $payment->rent_method }}</td>
                                     <td class="w-[20%]  p-4 text-center">

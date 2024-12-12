@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Payment;
+use App\Models\Product;
 use App\Models\Returned;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Confirm1Controller extends Controller
 {
@@ -32,5 +34,14 @@ class Confirm1Controller extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Product created successfully.');
+    }
+
+    public function indexdetail($id)
+    {
+
+
+        // $payment = Payment::find($id);
+
+        // return view('admin/proofRent', compact('payment'));
     }
 }

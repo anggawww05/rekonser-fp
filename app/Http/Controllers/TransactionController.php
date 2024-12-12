@@ -33,9 +33,6 @@ class TransactionController extends Controller
         $image = $request->file('transaction_img');
         $image_url = $image->storeAs('transaction_img', $image->hashName(), 'public');
 
-        // $date = Carbon::parse($request->start_date)->translatedFormat('d F Y');
-        // dd($date);
-
         Payment::create([
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
@@ -49,11 +46,7 @@ class TransactionController extends Controller
             'product_id' => $request->product_id,
             'user_id' => auth()->user()->id,
         ]);
-        return redirect()->route('indexorder')->with('success', 'Product created successfully.');
+        return redirect()->route('products')->with('success', 'Product created successfully.');
     }
 
-    public function indexdetail()
-    {
-        return view('admin/proofRent');
-    }
 }

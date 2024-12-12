@@ -55,7 +55,7 @@
                                         {{$returned->product->product_name}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <a href="{{route('index.detail.return')}}" class="bg-[#002B43] w-16 h-7 p-2 rounded-lg text-white hover:bg-[#003654]">
+                                        <a href="{{route('index.proof.return', $returned->id)}}" class="bg-[#002B43] w-16 h-7 p-2 rounded-lg text-white hover:bg-[#003654]">
                                             Lihat Detail
                                         </a>
                                     </td>

@@ -50,7 +50,7 @@
                                     {{ $user->user_name }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{-- {{ $user->role->role_name }} --}}
+                                    {{ $user->role->role_name }}
                                 </td>
                                 <td class="flex my-2 gap-2">
                                     <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"

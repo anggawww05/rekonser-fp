@@ -21,30 +21,19 @@ class ReturnedController extends Controller
 
     public function indexreturn(Product $product)
     {
-        // dd($product);
         $user_id = Auth::user()->id;
         $payment = Payment::where('user_id', $user_id)->where('product_id', $product->id)->first();
         $payment->start_date = Carbon::parse($payment->start_date)->translatedFormat('d F Y');
         $end_date = Carbon::parse($payment->end_date);
-        // dd($payment->end_date);
-        // dd(Carbon::now()->format('d F Y'));
         if ($end_date->lessThan(Carbon::now()))
         {
             $delay = true;
-            // return 1;
         }
         else
         {
             $delay = false;
-            // return 0;
         }
-
         return view('users/detailReturned', compact('product', 'payment', 'delay'));
-    }
-
-    public function indexdetail()
-    {
-        return view('admin/proofReturn');
     }
 
     public function storereturned(Request $request)
@@ -66,9 +55,6 @@ class ReturnedController extends Controller
             'delay_payment_img' => $image_url1,
             'product_condition_img' => $image_url2,
             'status' => 'pending',
-            // 'user_id' => auth()->user()->id,
-            // 'product_id' => $request->product_id,
-            // 'payment_id' => $request->payment,
         ]);
         return redirect()->back()->with('success', 'Product created successfully.');
     }

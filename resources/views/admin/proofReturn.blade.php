@@ -23,7 +23,7 @@
                             </svg>
                             <div>
                                 <p class="text-[15px] ">Nama</p>
-                                <p class="text-[18px] font-semibold">Gung Angga</p>
+                                <p class="text-[18px] font-semibold">{{$returned->user->user_name}}</p>
                             </div>
                         </div>
 
@@ -36,7 +36,7 @@
                             </svg>
                             <div>
                                 <p class="text-[15px] ">No Telepon</p>
-                                <p class="text-[18px] font-semibold">0821373892</p>
+                                <p class="text-[18px] font-semibold">{{$returned->user->phone_number}}</p>
                             </div>
                         </div>
 
@@ -49,7 +49,7 @@
                             <div>
                                 <p class="text-[15px] ">Alamat</p>
                                 <p class="text-[18px] font-semibold">
-                                    Jalan Ken Umang Barat Timur Kaja Kangin Kauh No.60
+                                    {{$returned->user->address}}
                                 </p>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                             </svg>
                             <div>
                                 <p class="text-[15px]">Produk</p>
-                                <p class="text-[18px] font-semibold">Kamera Sony A6400</p>
+                                <p class="text-[18px] font-semibold">{{$returned->product->product_name}}</p>
                             </div>
                         </div>
 
@@ -85,7 +85,7 @@
                             </svg>
                             <div>
                                 <p class="text-[15px]">Jumlah</p>
-                                <p class="text-[18px] font-semibold">3</p>
+                                <p class="text-[18px] font-semibold">{{$returned->payment->quantity}}</p>
                             </div>
                         </div>
 
@@ -100,7 +100,7 @@
                             </svg>
                             <div>
                                 <p class="text-[15px] ">Durasi Sewa</p>
-                                <p class="text-[18px] font-semibold">4 hari</p>
+                                <p class="text-[18px] font-semibold">{{$returned->payment->duration}}</p>
                             </div>
                         </div>
 
@@ -113,8 +113,8 @@
                             </svg>
 
                             <div>
-                                <p class="text-[15px] ">Harga per hari</p>
-                                <p class="text-[18px] font-semibold">Rp. 90.000</p>
+                                <p class="text-[15px] ">Total Yang Sudah Dibayar</p>
+                                <p class="text-[18px] font-semibold">Rp. {{ number_format($returned->product->price * $returned->payment->quantity * $returned->payment->duration + $returned->payment->delivery_price, 2, ',', '.') }}</p>
                             </div>
                         </div>
 
@@ -131,7 +131,7 @@
                             </svg>
                             <div>
                                 <p class="text-[15px] ">Lama Sewa</p>
-                                <p class="text-[18px] font-semibold">11/12/2024 - 15/12/2024</p>
+                                <p class="text-[18px] font-semibold">{{$returned->payment->start_date}} - {{$returned->payment->end_date}}</p>
                             </div>
                         </div>
                         <!-- Metode Sewa -->
@@ -144,7 +144,7 @@
                             </svg>
                             <div>
                                 <p class="text-[15px] ">Metode Sewa</p>
-                                <p class="text-[18px] font-semibold">Antar-Jemput</p>
+                                <p class="text-[18px] font-semibold">{{$returned->payment->rent_method}}</p>
                             </div>
                         </div>
                     </div>
@@ -152,20 +152,17 @@
 
                 <!-- Total Pembayaran -->
                 <div class="border rounded-lg shadow-sm p-4 bg-white">
-                    <h2 class="text-lg font-semibold mb-3">Total Pembayaran</h2>
+                    <h2 class="text-lg font-semibold mb-3">Pembayaran Denda (Jika Ada)</h2>
                     <div class="space-y-2">
                         <div class="flex justify-between">
                             <p class="font-[18px]">Subtotal Produk</p>
-                            <p class="font-semibold text-[18px]">Rp. 720.000</p>
-                        </div>
-                        <div class="flex justify-between">
-                            <p class="font-[18px]">Subtotal Pengiriman</p>
-                            <p class="font-semibold text-[18px]">Rp. -</p>
+                            <p class="font-semibold text-[18px]">Rp. blm</p>
+
                         </div>
                         <hr class="my-2 border-black">
                         <div class="flex justify-between text-lg">
                             <p class="font-[18px]">Total Pembayaran</p>
-                            <p class="font-semibold text-[18px]">Rp. 720.000</p>
+                            <p class="font-semibold text-[18px]">Rp. blm</p>
                         </div>
                     </div>
                 </div>
@@ -174,18 +171,17 @@
                 <div class="border rounded-lg shadow-sm p-4 bg-white">
                     <h2 class="text-lg font-semibold mb-3 text-center">Bukti Pembayaran</h2>
                     <div class="flex justify-center items-center">
-                        <a href="#">
-                            <img class="h-100"src="{{ asset('assets/images/Bukti_Pembayaran.png') }}" alt="#">
-                        </a>
+                            <img class="h-100"src="{{ asset('storage/' . $returned->delay_payment_img) }}" alt="#">
+
                     </div>
                 </div>
 
                 <div class="border rounded-lg shadow-sm p-4 bg-white">
                     <h2 class="text-lg font-semibold mb-3 text-center">Kondisi Barang</h2>
                     <div class="flex justify-center items-center">
-                        <a href="#">
-                            <img class="h-100"src="{{ asset('assets/images/Bukti_Pembayaran.png') }}" alt="#">
-                        </a>
+
+                            <img class="h-100"src="{{ asset('storage/' . $returned->product_condition_img) }}" alt="#">
+
                     </div>
                 </div>
             </div>

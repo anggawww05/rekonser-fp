@@ -1,6 +1,5 @@
 @extends('admin.main')
 
-
 @section('container')
     <div class="p-4 sm:ml-64">
         <div class="p-4 min-h-screen">
@@ -18,7 +17,7 @@
                                 clip-rule="evenodd"></path>
                         </svg>
                         <a href="{{ route('products.create') }}"
-                            class="flex items-center justify-center px-4 py-2 bg-[#003A5B] w-36 rounded-md font-semibold text-xs text-white hover:bg-[#004870] active:bg-blue-900 transition">
+                            class="flex items-center justify-center px-4 py-2 w-36 rounded-md font-semibold text-xs text-white bg-[#002B43] hover:bg-[#004870] transition">
                             Tambah Produk
                         </a>
                     </div>
@@ -26,8 +25,8 @@
 
             </div>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
-                    <thead class="text-xs text-white bg-[#002B43] dark:bg-gray-700 dark:text-gray-400 ">
+                <table class="w-full text-sm text-left rtl:text-right text-black">
+                    <thead class="text-xs text-white bg-[#002B43]">
                         <tr>
                             <th scope="col" class="px-6 py-3">
                                 ID
@@ -112,7 +111,7 @@
                                         </div>
                                     </div>
                                     <a href="{{ route('products.edit', $product->id) }}"
-                                        class="block text-white bg-[#003A5B] hover:bg-[#004870] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
+                                        class="block text-white bg-[#003A5B] hover:bg-[#004870] font-medium rounded-lg text-sm px-4 py-2 text-center"
                                         type="button">
                                         Edit
                                 </td>
