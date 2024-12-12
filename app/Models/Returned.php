@@ -10,6 +10,7 @@ class Returned extends Model
         'user_id',
         'product_id',
         'payment_id',
+        'delay_price',
         'status',
         'delay_payment_img',
         'product_condition_img',

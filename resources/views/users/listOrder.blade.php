@@ -2,7 +2,7 @@
 
 @section('container')
     <div class="w-full h-screen bg-[#F6F6F6] pt-[80px]">
-        <div class="w-[1200px] h-[screen] flex justify-center mx-auto">
+        <div class="w-[1200px] flex justify-center mx-auto">
             <div>
                 <div class="w-[1200px] text-[28px] font-semibold flex items-center gap-4 mb-5">
                     <a href="{{ route('profile') }}">

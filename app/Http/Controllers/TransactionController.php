@@ -33,7 +33,8 @@ class TransactionController extends Controller
         $image = $request->file('transaction_img');
         $image_url = $image->storeAs('transaction_img', $image->hashName(), 'public');
 
-        Payment::create([
+
+        $payment = Payment::create([
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'quantity' => $request->quantity,
@@ -46,6 +47,8 @@ class TransactionController extends Controller
             'product_id' => $request->product_id,
             'user_id' => auth()->user()->id,
         ]);
+        // dd($payment);
+
         return redirect()->route('products')->with('success', 'Product created successfully.');
     }
 

@@ -11,9 +11,15 @@ use Illuminate\Support\Facades\File;
 class ProductController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::paginate(10);
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $products = Product::where('product_name', 'like', '%' . $search . '%')->paginate(10);
+        } else {
+            $products = Product::paginate(10);
+        }
+        // $products = Product::paginate(10);
         // $products = Product::where('status', 'active')->paginate(10);
         return view('admin/manageproducts', compact('products'));
     }
@@ -21,7 +27,9 @@ class ProductController extends Controller
 
     public function indexProducts()
     {
-        $products = Product::all();
+
+        $products = Product::with('productImage')->get();
+        // dd($products[0]->productImage->image_url1);
         return view('users/Products', compact('products'));
     }
 
@@ -54,7 +62,6 @@ class ProductController extends Controller
 
         $filePath = [];
         foreach ($request->file('product_img') as $key => $image) {
-            // Menyimpan gambar ke public storage dan mendapatkan path
             $filePath[$key] = $image->storeAs('product_img', $image->hashName(), 'public');
         }
 
@@ -66,6 +73,7 @@ class ProductController extends Controller
             'condition' => $request->condition,
             'category_id' => $request->category,
         ]);
+
 
         // $product_img = ProductImage::create([
         ProductImage::create([
@@ -134,8 +142,9 @@ class ProductController extends Controller
 
     public function delete(string $id)
     {
-        $product = Product::find($id);
-        $product->delete();
+        $product = Product::with('productImage')->find($id);
+        // dd($product);
+        $product->productImage->delete();
         return redirect()->route('manage.products')->with('success', 'Product deleted successfully.');
     }
 }

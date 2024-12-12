@@ -8,6 +8,6 @@ class HistoryController extends Controller
 {
     public function indexhistorys()
     {
-        return view('users/listHistory');
+        return view('users/historyUser');
     }
 }

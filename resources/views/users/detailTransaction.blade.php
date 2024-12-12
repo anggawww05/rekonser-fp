@@ -10,6 +10,15 @@
                 </a>
                 <h1>Detail Transaksi</h1>
             </div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form action="{{ route('transaction.store', $product->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -146,7 +155,8 @@
                                 <div>
                                     <p class="text-[15px]">Durasi Sewa</p>
                                     <div class="flex">
-                                        <input type="text" name="duration" class="text-[18px] font-semibold duration" value="0" disabled>
+                                        <input type="text" name="duration" class="text-[18px] font-semibold duration"
+                                            value="0" readonly>
                                         <p> hari</p>
                                     </div>
                                 </div>
@@ -280,7 +290,7 @@
 
                 if (startDate && endDate && endDate >= startDate) {
                     const duration = Math.ceil((endDate - startDate) / (1000 * 60 * 60 *
-                    24)); // Hitung selisih dalam hari
+                        24)); // Hitung selisih dalam hari
                     durationOutput.value = duration;
                     return parseInt(duration);
                 } else {

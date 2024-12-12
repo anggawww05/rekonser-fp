@@ -18,19 +18,19 @@
                 <div class="flex flex-col items-start">
                     <div class="container rounded-lg mb-2">
                         <span onclick="this.parentElement.style.display='none'" class="closebtn"></span>
-                        <img id="expandedImg" src="{{ asset('storage/' . $product->productImage->image_url1) }}" style="width:100%" class="w-full object-cover cursor-pointer rounded-lg border-2 border-[5C5C5C]">
+                        <img id="expandedImg" src="{{ asset('storage/' . $product->productImage->image_url1) }}" style="width:100%; aspect-ratio: 1 / 1;" class="object-cover cursor-pointer rounded-lg border-2 border-[5C5C5C]">
                     </div>
                     <div class="grid grid-cols-3 gap-3">
                         <div>
-                            <img src="{{ asset('storage/' . $product->productImage->image_url1) }}" alt="" class="w-full object-cover cursor-pointer rounded-lg border-2 border-[#5C5C5C]"
+                            <img src="{{ asset('storage/' . $product->productImage->image_url1) }}" alt="" style="width:100%; aspect-ratio: 1 / 1;" class="object-cover cursor-pointer rounded-lg border-2 border-[5C5C5C]"
                                 onclick="myFunction(this);">
                         </div>
                         <div>
-                            <img src="{{ asset('storage/' . $product->productImage->image_url2) }}" alt="" class="w-full object-cover cursor-pointer rounded-lg border-2 border-[#5C5C5C]"
+                            <img src="{{ asset('storage/' . $product->productImage->image_url2) }}" alt="" style="width:100%; aspect-ratio: 1 / 1;" class="object-cover cursor-pointer rounded-lg border-2 border-[5C5C5C]"
                                 onclick="myFunction(this);">
                         </div>
                         <div>
-                            <img src="{{ asset('storage/' . $product->productImage->image_url3) }}" alt="" class="w-full object-cover cursor-pointer rounded-lg border-2 border-[#5C5C5C]"
+                            <img src="{{ asset('storage/' . $product->productImage->image_url3) }}" alt="" style="width:100%; aspect-ratio: 1 / 1;" class="object-cover cursor-pointer rounded-lg border-2 border-[5C5C5C]"
                                 onclick="myFunction(this);">
                         </div>
                     </div>

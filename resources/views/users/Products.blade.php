@@ -15,8 +15,10 @@
                 <div class="bg-white p-4 rounded-lg shadow-md border-2 mb-5 flex flex-col gap-2">
                     {{-- <form action="{{ route('detailProduct', $product->id) }}"> --}}
                     @csrf
+
                     <div class="flex justify-center">
-                        <img src="{{ asset('storage/' . $product->productImage->image_url1) }}" alt="{{ $product->name }}"
+                        <img src="{{ $product->productImage && $product->productImage->image_url1 ? asset('storage/' . $product->productImage->image_url1) : 'https://placehold.co/600x400' }}"
+                            alt="{{ $product->name }}"
                             class="h-[290px] w-[290px] object-cover rounded border-2 border-black">
                     </div>
                     <div class="text-[22px] font-semibold">{{ $product->product_name }}</div>

@@ -7,15 +7,22 @@
                 <div class="pb-4 ">
                     <label for="table-search" class="sr-only">Search</label>
                     <div class="relative flex flex-row gap-3">
-                        <input type="text" id="table-search"
-                            class="block p-2 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#003A5B] focus:border-[#003A5B]"
-                            placeholder="Cari produk">
-                        <svg class="w-5 h-5 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"
-                            fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M12.9 14.32a8 8 0 111.414-1.414l4.387 4.387a1 1 0 01-1.414 1.414l-4.387-4.387zM8 14a6 6 0 100-12 6 6 0 000 12z"
-                                clip-rule="evenodd"></path>
-                        </svg>
+                        <form action="{{ route('product.search') }}" method="POST">
+                            @csrf
+                            <div class="flex">
+                                <input type="text" id="table-search" name="search"
+                                    class="block p-2 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#003A5B] focus:border-[#003A5B]"
+                                    placeholder="Cari produk">
+                                <button type="submit">
+                                    <svg class="w-5 h-5 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"
+                                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M12.9 14.32a8 8 0 111.414-1.414l4.387 4.387a1 1 0 01-1.414 1.414l-4.387-4.387zM8 14a6 6 0 100-12 6 6 0 000 12z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
                         <a href="{{ route('products.create') }}"
                             class="flex items-center justify-center px-4 py-2 w-36 rounded-md font-semibold text-xs text-white bg-[#002B43] hover:bg-[#004870] transition">
                             Tambah Produk
@@ -51,8 +58,7 @@
                                 <td class="px-6 py-4">
                                     {{ ($products->currentPage() - 1) * $products->perPage() + $loop->iteration }}
                                 </td>
-                                <th scope="row"
-                                    class="px-6 py-4">
+                                <th scope="row" class="px-6 py-4">
                                     {{ $product->product_name }}
                                 </th>
                                 <td class="px-6 py-4">
@@ -94,17 +100,17 @@
                                                     <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
                                                         Yakin ingin menghapus produk {{ $product->product_name }}?</h3>
                                                     <div class="flex flex-row justify-center">
-                                                    <form action="{{ route('products.delete', $product->id) }}"
-                                                        method="post">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button data-modal-hide="popup-modal" type="submit"
-                                                            class="text-white bg-red-600 hover:bg-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                                                            Yakin
-                                                        </button>
-                                                    </form>
-                                                    <button data-modal-hide="popup-modal" type="button"
-                                                        class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100">Batal</button>
+                                                        <form action="{{ route('products.delete', $product->id) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button data-modal-hide="popup-modal" type="submit"
+                                                                class="text-white bg-red-600 hover:bg-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                                                Yakin
+                                                            </button>
+                                                        </form>
+                                                        <button data-modal-hide="popup-modal" type="button"
+                                                            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100">Batal</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -119,7 +125,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{ $products->links() }}
+                {{ $products->links('components.pagination') }}
             </div>
         </div>
     </div>

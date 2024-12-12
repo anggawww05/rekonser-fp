@@ -38,10 +38,8 @@ class Confirm1Controller extends Controller
 
     public function indexdetail($id)
     {
+        $payment = Payment::find($id);
 
-
-        // $payment = Payment::find($id);
-
-        // return view('admin/proofRent', compact('payment'));
+        return view('admin/proofRent', compact('payment'));
     }
 }
