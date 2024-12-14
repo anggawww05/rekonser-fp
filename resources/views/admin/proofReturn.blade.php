@@ -155,14 +155,16 @@
                     <h2 class="text-lg font-semibold mb-3">Pembayaran Denda (Jika Ada)</h2>
                     <div class="space-y-2">
                         <div class="flex justify-between">
-                            <p class="font-[18px]">Subtotal Produk</p>
-                            <p class="font-semibold text-[18px]">Rp. blm</p>
+                            <p class="font-[18px]">Denda</p>
+                            <p class="font-semibold text-[18px]">Rp. {{ number_format($returned->delay_price, 2, ',', '.') }}</p>
 
                         </div>
                         <hr class="my-2 border-black">
                         <div class="flex justify-between text-lg">
                             <p class="font-[18px]">Total Pembayaran</p>
-                            <p class="font-semibold text-[18px]">Rp. blm</p>
+                            <p class="font-semibold text-[18px]">Rp. {{ number_format($returned->delay_price, 2, ',', '.') }}</p>
+
+
                         </div>
                     </div>
                 </div>

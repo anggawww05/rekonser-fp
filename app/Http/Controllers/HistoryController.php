@@ -2,12 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
 class HistoryController extends Controller
 {
-    public function indexhistorys()
+    public function indexhistorys(Request $request)
     {
-        return view('users/historyUser');
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $payments = Payment::where('user_name', 'like', '%' . $search . '%')->paginate(10);
+        } else {
+            $payments = Payment::paginate(10);
+        }
+        return view('users/historyUser', compact('payments'));
+    }
+
+    public function indexhistorysadmin(Request $request)
+    {
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $payments = Payment::where('user_name', 'like', '%' . $search . '%')->paginate(10);
+        } else {
+            $payments = Payment::paginate(10);
+        }
+        return view('admin/historyTransaction', compact('payments'));
     }
 }

@@ -12,11 +12,14 @@ use Illuminate\Http\Request;
 
 class Confirm2Controller extends Controller
 {
-    public function indexConfirm2()
+    public function indexConfirm2(Request $request)
     {
-        // $payments = Payment::paginate(10);
-        // $returneds = Returned::where('status', 'pending')->get();
-        $returneds = Returned::whereNotIn('status', ['active', 'success'])->get();
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $returneds = Returned::where('user_name', 'like', '%' . $search . '%')->whereNotIn('status', ['active', 'success'])->paginate(10);
+        } else {
+            $returneds = Returned::whereNotIn('status', ['active', 'success'])->paginate(10);
+        }
         return view('admin/confirmReturn', compact('returneds'));
     }
 

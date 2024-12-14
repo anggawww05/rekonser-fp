@@ -9,13 +9,21 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function indexorder()
+    public function indexorder(Request $request)
     {
-
         $user_id = Auth::user()->id;
-        // $products = Product::all();
-        $payments = Payment::where('user_id', $user_id)->with('product')->get();
-        // dd($payments);
+        $query = Payment::where('user_id', $user_id)->with('product');
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->whereHas('product', function ($q) use ($search) {
+            $q->where('product_name', 'like', '%' . $search . '%');
+            });
+        }
+
+        $payments = $query->paginate(10);
+        // $user_id = Auth::user()->id;
+        // $payments = Payment::where('user_id', $user_id)->with('product')->get();
         return view('users/listOrder', compact('payments'));
     }
 

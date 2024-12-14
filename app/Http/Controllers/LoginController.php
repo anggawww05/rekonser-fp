@@ -24,8 +24,10 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             // dd($request->all());
             $request->session()->regenerate();
-
-            return redirect()->intended('dashboard');
+            if (Auth::user()->role_id == 1) {
+                return redirect()->intended('/dashboard');
+            }
+            return redirect()->intended('/');
         }
 
         return back()->with('error', 'The provided credentials do not match our records.');

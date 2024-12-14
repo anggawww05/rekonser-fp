@@ -22,14 +22,15 @@
                 </div>
                 <hr class="mt-2 border-1 border-gray-300">
                 <div class="h-[500px] flex flex-row gap-4 mt-5">
-                    <form action="{{ route('update-profile-admin', Auth::user()->id)}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('update-profile-admin', Auth::user()->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         <div>
-                            <div class="mb-4 text-lg font-medium ">
+                            <div class="mb-4 text-lg font-medium w-[450px] h-[450px]">
                                 <img src="{{ asset('storage/' . $user->picture_profile) }}" alt="image"
-                                    class="img-preview w-[400px] h-[400px] object-cover border-2 border-gray-300 rounded-lg">
+                                    class="img-preview  object-cover border-2 border-gray-300 rounded-lg w-[400px] h-[400px]">
                                 <input type="file" id="productImage" name="picture_profile" accept="image/*"
-                                    class="mt-3 input-file w-1/2 rounded-md shadow-sm focus:ring focus:ring-opacity-50 border-2 border-gray-300">
+                                    class="font-normal text-sm mt-3 input-file w-60 rounded-md shadow-sm focus:ring focus:ring-opacity-50 border-2 border-gray-300">
                             </div>
                         </div>
                         <div class="w-full flex flex-col gap-2">

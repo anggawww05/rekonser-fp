@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Payment;
 use App\Models\Product;
+use App\Models\Returned;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -47,9 +48,22 @@ class TransactionController extends Controller
             'product_id' => $request->product_id,
             'user_id' => auth()->user()->id,
         ]);
+
+        Returned::create([
+            'payment_id' => $payment->id,
+            'user_id' => auth()->user()->id,
+            'product_id' => $request->product_id,
+        ]);
         // dd($payment);
 
         return redirect()->route('products')->with('success', 'Product created successfully.');
     }
+
+    // public function indexHistory()
+    // {
+    //     $user = Auth::user();
+    //     $payments = Payment::where('user_id', $user->id)->get();
+    //     return view('admin/historyTransaction', compact('payments'));
+    // }
 
 }

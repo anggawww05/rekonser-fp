@@ -12,6 +12,8 @@
             <h1 class="text-2xl font-semibold">Edit Produk</h1>
         @elseif(Route::is('users'))
             <h1 class="text-2xl font-semibold">Kelola User</h1>
+        @elseif(Route::is('user.search'))
+            <h1 class="text-2xl font-semibold">Kelola User</h1>
         @elseif(Route::is('users.detail'))
             <h1 class="text-2xl font-semibold">Detail User</h1>
         @elseif(Route::is('confirm-rent'))
@@ -22,6 +24,8 @@
             <h1 class="text-2xl font-semibold">Konfirmasi Pengembalian</h1>
         @elseif(Route::is('index.proof.return'))
             <h1 class="text-2xl font-semibold">Konfirmasi Pengembalian</h1>
+        @elseif(Route::is('history'))
+            <h1 class="text-2xl font-semibold">Laporan Transaksi</h1>
         @endif
 
         <div class="flex items-center">

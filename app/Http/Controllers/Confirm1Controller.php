@@ -10,10 +10,14 @@ use Illuminate\Support\Facades\Auth;
 
 class Confirm1Controller extends Controller
 {
-    public function indexConfirm1()
+    public function indexConfirm1(Request $request)
     {
-        // $payments = Payment::paginate(10);
-        $payments = Payment::where('status', 'pending')->get();
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $payments = Payment::where('user_name', 'like', '%' . $search . '%')->where('status', 'pending')->paginate(10);
+        } else {
+            $payments = Payment::where('status', 'pending')->paginate(10);
+        }
         return view('admin/confirmRent', compact('payments'));
     }
 

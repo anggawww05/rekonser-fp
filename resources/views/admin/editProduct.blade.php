@@ -28,8 +28,9 @@
                             <img src="{{ asset('storage/' . $product->product_img) }}" alt="image"
                                 class="img-preview w-[450px] h-[450px] object-cover border-2 border-gray-300 rounded-lg">
                             <input type="file" id="productImage" name="product_img[]" accept="image/*"
-                                class="mt-3 input-file w-1/2 rounded-md shadow-sm focus:ring focus:ring-opacity-50 border-2 border-gray-300"
+                                class="font-normal text-sm mt-3 input-file w-60 rounded-md shadow-sm focus:ring focus:ring-opacity-50 border-2 border-gray-300"
                                 multiple>
+
                         </div>
                     </div>
                     <div class="w-full flex flex-col gap-2">

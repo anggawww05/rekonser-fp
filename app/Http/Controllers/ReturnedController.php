@@ -11,20 +11,31 @@ use Carbon\Carbon;
 
 class ReturnedController extends Controller
 {
-    public function indexListreturn()
+    public function indexListreturn(Request $request)
     {
+
         $user_id = Auth::user()->id;
-        $returns = Returned::where('user_id', $user_id)->with('product', 'payment')->get();
-        foreach ($returns as $return)
-            $end_date = Carbon::parse($return->payment->end_date);
-            if ($end_date->lessThan(Carbon::now()))
-            {
-                $return->status = 'delay';
-            }
-            else
-            {
-                $return->status = 'active';
-            }
+
+        $search = $request->input('search');
+        $returns = Returned::where('user_id', $user_id)
+            ->when($search, function ($query, $search) {
+                return $query->whereHas('product', function ($query) use ($search) {
+                    $query->where('product_name', 'like', "%{$search}%");
+                });
+            })
+            ->with('product', 'payment')
+            ->paginate(10);
+
+        // $user_id = Auth::user()->id;
+        // $returns = Returned::where('user_id', $user_id)->with('product', 'payment')->get();
+
+        // foreach ($returns as $return)
+        //     $end_date = Carbon::parse($return->payment->end_date);
+
+        // if ($end_date->lessThan(Carbon::now()) && $return->delay_payment_img == null) {
+        //     $return->status = 'delay';
+        // }
+
         return view('users/listReturned', compact('returns'));
     }
 
@@ -37,12 +48,9 @@ class ReturnedController extends Controller
         $payment->start_date = Carbon::parse($payment->start_date)->translatedFormat('d F Y');
         $payment->end_date = Carbon::parse($payment->end_date);
         $end_date = Carbon::parse($payment->end_date);
-        if ($end_date->lessThan(Carbon::now()))
-        {
+        if ($end_date->lessThan(Carbon::now())) {
             $delay = true;
-        }
-        else
-        {
+        } else {
             $delay = false;
         }
         return view('users/detailReturned', compact('payment', 'delay'));
@@ -57,8 +65,7 @@ class ReturnedController extends Controller
             'product_condition_img' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ]);
 
-        if ($request->hasFile('delay_payment_img'))
-        {
+        if ($request->hasFile('delay_payment_img')) {
             $image1 = $request->file('delay_payment_img');
             $image_url1 = $image1->storeAs('delay_payment_img', $image1->hashName(), 'public');
         }
@@ -66,17 +73,14 @@ class ReturnedController extends Controller
         $image2 = $request->file('product_condition_img');
         $image_url2 = $image2->storeAs('product_condition_img', $image2->hashName(), 'public');
 
-        if ($request->delay_price)
-        {
+        if ($request->delay_price) {
             $returned->update([
                 'delay_price' => $request->delay_price,
                 'delay_payment_img' => $image_url1,
                 'product_condition_img' => $image_url2,
                 'status' => 'pending',
             ]);
-        }
-        else
-        {
+        } else {
             $returned->update([
                 'product_condition_img' => $image_url2,
                 'status' => 'pending',

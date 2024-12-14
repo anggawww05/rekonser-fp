@@ -7,11 +7,11 @@
                 <div class="pb-4 ">
                     <label for="table-search" class="sr-only">Search</label>
                     <div class="relative flex flex-row gap-3">
-                        <form action="{{ route('product.search') }}" method="POST">
+                        <form action="{{ route('products.search') }}" method="POST">
                             @csrf
                             <div class="flex">
                                 <input type="text" id="table-search" name="search"
-                                    class="block p-2 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#003A5B] focus:border-[#003A5B]"
+                                    class="block p-2 pl-10 w-[400px] text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#003A5B] focus:border-[#003A5B]"
                                     placeholder="Cari produk">
                                 <button type="submit">
                                     <svg class="w-5 h-5 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"

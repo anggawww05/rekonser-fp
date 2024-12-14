@@ -11,8 +11,8 @@
                             @csrf
                             <div class="flex">
                                 <input type="text" id="table-search" name="search"
-                                    class="block p-2 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#003A5B] focus:border-[#003A5B]"
-                                    placeholder="Cari produk">
+                                    class="block w-[400px] pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-[#002B43]"
+                                    placeholder="Cari nama pengguna">
                                 <button type="submit">
                                     <svg class="w-5 h-5 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"
                                         fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -89,11 +89,12 @@
                                                             d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                     </svg>
                                                     <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                                                        Yakin ingin menghapus produk?</h3>
+                                                        Yakin ingin menghapus pengguna {{ $user->user_name }}?</h3>
                                                     <div class="flex flex-row justify-center">
-                                                        <form action="#" method="post">
+                                                        <form action="{{ route('users.delete', $user->id) }}"
+                                                            method="post">
                                                             @csrf
-                                                            @method('delete')
+                                                            @method('put')
                                                             <button data-modal-hide="popup-modal" type="submit"
                                                                 class="text-white bg-red-600 hover:bg-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
                                                                 Yakin

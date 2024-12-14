@@ -1,14 +1,31 @@
 @extends('users.main')
 
 @section('container')
-    <div class="w-full h-screen bg-[#F6F6F6] pt-[80px]">
+    <div class="w-full bg-[#F6F6F6] pt-[80px]">
         <div class="w-[1200px] flex justify-center mx-auto">
             <div>
-                <div class="w-[1200px] text-[28px] font-semibold flex items-center gap-4 mb-5">
-                    <a href="{{ route('profile') }}">
-                        <img class="h-6 " src="{{ asset('assets/images/backbutton.png') }}" alt="#">
-                    </a>
-                    <h1>Pesanan Saya</h1>
+                <div class="w-[1200px] text-[28px] font-semibold flex">
+                    <div class="flex items-center gap-4 mb-5">
+                        <a href="{{ route('profile') }}">
+                            <img class="h-6 " src="{{ asset('assets/images/backbutton.png') }}" alt="#">
+                        </a>
+                        <h1>Pesanan Saya</h1>
+                    </div>
+                    <form action="{{route('indexorder.search')}}" method="POST" class="ml-auto">
+                        @csrf
+                        <div class="relative">
+                            <input type="text" name="search" placeholder="Cari Pesanan..."
+                                class="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <button type="submit" class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M12.9 14.32a8 8 0 111.414-1.414l4.387 4.387a1 1 0 01-1.414 1.414l-4.387-4.387zM8 14a6 6 0 100-12 6 6 0 000 12z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
                 </div>
                 <div class=" flex items-center flex-col gap-8   ">
                     <table class="w-[1220px] table-auto ">
@@ -24,8 +41,9 @@
                         </thead>
                         <tbody>
                             @foreach ($payments as $payment)
-                                <tr class="text-center w-full bg-white ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg ">
-                                    <td class=" w-[5%] p-4">{{ $loop->iteration }}</td>
+                                <tr class="text-center w-full bg-white ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg" data-aos="fade-up">
+                                    <td class=" w-[5%] p-4">
+                                        {{ ($payments->currentPage() - 1) * $payments->perPage() + $loop->iteration }}</td>
                                     <td class=" w-[25%] p-4">{{ $payment->product->product_name }}</td>
                                     <td class=" w-[10%] p-4">{{ $payment->quantity }}</td>
                                     <td class=" w-[15%] p-4">Rp.
@@ -40,12 +58,14 @@
                                                     Menunggu
                                                 </div>
                                             @break
+
                                             @case('active')
                                                 <div
                                                     class="w-36 mx-auto m-2 bg-[#E5FFE7] text-[#007F00] rounded-lg py-1 border-2 border-[#007F00]">
                                                     Aktif
                                                 </div>
                                             @break
+
                                             @default
                                                 <div
                                                     class=" w-36 mx-auto m-2 box-border bg-[#FFF8CD] text-[#655800] rounded-lg py-1 border-2 border-[#655800]">
@@ -57,56 +77,12 @@
                             @endforeach
                         </tbody>
                     </table>
-
-                    <nav aria-label="Page navigation example">
-                        <ul class="flex items-center -space-x-px h-8 text-sm">
-                            <li>
-                                <a href="#"
-                                    class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                    <span class="sr-only">Previous</span>
-                                    <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2" d="M5 1 1 5l4 4" />
-                                    </svg>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-                            </li>
-                            <li>
-                                <a href="#" aria-current="page"
-                                    class="z-10 flex items-center justify-center px-3 h-8 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                    <span class="sr-only">Next</span>
-                                    <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2" d="m1 9 4-4-4-4" />
-                                    </svg>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-
                 </div>
+                {{ $payments->links('components.pagination') }}
             </div>
         </div>
     </div>
+    <script>
+        AOS.init();
+    </script>
 @endsection

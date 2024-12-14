@@ -17,8 +17,7 @@ class UserController extends Controller
         } else {
             $users = User::paginate(10);
         }
-        $role = Role::all();
-        $users = User::all();
+        $role = Role::paginate(10);
         return view('admin/manageUsers', compact('users', 'role'));
     }
 
@@ -140,5 +139,15 @@ class UserController extends Controller
             'picture_profile' => $image_url,
         ]);
         return redirect()->route('users')->with('success', 'User updated successfully.');
+    }
+
+    public function delete(string $id)
+    {
+        $user = User::find($id);
+        if (!$user) {
+            return redirect()->route('users')->with('error', 'User not found.');
+        }
+        $user->delete();
+        return redirect()->route('users')->with('success', 'User deleted successfully.');
     }
 }
