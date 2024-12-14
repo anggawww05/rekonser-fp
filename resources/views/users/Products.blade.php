@@ -33,7 +33,7 @@
                             class="h-[290px] w-[290px] object-cover rounded border-2 border-black">
                     </div>
                     <div class="text-[22px] font-semibold">{{ $product->product_name }}</div>
-                    <div class="text-[20px]">Rp. {{ $product->price }}</div>
+                    <div class="text-[20px]">Rp. {{ number_format($product->price, 2, ',', '.') }}/hari</div>
                     <a href="{{ route('detailProduct', $product->id) }}"
                         class="bg-[#023552] hover:bg-[#025E93] text-white font-sb py-2 px-10 rounded flex justify-center">Lihat
                         Detail</a>

@@ -14,7 +14,7 @@
                     <form action="#" method="POST" class="ml-auto">
                         @csrf
                         <div class="relative">
-                            <input type="text" name="search" placeholder="Cari Pesanan..."
+                            <input type="text" name="search" placeholder="Cari Produk..."
                                 class="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
                             <button type="submit" class="absolute inset-y-0 left-0 flex items-center pl-3">
                                 <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
@@ -37,7 +37,7 @@
                                             alt="#" class="aspect-square w-[80px] h-[80px] object-cover bg-gray-300 flex items-center justify-center text-gray-500 border rounded-lg m-2">
                                     </td>
                                     <td class=" w-[73%] p-4 text-left ">
-                                        <p class=" font-extrabold">{{ $favoriteItem->product->product_name }}</p>
+                                        <p class=" font-semibold">{{ $favoriteItem->product->product_name }}</p>
                                         <p>Rp. {{ number_format($favoriteItem->product->price, 2, ',', '.') }}/hari</p>
                                     <td class="w-[20%]  p-4 text-center">
                                         <div class=" w-[120px] flex flex-row gap-2 text-sm">
@@ -55,7 +55,7 @@
                         </tbody>
                     </table>
                 </div>
-                {{ $user->favorites->links('components.pagination') }}
+                {{-- {{ $user->favorites->links('components.pagination') }} --}}
             </div>
         </div>
     </div>

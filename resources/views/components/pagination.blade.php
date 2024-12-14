@@ -7,21 +7,21 @@
     <div class="inline-flex xs:mt-0 gap-2 ">
         @if ($paginator->onFirstPage())
             <button class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800  cursor-not-allowed rounded-lg" disabled>
-                Prev
+                <
             </button>
         @else
             <a href="{{ $paginator->previousPageUrl() }}" class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800  hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-lg">
-                Prev
+                <
             </a>
         @endif
 
         @if ($paginator->hasMorePages())
             <a href="{{ $paginator->nextPageUrl() }}" class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 border-0 border-s border-gray-700 hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-lg">
-                Next
+                >
             </a>
         @else
             <button class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 border-0 border-s border-gray-700 cursor-not-allowed rounded-lg" disabled>
-                Next
+                >
             </button>
         @endif
     </div>

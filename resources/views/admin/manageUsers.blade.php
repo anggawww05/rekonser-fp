@@ -2,8 +2,8 @@
 
 @section('container')
     <div class="p-4 sm:ml-64">
-        <div class="p-4 min-h-screen">
-            <div class="sm:rounded-lg">
+        <div class="p-4 min-h-screen" data-aos="fade-up">
+            <div class="sm:rounded-lg" data-aos="fade-up">
                 <div class="pb-4 ">
                     <label for="table-search" class="sr-only">Search</label>
                     <div class="relative flex flex-row gap-3 w-1/3">
@@ -152,4 +152,7 @@
             </div>
         </div>
     </div>
+    <script>
+        AOS.init();
+    </script>
 @endsection

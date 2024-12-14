@@ -22,7 +22,7 @@
                                 <div class="flex flex-col gap-8 w-[450px] h-[400px] justify-center items-center">
                                     <div class="w-60 h-60 rounded-full border border-black">
                                         <img src="{{ asset('storage/' . $user->picture_profile) }}" alt="#"
-                                            class="object-cover rounded-full overflow-hidden img-preview">
+                                            class="object-cover rounded-full overflow-hidden img-preview w-60 h-60">
                                     </div>
                                     <input type="file" name="picture_profile" id="picture_profile" class="hidden img-preview" accept="image/*">
                                     <label for="picture_profile"

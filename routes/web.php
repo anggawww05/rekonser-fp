@@ -41,6 +41,7 @@ Route::middleware(['auth', 'role:User'])->group(function () {
     Route::post('/products/{favorite}/remove-from-favorites', [FavoriteController::class, 'removeFromFavorites'])->name('favorites.remove');
     Route::get('/profile/favorite', [FavoriteController::class, 'viewFavorites'])->name('favorites.view');
     Route::get('/profile/historys', [OrderController::class, 'indexhistorys'])->name('indexhistorys');
+    Route::post('/profile/historys', [OrderController::class, 'indexhistorys'])->name('indexhistorys.search');
     Route::post('/profile/logout', [LoginController::class, 'logout'])->name('logout');
 });
 

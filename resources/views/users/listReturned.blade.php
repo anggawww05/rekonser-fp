@@ -1,7 +1,7 @@
 @extends('users.main')
 
 @section('container')
-    <div class="w-full bg-[#F6F6F6] pt-[80px] pb-24">
+    <div class="w-full h-screen bg-[#F6F6F6] pt-[80px] pb-24">
         <div class="w-[1200px] flex justify-center mx-auto">
             <div>
                 <div class="w-[1200px] text-[28px] font-semibold flex gap-4">

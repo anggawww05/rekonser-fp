@@ -56,7 +56,7 @@ class TransactionController extends Controller
         ]);
         // dd($payment);
 
-        return redirect()->route('products')->with('success', 'Product created successfully.');
+        return redirect()->route('indexorder')->with('success', 'Product created successfully.');
     }
 
     // public function indexHistory()

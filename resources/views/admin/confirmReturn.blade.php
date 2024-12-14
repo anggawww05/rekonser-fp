@@ -3,7 +3,7 @@
 @section('container')
     <div class="p-4 sm:ml-64">
         <div class="p-4">
-            <div class="sm:rounded-lg">
+            <div class="sm:rounded-lg" data-aos="fade-up">
                 <div class="pb-4">
                     <form action="{{ route('confirm-return.search') }}" method="POST">
                         @csrf
@@ -82,4 +82,7 @@
             </div>
         </div>
     </div>
+    <script>
+        AOS.init();
+    </script>
 @endsection

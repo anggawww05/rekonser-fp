@@ -11,7 +11,7 @@
                         </a>
                         <h1>Riwayat Transaksi</h1>
                     </div>
-                    <form action="#" method="POST" class="ml-auto">
+                    <form action="{{route('indexhistorys.search')}}" method="POST" class="ml-auto">
                         @csrf
                         <div class="relative">
                             <input type="text" name="search" placeholder="Cari Pesanan..."

@@ -2,7 +2,7 @@
 
 @section('container')
     <section id="detail-transaksi" class="bg-gray-100 min-h-screen py-8">
-        <div class="max-w-4xl mx-auto space-y-6">
+        <div class="max-w-4xl mx-auto space-y-6" data-aos="fade-up">
             <!-- Header -->
             <div class="w-[1200px] text-[28px] font-semibold flex items-center gap-4 mt-9 mb-3">
                 <a href="{{ route('detailProduct', $product->id) }}">
@@ -23,7 +23,6 @@
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                 <div class="max-w-4xl mx-auto flex flex-col gap-3">
-                    <!-- Informasi Pribadi -->
                     <div class="border rounded-lg shadow-sm p-4 bg-white">
                         <h2 class="text-lg font-semibold mb-3">Informasi Pribadi</h2>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
@@ -69,8 +68,6 @@
                         </div>
                     </div>
 
-
-                    <!-- Detail Pesanan -->
                     <div class="border rounded-lg shadow-sm p-4 bg-white">
                         <h2 class="text-lg font-semibold mb-3">Detail Pesanan</h2>
 
@@ -88,7 +85,6 @@
                                 </div>
                             </div>
 
-                            <!-- Jumlah -->
                             <div class="flex items-center gap-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-8 flex-shrink-0">
@@ -98,7 +94,7 @@
 
                                 <div>
                                     <p class="text-[15px] ">Mulai Sewa</p>
-                                    <input type="date" name="start_date" class="start_date">
+                                    <input type="date" name="start_date" class="start_date rounded-lg">
                                 </div>
                             </div>
 
@@ -111,11 +107,10 @@
                                 </svg>
                                 <div>
                                     <p class="text-[15px]">Jumlah Produk</p>
-                                    <input type="number" name="quantity" class="quantity">
+                                    <input type="number" name="quantity" class="quantity rounded-lg">
                                 </div>
                             </div>
 
-                            <!-- Harga per hari -->
                             <div class="flex items-center gap-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-8 flex-shrink-0">
@@ -142,7 +137,7 @@
                                 </svg>
                                 <div>
                                     <p class="text-[15px] ">Sewa Kembali</p>
-                                    <input type="date" name="end_date" class="end_date">
+                                    <input type="date" name="end_date" class="end_date rounded-lg">
                                 </div>
                             </div>
 
@@ -154,9 +149,10 @@
                                 </svg>
                                 <div>
                                     <p class="text-[15px]">Durasi Sewa</p>
-                                    <div class="flex">
-                                        <input type="text" name="duration" class="text-[18px] font-semibold duration"
-                                            value="0" readonly>
+                                    <div class="flex items-center gap-2">
+                                        <input type="text" name="duration"
+                                            class="text-[18px] w-full font-semibold duration rounded-lg" value="0"
+                                            readonly>
                                         <p> hari</p>
                                     </div>
                                 </div>
@@ -164,28 +160,24 @@
                         </div>
                     </div>
 
-                    <!-- Pengiriman -->
-                    <div class="flex flex-col gap-4 bg-white p-4 rounded-lg shadow-sm">
+                    <div class="flex flex-col gap-2 bg-white p-4 rounded-lg shadow-sm">
                         <h2 class="text-lg font-semibold ">Pengiriman</h2>
-                        <!-- Antar-Jemput -->
                         <label class="flex items-center justify-between border-2 rounded-lg px-4 py-2 cursor-pointer ">
                             <div class="flex items-center gap-2">
                                 <input type="radio" name="rent_method" value="antar-jemput" class="w-4 h-4">
-                                <span class=" font-semibold text-[18px]">Antar-Jemput</span>
+                                <span class="text-[18px]">Antar-Jemput</span>
                             </div>
-                            <span class=" font-semibold text-[18px]">Rp. 200.000</span>
+                            <span class="text-[18px] font-semibold">Rp. 200.000</span>
                         </label>
-                        <!-- Ambil di Lokasi -->
                         <label class="flex items-center justify-between border-2 rounded-lg px-4 py-2 cursor-pointer">
                             <div class="flex items-center gap-2">
                                 <input type="radio" name="rent_method" value="ambil-lokasi" class="w-4 h-4">
-                                <span class=" font-semibold text-[18px]">Ambil di lokasi</span>
+                                <span class="text-[18px]">Ambil di lokasi</span>
                             </div>
-                            <span class=" font-semibold text-[18px]">Rp. 0</span>
+                            <span class="text-[18px] font-semibold">Rp. 0</span>
                         </label>
                     </div>
 
-                    <!-- Total Pembayaran -->
                     <div class="border rounded-lg shadow-sm p-4 bg-white">
                         <h2 class="text-lg font-semibold mb-3">Total Pembayaran</h2>
                         <div class="space-y-2">
@@ -205,11 +197,9 @@
                         </div>
                     </div>
 
-                    <!-- Metode Pembayaran -->
-                    <div class="flex flex-col gap-4 bg-white p-4 rounded-lg shadow-sm">
+                    <div class="flex flex-col gap-2 bg-white p-4 rounded-lg shadow-sm">
                         <h2 class="text-lg font-semibold ">Metode Pembayaran</h2>
                         <form class="flex flex-col gap-3">
-                            <!-- Transfer Bank BCA -->
                             <label class="flex items-center justify-between border-2 rounded-lg px-4 py-3 cursor-pointer">
                                 <div class="flex flex-col gap-1">
                                     <span class="font-semibold">Transfer Bank BCA</span>
@@ -219,7 +209,6 @@
                                     class="w-5 h-5">
                             </label>
 
-                            <!-- Transfer Bank BNI -->
                             <label class="flex items-center justify-between border-2 rounded-lg px-4 py-3 cursor-pointer">
                                 <div class="flex flex-col gap-1">
                                     <span class=" font-semibold">Transfer Bank BNI</span>
@@ -229,7 +218,6 @@
                                     class="w-5 h-5">
                             </label>
 
-                            <!-- Transfer Bank Mandiri -->
                             <label class="flex items-center justify-between border-2 rounded-lg px-4 py-3 cursor-pointer">
                                 <div class="flex flex-col gap-1">
                                     <span class=" font-semibold">Transfer Bank Mandiri</span>
@@ -241,23 +229,12 @@
                         </form>
                     </div>
 
-
-                    <!-- Bukti Pembayaran -->
                     <div class="border rounded-lg shadow-sm p-4 bg-white">
                         <h2 class="text-lg font-semibold mb-3">Bukti Pembayaran</h2>
                         <div class="relative">
-                            <label class="block">
-                                <input type="file" name="transaction_img" class="sr-only">
-                                <!-- Input file tetap disembunyikan -->
-                                <div
-                                    class="flex justify-between items-center w-60 py-2 px-4 text-sm text-gray-500 bg-gray-100 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-200">
-                                    <span class="font-[18px]">Upload Bukti Pembayaran</span>
-                                    <span class="text-gray-700 font-bold text-lg">+</span>
-                                </div>
-                            </label>
+                            <input type="file" name="transaction_img" class="border-2 rounded-lg w-1/2 text-[12px]">
                         </div>
                     </div>
-
                     <div class="text-center">
                         <button type="submit"
                             class="w-full bg-[#002B43] text-white py-3 rounded-lg shadow-lg hover:bg-[#003654]">
@@ -268,6 +245,7 @@
         </div>
     </section>
     <script>
+        AOS.init();
         document.addEventListener('DOMContentLoaded', function() {
             const startDateInput = document.querySelector('.start_date');
             const endDateInput = document.querySelector('.end_date');

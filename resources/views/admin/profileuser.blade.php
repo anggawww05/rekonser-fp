@@ -1,7 +1,7 @@
 @extends('admin.main')
 
 @section('container')
-    <div class="p-4 sm:ml-64 ">
+    <div class="p-4 sm:ml-64 " data-aos="fade-up">
         <div class="p-8  h-full bg-white rounded-lg border-2 shadow-lg">
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -63,6 +63,7 @@
         </div>
     </div>
     <script>
+        AOS.init();
         const tagImage = document.querySelector('.img-preview');
         const inputImage = document.querySelector('.input-file');
 

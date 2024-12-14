@@ -1,8 +1,8 @@
 @extends('admin.main')
 
 @section('container')
-    <div class="p-4 sm:ml-64 ">
-        <div class="p-8  h-full bg-white rounded-lg border-2 shadow-lg">
+    <div class="p-4 sm:ml-64 " >
+        <div class="p-8  h-full bg-white rounded-lg border-2 shadow-lg" data-aos="fade-up">
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -12,7 +12,7 @@
                     </ul>
                 </div>
             @endif
-            <form action="#" method="POST" enctype="multipart/form-data">
+            <form action="{{route('update-profile-admin', $user->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="w-[1400px] text-[22px] font-semibold flex items-center gap-4 mt-2 mb-3">
                     <a href="{{ route('dashboard') }}">
@@ -60,6 +60,7 @@
         </div>
     </div>
     <script>
+        AOS.init();
         const tagImage = document.querySelector('.img-preview');
         const inputImage = document.querySelector('.input-file');
 

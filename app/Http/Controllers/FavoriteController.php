@@ -32,8 +32,15 @@ class FavoriteController extends Controller
         return redirect()->back()->with('message', 'Produk tidak ditemukan dalam favorit.');
     }
 
-    public function viewFavorites()
+    public function viewFavorites(Request $request)
     {
+        // if ($request->has('search')) {
+        //     $search = $request->input('search');
+        //     $product = Auth::user()->favorites()->where('name', 'like', '%' . $search . '%')->paginate(10);
+        // } else {
+        //     $product = Auth::user()->favorites()->paginate(10);
+        // }
+
         $product = Auth::user()->favorites;
         $user = Auth::user();
         return view('users/listFavorite', compact('user', 'product'));

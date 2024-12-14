@@ -2,7 +2,7 @@
 
 @section('container')
     <div class="p-4 sm:ml-64 ">
-        <div class="p-8  h-full bg-white rounded-lg border-2 shadow-lg">
+        <div class="p-8  h-full bg-white rounded-lg border-2 shadow-lg" data-aos="fade-up">
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -72,6 +72,7 @@
         </div>
     </div>
     <script>
+        AOS.init();
         const tagImage = document.querySelector('.img-preview');
         const inputImage = document.querySelector('.input-file');
 

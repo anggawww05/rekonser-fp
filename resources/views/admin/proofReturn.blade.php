@@ -1,7 +1,7 @@
 @extends('admin.main')
 
 @section('container')
-    <section id="detail-transaksi" class="bg-gray-100 min-h-screen py-8">
+    <section id="detail-transaksi" class="bg-gray-100 min-h-screen py-8" data-aos="fade-up">
         <div class="ml-64 flex flex-col">
             <div class="w-[1200px] mx-auto flex flex-col gap-2">
                 <div class="w-[1400px] text-[22px] font-semibold flex items-center gap-4 mt-2 mb-3">
@@ -10,7 +10,6 @@
                     </a>
                     <h1>Detail Pengembalian</h1>
                 </div>
-                <!-- Informasi Pribadi -->
                 <div class="border rounded-lg shadow-sm p-4 bg-white">
                     <h2 class="text-lg font-semibold mb-3">Informasi Pribadi</h2>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
@@ -189,4 +188,7 @@
             </div>
         </div>
     </section>
+    <script>
+        AOS.init();
+    </script>
 @endsection

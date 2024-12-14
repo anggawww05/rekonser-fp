@@ -1,7 +1,7 @@
-@extends('admin.main')
+{{-- @extends('admin.main')
 
 @section('container')
-    <div class="p-4 sm:ml-64">
+    <div class="p-4 sm:ml-64" data-aos="fade-up">
         <div class="p-8  min-h-screen">
             <form action="{{ route('products.update', $user->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -37,6 +37,7 @@
         </div>
     </div>
     <script>
+        AOS.init();
         const tagImage = document.querySelector('.img-preview');
         const inputImage = document.querySelector('.input-file');
 
@@ -44,4 +45,4 @@
             tagImage.src = URL.createObjectURL(inputImage.files[0]);
         })
     </script>
-@endsection
+@endsection --}}

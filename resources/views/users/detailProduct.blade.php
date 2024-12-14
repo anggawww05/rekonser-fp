@@ -1,7 +1,7 @@
 @extends('users.main')
 
 @section('container')
-    <div class="w-full bg-[#F6F6F6] flex flex-col justify-center items-center">
+    <div class="w-full bg-[#F6F6F6] flex flex-col justify-center items-center" data-aos="fade-up">
         <div class="w-[1200px] text-[28px] font-semibold flex items-center gap-4 mb-5 mt-16">
             <a href="{{ route('products') }}">
                 <img class="h-6 " src="{{ asset('assets/images/backbutton.png') }}" alt="#">
@@ -18,19 +18,27 @@
                 <div class="flex flex-col items-start">
                     <div class="container rounded-lg mb-2">
                         <span onclick="this.parentElement.style.display='none'" class="closebtn"></span>
-                        <img id="expandedImg" src="{{ asset('storage/' . $product->productImage->image_url1) }}" style="width:100%; aspect-ratio: 1 / 1;" class="object-cover cursor-pointer rounded-lg border-2 border-[5C5C5C]">
+                        <img id="expandedImg" src="{{ asset('storage/' . $product->productImage->image_url1) }}"
+                            style="width:100%; aspect-ratio: 1 / 1;"
+                            class="object-cover cursor-pointer rounded-lg border-2 border-[5C5C5C]">
                     </div>
                     <div class="grid grid-cols-3 gap-3">
                         <div>
-                            <img src="{{ asset('storage/' . $product->productImage->image_url1) }}" alt="" style="width:100%; aspect-ratio: 1 / 1;" class="object-cover cursor-pointer rounded-lg border-2 border-[5C5C5C]"
+                            <img src="{{ asset('storage/' . $product->productImage->image_url1) }}" alt=""
+                                style="width:100%; aspect-ratio: 1 / 1;"
+                                class="object-cover cursor-pointer rounded-lg border-2 border-[5C5C5C]"
                                 onclick="myFunction(this);">
                         </div>
                         <div>
-                            <img src="{{ asset('storage/' . $product->productImage->image_url2) }}" alt="" style="width:100%; aspect-ratio: 1 / 1;" class="object-cover cursor-pointer rounded-lg border-2 border-[5C5C5C]"
+                            <img src="{{ asset('storage/' . $product->productImage->image_url2) }}" alt=""
+                                style="width:100%; aspect-ratio: 1 / 1;"
+                                class="object-cover cursor-pointer rounded-lg border-2 border-[5C5C5C]"
                                 onclick="myFunction(this);">
                         </div>
                         <div>
-                            <img src="{{ asset('storage/' . $product->productImage->image_url3) }}" alt="" style="width:100%; aspect-ratio: 1 / 1;" class="object-cover cursor-pointer rounded-lg border-2 border-[5C5C5C]"
+                            <img src="{{ asset('storage/' . $product->productImage->image_url3) }}" alt=""
+                                style="width:100%; aspect-ratio: 1 / 1;"
+                                class="object-cover cursor-pointer rounded-lg border-2 border-[5C5C5C]"
                                 onclick="myFunction(this);">
                         </div>
                     </div>
@@ -73,6 +81,8 @@
         </div>
     </div>
     <script>
+        AOS.init();
+
         function myFunction(imgs) {
             var expandImg = document.getElementById("expandedImg");
             var imgText = document.getElementById("imgtext");
@@ -81,4 +91,5 @@
             expandImg.parentElement.style.display = "block";
         }
     </script>
+
 @endsection

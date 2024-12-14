@@ -144,9 +144,8 @@ class ProductController extends Controller
     public function delete(string $id)
     {
         $product = Product::with('productImage')->find($id);
-        $product->productImage->delete();
+        // $product->productImage->delete();
+        $product->delete();
         return redirect()->route('manage.products')->with('success', 'Product deleted successfully.');
     }
-
-
 }

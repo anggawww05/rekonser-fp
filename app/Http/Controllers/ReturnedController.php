@@ -15,35 +15,30 @@ class ReturnedController extends Controller
     {
 
         $user_id = Auth::user()->id;
+        $query = Returned::where('user_id', $user_id)->with('product', 'payment');
 
-        $search = $request->input('search');
-        $returns = Returned::where('user_id', $user_id)
-            ->when($search, function ($query, $search) {
-                return $query->whereHas('product', function ($query) use ($search) {
-                    $query->where('product_name', 'like', "%{$search}%");
-                });
-            })
-            ->with('product', 'payment')
-            ->paginate(10);
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->whereHas('product', function ($q) use ($search) {
+            $q->where('name', 'like', '%' . $search . '%');
+            });
+        }
 
-        // $user_id = Auth::user()->id;
-        // $returns = Returned::where('user_id', $user_id)->with('product', 'payment')->get();
+        $returns = $query->paginate(10);
 
-        // foreach ($returns as $return)
-        //     $end_date = Carbon::parse($return->payment->end_date);
-
-        // if ($end_date->lessThan(Carbon::now()) && $return->delay_payment_img == null) {
-        //     $return->status = 'delay';
-        // }
+        foreach ($returns as $return) {
+            $end_date = Carbon::parse($return->payment->end_date);
+            if ($end_date->lessThan(Carbon::now()) && $return->delay_payment_img == null) {
+            $return->status = 'delay';
+            }
+        }
 
         return view('users/listReturned', compact('returns'));
     }
 
     public function indexreturn(Payment $payment)
     {
-        // dd($payment);
         $user_id = Auth::user()->id;
-        // $payment = Payment::where('user_id', $user_id)->where('product_id', $product->id)->first();
         $payment = Payment::where('id', $payment->id)->with('product', 'user')->first();
         $payment->start_date = Carbon::parse($payment->start_date)->translatedFormat('d F Y');
         $payment->end_date = Carbon::parse($payment->end_date);
@@ -59,7 +54,6 @@ class ReturnedController extends Controller
     public function storereturned(Request $request)
     {
         $returned = Returned::where('payment_id', $request->payment_id)->first();
-        // dd($request->payment_id);
         $request->validate([
             'delay_payment_img' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             'product_condition_img' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
@@ -87,7 +81,6 @@ class ReturnedController extends Controller
             ]);
         }
 
-        // dd($returned);
         return redirect()->route('products')->with('success', 'Product created successfully.');
     }
 }

@@ -2,10 +2,9 @@
 
 @section('container')
     <section id="detail-transaksi" class="bg-gray-100 min-h-screen py-8">
-        <div class="max-w-4xl mx-auto space-y-6">
-            <!-- Header -->
+        <div class="max-w-4xl mx-auto space-y-6" data-aos="fade-up">
             <div class="w-[1200px] text-[28px] font-semibold flex items-center gap-4 mt-4 mb-3">
-                <a href="{{route('returns.list')}}">
+                <a href="{{ route('returns.list') }}">
                     <img class="h-6 " src="{{ asset('assets/images/backbutton.png') }}" alt="#">
                 </a>
                 <h1>Detail Pengembalian</h1>
@@ -39,9 +38,7 @@
                             </div>
                         </div>
                     @endif
-                    {{-- @dd($delay) --}}
 
-                    <!-- Informasi Pribadi -->
                     <div class="border rounded-lg shadow-sm p-4 bg-white">
                         <h2 class="text-lg font-semibold mb-3">Informasi Pribadi</h2>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
@@ -88,7 +85,6 @@
                         </div>
                     </div>
 
-                    <!-- Detail Pesanan -->
                     <div class="border rounded-lg shadow-sm p-4 bg-white">
                         <h2 class="text-lg font-semibold mb-3">Detail Pesanan</h2>
 
@@ -106,7 +102,6 @@
                                 </div>
                             </div>
 
-                            <!-- Jumlah -->
                             <div class="flex items-center gap-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-8 flex-shrink-0">
@@ -120,7 +115,6 @@
                                 </div>
                             </div>
 
-                            <!-- Durasi Sewa -->
                             <div class="flex items-center gap-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-8 flex-shrink-0">
@@ -133,7 +127,6 @@
                                 </div>
                             </div>
 
-                            <!-- Harga per hari -->
                             <div class="flex items-center gap-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-8 flex-shrink-0">
@@ -145,12 +138,11 @@
 
                                 <div>
                                     <p class="text-[15px] ">Harga per hari</p>
-                                    <p class="text-[18px] font-semibold">Rp. {{ number_format($payment->product->price, 2, ',', '.') }}/hari</p>
+                                    <p class="text-[18px] font-semibold">Rp.
+                                        {{ number_format($payment->product->price, 2, ',', '.') }}/hari</p>
                                 </div>
                             </div>
 
-
-                            <!-- Lama Sewa -->
                             <div class="flex items-center gap-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-8 flex-shrink-0">
@@ -163,7 +155,7 @@
                                         {{ $payment->end_date }} </p>
                                 </div>
                             </div>
-                            <!-- Metode Sewa -->
+
                             <div class="flex items-center gap-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-8 flex-shrink-0">
@@ -179,7 +171,6 @@
                     </div>
 
                     @if ($delay == true)
-                        <!-- Total Pembayaran -->
                         <div class="border rounded-lg shadow-sm p-4 bg-white">
                             <h2 class="text-lg font-semibold mb-3">Pembayaran Denda</h2>
                             <div class="flex justify-between">
@@ -197,40 +188,23 @@
 
 
                     @if ($delay == true)
-                        <!-- Bukti Pembayaran -->
                         <div class="border rounded-lg shadow-sm p-4 bg-white">
-                            <h2 class="text-lg font-semibold mb-3">Bukti Pembayaran</h2>
+                            <h2 class="text-lg font-semibold mb-3">Bukti Pembayaran Denda</h2>
                             <div class="relative">
-                                <label class="block">
-                                    <input type="file" class="sr-only" name="delay_payment_img">
-                                    <!-- Input file tetap disembunyikan -->
-                                    <div
-                                        class="flex justify-between items-center w-60 py-2 px-4 text-sm text-gray-500 bg-gray-100 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-200">
-                                        <span class="font-[18px]">Upload Bukti Pembayaran</span>
-                                        <span class="text-gray-700 font-bold text-lg">+</span>
-                                    </div>
-                                </label>
+                                <input type="file" name="delay_payment_img"
+                                    class="border-2 rounded-lg w-1/2 text-[12px]">
                             </div>
                         </div>
                     @endif
 
-                    <!-- Bukti Pembayaran -->
                     <div class="border rounded-lg shadow-sm p-4 bg-white">
                         <h2 class="text-lg font-semibold mb-3">Kondisi Produk</h2>
                         <div class="relative">
-                            <label class="block">
-                                <input type="file" class="sr-only" name="product_condition_img">
-                                <!-- Input file tetap disembunyikan -->
-                                <div
-                                    class="flex justify-between items-center w-60 py-2 px-4 text-sm text-gray-500 bg-gray-100 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-200">
-                                    <span class="font-[18px]">Upload Kondisi Produk</span>
-                                    <span class="text-gray-700 font-bold text-lg">+</span>
-                                </div>
-                            </label>
+                            <input type="file" name="product_condition_img"
+                                class="border-2 rounded-lg w-1/2 text-[12px]">
                         </div>
                     </div>
 
-                    <!-- Tombol Kirim -->
                     <div class="text-center">
                         <button class="w-full bg-[#002B43] text-white py-3 rounded-lg shadow-lg hover:bg-[#003654]">
                             Kirim
@@ -239,4 +213,7 @@
                 </div>
             </form>
     </section>
+    <script>
+        AOS.init();
+    </script>
 @endsection

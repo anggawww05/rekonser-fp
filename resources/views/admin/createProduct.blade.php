@@ -2,7 +2,7 @@
 
 @section('container')
     <div class="p-4 sm:ml-64 ">
-        <div class="p-8  h-full bg-white rounded-lg border-2 shadow-lg">
+        <div class="p-8  h-full bg-white rounded-lg border-2 shadow-lg" data-aos="fade-up">
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -25,7 +25,7 @@
                     <div>
                         <div class="mb-4 text-lg font-medium ">
                             <img src="#" alt="image"
-                                class="img-preview w-[450px] h-[450px] object-cover border-2 border-gray-300 rounded-lg">
+                                class="img-preview w-[450px] h-[450px] object-cover border-2 border-gray-300 rounded-lg aspect-square">
                             <input type="file" id="productImage" name="product_img[]" accept="image/*"
                                 class="font-normal text-sm mt-3 input-file w-60 rounded-md shadow-sm focus:ring focus:ring-opacity-50 border-2 border-gray-300" required multiple>
                         </div>
@@ -67,6 +67,7 @@
         </div>
     </div>
     <script>
+        AOS.init();
         const tagImage = document.querySelector('.img-preview');
         const inputImage = document.querySelector('.input-file');
 
