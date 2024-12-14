@@ -15,12 +15,14 @@ return new class extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('start_date');
-            $table->string('end_date');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->integer('duration');
             $table->integer('quantity');
             $table->string('payment_method');
             $table->string('rent_method');
             $table->string('delivery_price')->nullable();
+            $table->text('transaction_img');
             $table->enum('status', ['pending', 'active', 'success', 'failed'])->default('pending');
             $table->timestamps();
         });

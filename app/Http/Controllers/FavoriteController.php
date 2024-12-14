@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
-
     public function addToFavorites(Product $product)
     {
         $user = Auth::user();
@@ -27,17 +26,23 @@ class FavoriteController extends Controller
         return redirect()->back()->with('success', 'Produk berhasil ditambahkan ke favorit.');
     }
 
-    // Menghapus produk dari favorit
     public function removeFromFavorites(Favorite $favorite)
     {
         $favorite->delete();
         return redirect()->back()->with('message', 'Produk tidak ditemukan dalam favorit.');
     }
 
-    // Melihat daftar produk favorit
-    public function viewFavorites()
+    public function viewFavorites(Request $request)
     {
+        // if ($request->has('search')) {
+        //     $search = $request->input('search');
+        //     $product = Auth::user()->favorites()->where('name', 'like', '%' . $search . '%')->paginate(10);
+        // } else {
+        //     $product = Auth::user()->favorites()->paginate(10);
+        // }
+
+        $product = Auth::user()->favorites;
         $user = Auth::user();
-        return view('users/listFavorite', compact('user'));
+        return view('users/listFavorite', compact('user', 'product'));
     }
 }

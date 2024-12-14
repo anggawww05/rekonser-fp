@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('returneds', function (Blueprint $table) {
+        Schema::create('product_images', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('quantity');
-            $table->enum('status', ['pending', 'active', 'success', 'failed'])->default('pending');
+            $table->foreignId('product_id')->constrained();
+            $table->text('image_url1')->nullable();
+            $table->text('image_url2')->nullable();
+            $table->text('image_url3')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('product_images');
     }
 };

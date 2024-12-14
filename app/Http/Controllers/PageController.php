@@ -15,4 +15,9 @@ class PageController extends Controller
     {
         return view('admin/dashboard');
     }
+
+    public function profileAdmin()
+    {
+        return view('admin/profileadmin');
+    }
 }

@@ -60,7 +60,7 @@ class User extends Authenticatable
         return $this->hasOne(Payment::class);
     }
 
-    public function roles()
+    public function role()
     {
         return $this->belongsTo(Role::class, 'role_id');
     }

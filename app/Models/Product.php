@@ -13,6 +13,7 @@ class Product extends Model
         'condition',
         'stock',
         'category_id',
+
     ];
 
     public function productImage()
@@ -38,6 +39,11 @@ class Product extends Model
     public function favorites()
     {
         return $this->hasMany(Favorite::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }
 

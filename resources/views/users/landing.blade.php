@@ -5,15 +5,18 @@
         <div class="relative h-screen bg-fixed bg-center bg-cover flex items-center justify-center text-center"
             style="background-image: url('{{ asset('assets/images/backgroundMain.jpg') }}')">
             <div class="relative z-10">
-                <img src="{{ asset('assets/images/logoRekonserputih.png') }}" class="w-[600px] h-auto mx-auto mb-1   "
-                    alt="logo rekonser">
-                <p class="mb-8 text-[20px] font-normal text-white sm:px-16 xl:px-48 dark:text-gray-400">Menyediakan berbagai
+                <img src="{{ asset('assets/images/logoRekonserputih.png') }}" class="w-[600px] h-auto mx-auto mb-1"
+                    data-aos="fade-up" alt="logo rekonser">
+                <p class="mb-8 text-[20px] font-normal text-white sm:px-16 xl:px-48 dark:text-gray-400" data-aos="fade-up">
+                    Menyediakan berbagai
                     keperluan dan kebutuhan lengkap untuk mendukung kesuksesan acara festival musik, mulai dari peralatan
                     teknis hingga layanan tambahan yang dirancang untuk memberikan pengalaman terbaik bagi penyelenggara dan
                     penonton.</p>
-                <div class="flex flex-col mb-8 space-y-4 lg:mb-16 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-                    <a href="{{route('landing')}}"
-                        class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white bg-[#002B43] rounded-lg hover:bg-[#004870] focus:ring-1 focus:ring-blue-300 dark:focus:ring-blue-900">
+                <div class="flex flex-col mb-8 space-y-4 lg:mb-16 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4"
+                    data-aos="fade-up">
+                    <a href="{{ route('products') }}"
+                        class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white bg-[#002B43] rounded-lg hover:bg-[#004870] focus:ring-1 focus:ring-blue-300 dark:focus:ring-blue-900"
+                        data-aos="fade-up">
                         Cari produk
                         <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
@@ -29,73 +32,35 @@
     </section>
 
     <section id="kategori" class="bg-white dark:bg-gray-900 mb-[60px]">
-        <div>
-            <h1 class="text-center text-[30px] font-bold mb-6">Kategori Produk</h1>
+        <div class="h-screen flex flex-col items-center">
+            <h1 class="text-[40px] font-bold mb-2 text-[#002B43]" data-aos="flip-left">Kategori Produk</h1>
+            <hr class="w-96 border-1 mb-24">
             <div class="flex items-center justify-center">
                 <div class="grid grid-cols-4 text-center gap-8">
-                    <div class="w-[320px] h-[410px] shadow-2xl rounded-lg">
-                        <img src="{{ asset('assets/images/sampleCategory.png') }}" alt="logo kategori" class="w-[300px]">
-                        <h1 class="text-center text-[25px] font-bold">Kamera</h1>
-                        <a href="#"
-                            class="inline-flex items-center justify-center px-5 py-1 text-base font-medium text-center text-white bg-[#002B43] rounded-lg hover:bg-[#004870] focus:ring-1 focus:ring-blue-300 dark:focus:ring-blue-900">
-                            <button>Lihat detail</button>
-                        </a>
+                    <div data-aos="fade-up">
+                        <img src="{{ asset('assets/images/kategori1.png') }}" class="w-28 h-28 mx-auto mb-2"
+                            alt="Sound System">
+                        <h2 class="text-2xl font-semibold text-[#002B43]">Multimedia</h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-400">Peralatan audio berkualitas tinggi untuk acara
+                            musik Anda.</p>
                     </div>
-                    <div class="w-[320px] h-[410px] shadow-2xl rounded-lg">
-                        <img src="{{ asset('assets/images/sampleCategory.png') }}" alt="logo kategori" class="w-[300px]">
-                        <h1 class="text-center text-[25px] font-bold">Kamera</h1>
-                        <a href="#"
-                            class="inline-flex items-center justify-center px-5 py-1 text-base font-medium text-center text-white bg-[#002B43] rounded-lg hover:bg-[#004870] focus:ring-1 focus:ring-blue-300 dark:focus:ring-blue-900">
-                            <button>Lihat detail</button>
-                        </a>
+                    <div data-aos="fade-up">
+                        <img src="{{ asset('assets/images/kategori2.png') }}" class="w-28 h-28 mx-auto mb-2" alt="Lighting">
+                        <h2 class="text-2xl font-semibold text-[#002B43]">Alat Musik</h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-400">Sistem pencahayaan profesional untuk menciptakan
+                            suasana yang tepat.</p>
                     </div>
-                    <div class="w-[320px] h-[410px] shadow-2xl rounded-lg">
-                        <img src="{{ asset('assets/images/sampleCategory.png') }}" alt="logo kategori" class="w-[300px]">
-                        <h1 class="text-center text-[25px] font-bold">Kamera</h1>
-                        <a href="#"
-                            class="inline-flex items-center justify-center px-5 py-1 text-base font-medium text-center text-white bg-[#002B43] rounded-lg hover:bg-[#004870] focus:ring-1 focus:ring-blue-300 dark:focus:ring-blue-900">
-                            <button>Lihat detail</button>
-                        </a>
+                    <div data-aos="fade-up">
+                        <img src="{{ asset('assets/images/kategori3.png') }}" class="w-28 h-28 mx-auto mb-2" alt="Stage">
+                        <h2 class="text-2xl font-semibold text-[#002B43]">Audio</h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-400">Panggung yang kokoh dan aman untuk penampilan
+                            yang spektakuler.</p>
                     </div>
-                    <div class="w-[320px] h-[410px] shadow-2xl rounded-lg">
-                        <img src="{{ asset('assets/images/sampleCategory.png') }}" alt="logo kategori" class="w-[300px]">
-                        <h1 class="text-center text-[25px] font-bold">Kamera</h1>
-                        <a href="#"
-                            class="inline-flex items-center justify-center px-5 py-1 text-base font-medium text-center text-white bg-[#002B43] rounded-lg hover:bg-[#004870] focus:ring-1 focus:ring-blue-300 dark:focus:ring-blue-900">
-                            <button>Lihat detail</button>
-                        </a>
-                    </div>
-                    <div class="w-[320px] h-[410px] shadow-2xl rounded-lg">
-                        <img src="{{ asset('assets/images/sampleCategory.png') }}" alt="logo kategori" class="w-[300px]">
-                        <h1 class="text-center text-[25px] font-bold">Kamera</h1>
-                        <a href="#"
-                            class="inline-flex items-center justify-center px-5 py-1 text-base font-medium text-center text-white bg-[#002B43] rounded-lg hover:bg-[#004870] focus:ring-1 focus:ring-blue-300 dark:focus:ring-blue-900">
-                            <button>Lihat detail</button>
-                        </a>
-                    </div>
-                    <div class="w-[320px] h-[410px] shadow-2xl rounded-lg">
-                        <img src="{{ asset('assets/images/sampleCategory.png') }}" alt="logo kategori" class="w-[300px]">
-                        <h1 class="text-center text-[25px] font-bold">Kamera</h1>
-                        <a href="#"
-                            class="inline-flex items-center justify-center px-5 py-1 text-base font-medium text-center text-white bg-[#002B43] rounded-lg hover:bg-[#004870] focus:ring-1 focus:ring-blue-300 dark:focus:ring-blue-900">
-                            <button>Lihat detail</button>
-                        </a>
-                    </div>
-                    <div class="w-[320px] h-[410px] shadow-2xl rounded-lg">
-                        <img src="{{ asset('assets/images/sampleCategory.png') }}" alt="logo kategori" class="w-[300px]">
-                        <h1 class="text-center text-[25px] font-bold">Kamera</h1>
-                        <a href="#"
-                            class="inline-flex items-center justify-center px-5 py-1 text-base font-medium text-center text-white bg-[#002B43] rounded-lg hover:bg-[#004870] focus:ring-1 focus:ring-blue-300 dark:focus:ring-blue-900">
-                            <button>Lihat detail</button>
-                        </a>
-                    </div>
-                    <div class="w-[320px] h-[410px] shadow-2xl rounded-lg">
-                        <img src="{{ asset('assets/images/sampleCategory.png') }}" alt="logo kategori" class="w-[300px]">
-                        <h1 class="text-center text-[25px] font-bold">Kamera</h1>
-                        <a href="#"
-                            class="inline-flex items-center justify-center px-5 py-1 text-base font-medium text-center text-white bg-[#002B43] rounded-lg hover:bg-[#004870] focus:ring-1 focus:ring-blue-300 dark:focus:ring-blue-900">
-                            <button>Lihat detail</button>
-                        </a>
+                    <div data-aos="fade-up">
+                        <img src="{{ asset('assets/images/kategori4.png') }}" class="w-28 h-28 mx-auto mb-2" alt="Tent">
+                        <h2 class="text-2xl font-semibold text-[#002B43]">Alat Panggung</h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-400">Tenda berkualitas untuk melindungi acara Anda
+                            dari cuaca.</p>
                     </div>
                 </div>
             </div>
@@ -103,18 +68,51 @@
     </section>
 
     <section id="tentangKami" class="bg-white dark:bg-gray-900">
-        <div class="relative h-screen bg-fixed bg-center bg-cover flex items-center justify-center text-center"
-            style="background-image: url('{{ asset('assets/images/backgroundMain.jpg') }}');">
+        <div class="relative h-[500px] bg-fixed bg-center bg-cover flex items-center justify-center text-center"
+            style="background-image: url('{{ asset('assets/images/bgTentangKami.jpg') }}');">
             <div class="relative z-10">
-                <h1 class="text-center text-[60px] font-bold text-white mb-4">Tentang Kami</h1>
-                <p class="mb-8 text-[14px] font-normal text-white sm:px-16 xl:px-48 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, sed ullam harum reiciendis quas reprehenderit odio porro corrupti repellendus accusamus esse non eos placeat quasi voluptatem id hic excepturi culpa numquam sapiente cum voluptate libero? Perferendis magnam, explicabo consequatur alias possimus eligendi unde quo, praesentium non animi ipsum facilis qui consequuntur. Quisquam cupiditate placeat unde impedit voluptate reiciendis ratione accusantium quae repellendus beatae cumque at ea earum nemo molestias rem sunt sequi, vero odio perferendis sint corporis nisi! Culpa rerum iusto quasi corrupti perspiciatis deserunt nisi, quo perferendis labore ab architecto corporis molestias praesentium quidem, reiciendis autem temporibus sed ducimus? Veniam, nam maxime quam repellendus nihil minima. Enim minus, amet ipsam ullam adipisci magni tenetur eaque. Quasi molestias autem aut inventore? Dicta ullam aut pariatur eligendi itaque modi aliquam dolore repudiandae quod quae molestiae eaque obcaecati, eos explicabo ratione incidunt atque debitis sint. Est, in deleniti hic ipsa dicta eos tempore a, dolore accusamus atque vitae, porro tempora praesentium sequi ea nam dolorum modi magnam distinctio debitis quos expedita ratione. Labore, vel. Ullam quam culpa accusamus? Voluptates est possimus modi at rerum enim ab cumque, libero voluptatem quod dignissimos laboriosam minus architecto minima atque quia dolorum ullam aspernatur culpa rem, dicta maxime incidunt distinctio quisquam? Laboriosam optio dolore incidunt facilis, voluptate ea autem id totam culpa accusamus reprehenderit ab excepturi voluptatem, quod veritatis nemo! Culpa mollitia, ut quidem doloribus provident expedita dignissimos praesentium odit ipsa tempore fuga eum minus eaque officia.</p>
-                <div class="flex flex-col mb-8 space-y-4 lg:mb-16 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+                <div class="text-center flex flex-col items-center">
+                    <h1 class=" text-[40px] font-bold text-white">Tentang Kami</h1>
+                    <hr class="border-white w-96 mb-6">
+                    <p class="mb-8 text-[18px] font-normal text-white sm:px-16 xl:px-48 dark:text-gray-400">Selamat datang
+                        di
+                        ReKonser, platform terpercaya untuk kebutuhan sewa alat-alat konser Anda. Kami hadir untuk mendukung
+                        acara musik, pertunjukan seni, atau event spesial Anda dengan menyediakan perlengkapan konser
+                        berkualitas tinggi. Di ReKonser, kami memahami pentingnya performa sempurna dalam setiap acara. Oleh
+                        karena itu, kami menawarkan beragam alat seperti sistem audio, pencahayaan profesional, instrumen
+                        musik,
+                        hingga
+                        perlengkapan panggung. Kami bangga menjadi mitra yang dapat diandalkan bagi musisi, penyelenggara
+                        acara,
+                        dan komunitas kreatif dalam mewujudkan pengalaman konser terbaik. Dengan layanan mudah, harga
+                        terjangkau, dan dukungan teknis, kami memastikan kebutuhan Anda terpenuhi dengan optimal. </p>
+                    <p class="text-white">ReKonser – Solusi konser, mudah dan terpercaya.</p>
                 </div>
             </div>
-            <div class="absolute w-full h-full bg-gradient-to-t from-[#000000] to-[#000000]/0"></div>
+        </div>
+        <div class="h-screen flex flex-row mt-10">'
+            <div>
+                <div class="text-white text-lg bg-[#002B43] w-full p-3 rounded-lg">
+                    Keuntungan sewa di kami?
+                </div>
+                <div>
+                <ul class="list-disc pl-5 mt-3 text-gray-600 dark:text-gray-400">
+                    <li class="mb-2">Harga terjangkau dan kompetitif</li>
+                    <li class="mb-2">Peralatan berkualitas tinggi dan terawat</li>
+                    <li class="mb-2">Dukungan teknis profesional</li>
+                    <li class="mb-2">Proses pemesanan yang mudah dan cepat</li>
+                    <li class="mb-2">Pengiriman tepat waktu dan aman</li>
+                </ul>
+                </div>
+            </div>
+
+            {{-- <div class="relative h-full w-full bg-fixed bg-center flex items-center justify-center text-center"
+                style="background-image: url('{{ asset('assets/images/benefit.jpg') }}');">
+                p
+            </div> --}}
         </div>
     </section>
-
-    <section id="kategori" class="bg-white dark:bg-gray-900 mb-[60px]">
-    </section>
+    <script>
+        AOS.init();
+    </script>
 @endsection

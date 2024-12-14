@@ -11,6 +11,7 @@ class Payment extends Model
         'user_id',
         'start_date',
         'end_date',
+        'duration',
         'quantity',
         'payment_method',
         'rent_method',
@@ -27,5 +28,10 @@ class Payment extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function returned()
+    {
+        return $this->hasOne(Returned::class);
     }
 }

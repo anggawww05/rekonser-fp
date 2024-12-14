@@ -2,19 +2,27 @@
 
 @section('container')
     <section id="detail-transaksi" class="bg-gray-100 min-h-screen py-8">
-        <div class="max-w-4xl mx-auto space-y-6">
+        <div class="max-w-4xl mx-auto space-y-6" data-aos="fade-up">
             <!-- Header -->
-            <div class="w-[1200px] text-[28px] font-semibold flex items-center gap-4 mb-3">
-                <a href="#">
+            <div class="w-[1200px] text-[28px] font-semibold flex items-center gap-4 mt-9 mb-3">
+                <a href="{{ route('detailProduct', $product->id) }}">
                     <img class="h-6 " src="{{ asset('assets/images/backbutton.png') }}" alt="#">
                 </a>
-                <h1>Bukti Transaksi</h1>
+                <h1>Detail Transaksi</h1>
             </div>
-            <form action="{{ route('store.transaction') }}" method="POST" enctype="multipart/form-data">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <form action="{{ route('transaction.store', $product->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
-                <div class="max-w-4xl mx-auto space-y-6">
-                    <!-- Informasi Pribadi -->
+                <div class="max-w-4xl mx-auto flex flex-col gap-3">
                     <div class="border rounded-lg shadow-sm p-4 bg-white">
                         <h2 class="text-lg font-semibold mb-3">Informasi Pribadi</h2>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
@@ -26,7 +34,7 @@
                                 </svg>
                                 <div>
                                     <p class="text-[15px] ">Nama</p>
-                                    <p class="text-[18px] font-semibold">tes</p>
+                                    <p class="text-[18px] font-semibold">{{ $user->user_name }}</p>
                                 </div>
                             </div>
 
@@ -39,7 +47,7 @@
 
                                 <div>
                                     <p class="text-[15px] ">No Telepon</p>
-                                    <p class="text-[18px] font-semibold">0821373892</p>
+                                    <p class="text-[18px] font-semibold">{{ $user->phone_number }}</p>
                                 </div>
                             </div>
 
@@ -53,17 +61,13 @@
                                 </svg>
                                 <div>
                                     <p class="text-[15px] ">Alamat</p>
-                                    <p class="text-[18px] font-semibold">
-                                        Jalan Ken Umang Barat Timur Kaja Kangin Kauh No.60
-                                    </p>
+                                    <p class="text-[18px] font-semibold">{{ $user->address }}</p>
                                 </div>
                             </div>
 
                         </div>
                     </div>
 
-
-                    <!-- Detail Pesanan -->
                     <div class="border rounded-lg shadow-sm p-4 bg-white">
                         <h2 class="text-lg font-semibold mb-3">Detail Pesanan</h2>
 
@@ -77,11 +81,10 @@
                                 </svg>
                                 <div>
                                     <p class="text-[15px]">Produk</p>
-                                    <p class="text-[18px] font-semibold">Kamera Sony A6400</p>
+                                    <p class="text-[18px] font-semibold">{{ $product->product_name }}</p>
                                 </div>
                             </div>
 
-                            <!-- Jumlah -->
                             <div class="flex items-center gap-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-8 flex-shrink-0">
@@ -91,7 +94,7 @@
 
                                 <div>
                                     <p class="text-[15px] ">Mulai Sewa</p>
-                                    <input type="date" name="start_date">
+                                    <input type="date" name="start_date" class="start_date rounded-lg">
                                 </div>
                             </div>
 
@@ -104,11 +107,10 @@
                                 </svg>
                                 <div>
                                     <p class="text-[15px]">Jumlah Produk</p>
-                                    <input type="number" name="quantity">
+                                    <input type="number" name="quantity" class="quantity rounded-lg">
                                 </div>
                             </div>
 
-                            <!-- Harga per hari -->
                             <div class="flex items-center gap-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-8 flex-shrink-0">
@@ -120,7 +122,8 @@
 
                                 <div>
                                     <p class="text-[15px] ">Harga per hari</p>
-                                    <p class="text-[18px] font-semibold">Rp. 90.000</p>
+                                    <p class="text-[18px] font-semibold price">Rp. <span
+                                            id="product_price">{{ $product->price }}</span></p>
                                 </div>
                             </div>
 
@@ -134,7 +137,7 @@
                                 </svg>
                                 <div>
                                     <p class="text-[15px] ">Sewa Kembali</p>
-                                    <input type="date" name="end_date">
+                                    <input type="date" name="end_date" class="end_date rounded-lg">
                                 </div>
                             </div>
 
@@ -146,58 +149,57 @@
                                 </svg>
                                 <div>
                                     <p class="text-[15px]">Durasi Sewa</p>
-                                    <p class="text-[18px] font-semibold">3 Hari</p>
+                                    <div class="flex items-center gap-2">
+                                        <input type="text" name="duration"
+                                            class="text-[18px] w-full font-semibold duration rounded-lg" value="0"
+                                            readonly>
+                                        <p> hari</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Pengiriman -->
-                    <div class="flex flex-col gap-4 bg-white p-4 rounded-lg shadow-sm">
+                    <div class="flex flex-col gap-2 bg-white p-4 rounded-lg shadow-sm">
                         <h2 class="text-lg font-semibold ">Pengiriman</h2>
-                        <!-- Antar-Jemput -->
                         <label class="flex items-center justify-between border-2 rounded-lg px-4 py-2 cursor-pointer ">
                             <div class="flex items-center gap-2">
                                 <input type="radio" name="rent_method" value="antar-jemput" class="w-4 h-4">
-                                <span class=" font-semibold text-[18px]">Antar-Jemput</span>
+                                <span class="text-[18px]">Antar-Jemput</span>
                             </div>
-                            <span class=" font-semibold text-[18px]">Rp. 100.000</span>
+                            <span class="text-[18px] font-semibold">Rp. 200.000</span>
                         </label>
-                        <!-- Ambil di Lokasi -->
                         <label class="flex items-center justify-between border-2 rounded-lg px-4 py-2 cursor-pointer">
                             <div class="flex items-center gap-2">
                                 <input type="radio" name="rent_method" value="ambil-lokasi" class="w-4 h-4">
-                                <span class=" font-semibold text-[18px]">Ambil di lokasi</span>
+                                <span class="text-[18px]">Ambil di lokasi</span>
                             </div>
-                            <span class=" font-semibold text-[18px]">Rp. 0</span>
+                            <span class="text-[18px] font-semibold">Rp. 0</span>
                         </label>
                     </div>
 
-                    <!-- Total Pembayaran -->
                     <div class="border rounded-lg shadow-sm p-4 bg-white">
                         <h2 class="text-lg font-semibold mb-3">Total Pembayaran</h2>
                         <div class="space-y-2">
                             <div class="flex justify-between">
                                 <p class="font-[18px]">Subtotal Produk</p>
-                                <p class="font-semibold text-[18px]">Rp. 720.000</p>
+                                <p class="font-semibold text-[18px] total">Rp. 0</p>
                             </div>
                             <div class="flex justify-between">
                                 <p class="font-[18px]">Subtotal Pengiriman</p>
-                                <p class="font-semibold text-[18px]">Rp. -</p>
+                                <p class="font-semibold text-[18px] shipping-subtotal">Rp. 0</p>
                             </div>
                             <hr class="my-2 border-black">
                             <div class="flex justify-between text-lg">
                                 <p class="font-[18px]">Total Pembayaran</p>
-                                <p class="font-semibold text-[18px]">Rp. 720.000</p>
+                                <p class="font-semibold text-[18px] final-total">Rp. 0</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Metode Pembayaran -->
-                    <div class="flex flex-col gap-4 bg-white p-4 rounded-lg shadow-sm">
+                    <div class="flex flex-col gap-2 bg-white p-4 rounded-lg shadow-sm">
                         <h2 class="text-lg font-semibold ">Metode Pembayaran</h2>
                         <form class="flex flex-col gap-3">
-                            <!-- Transfer Bank BCA -->
                             <label class="flex items-center justify-between border-2 rounded-lg px-4 py-3 cursor-pointer">
                                 <div class="flex flex-col gap-1">
                                     <span class="font-semibold">Transfer Bank BCA</span>
@@ -207,7 +209,6 @@
                                     class="w-5 h-5">
                             </label>
 
-                            <!-- Transfer Bank BNI -->
                             <label class="flex items-center justify-between border-2 rounded-lg px-4 py-3 cursor-pointer">
                                 <div class="flex flex-col gap-1">
                                     <span class=" font-semibold">Transfer Bank BNI</span>
@@ -217,7 +218,6 @@
                                     class="w-5 h-5">
                             </label>
 
-                            <!-- Transfer Bank Mandiri -->
                             <label class="flex items-center justify-between border-2 rounded-lg px-4 py-3 cursor-pointer">
                                 <div class="flex flex-col gap-1">
                                     <span class=" font-semibold">Transfer Bank Mandiri</span>
@@ -229,31 +229,88 @@
                         </form>
                     </div>
 
-
-                    <!-- Bukti Pembayaran -->
                     <div class="border rounded-lg shadow-sm p-4 bg-white">
                         <h2 class="text-lg font-semibold mb-3">Bukti Pembayaran</h2>
                         <div class="relative">
-                            <label class="block">
-                                <input type="file" name="transaction_img" class="sr-only">
-                                <!-- Input file tetap disembunyikan -->
-                                <div
-                                    class="flex justify-between items-center w-60 py-2 px-4 text-sm text-gray-500 bg-gray-100 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-200">
-                                    <span class="font-[18px]">Upload Bukti Pembayaran</span>
-                                    <span class="text-gray-700 font-bold text-lg">+</span>
-                                </div>
-                            </label>
+                            <input type="file" name="transaction_img" class="border-2 rounded-lg w-1/2 text-[12px]">
                         </div>
                     </div>
-
-                    <!-- Tombol Kirim -->
                     <div class="text-center">
                         <button type="submit"
-                            class="w-full bg-blue-600 text-white py-3 rounded-lg shadow-lg hover:bg-blue-700">
+                            class="w-full bg-[#002B43] text-white py-3 rounded-lg shadow-lg hover:bg-[#003654]">
                             Kirim
                         </button>
                     </div>
             </form>
         </div>
     </section>
+    <script>
+        AOS.init();
+        document.addEventListener('DOMContentLoaded', function() {
+            const startDateInput = document.querySelector('.start_date');
+            const endDateInput = document.querySelector('.end_date');
+            const durationOutput = document.querySelector('.duration');
+            const quantityInput = document.querySelector('.quantity');
+            const priceElement = document.querySelector('.price');
+            const totalElement = document.querySelector('.total');
+            const shippingOptions = document.querySelectorAll('input[name="rent_method"]');
+            const shippingSubtotalElement = document.querySelector('.shipping-subtotal');
+            const finalTotalElement = document.querySelector('.final-total');
+
+            const productPriceElement = document.getElementById('product_price'); // Harga dari database
+            const productPrice = parseInt(productPriceElement.textContent);
+
+            let shippingCost = 0; // Nilai pengiriman awal (default)
+
+            function calculateDuration() {
+                const startDate = new Date(startDateInput.value);
+                const endDate = new Date(endDateInput.value);
+
+                if (startDate && endDate && endDate >= startDate) {
+                    const duration = Math.ceil((endDate - startDate) / (1000 * 60 * 60 *
+                        24)); // Hitung selisih dalam hari
+                    durationOutput.value = duration;
+                    return parseInt(duration);
+                } else {
+                    durationOutput.value = 0;
+                    return 0;
+                }
+            }
+
+            function calculateTotal() {
+                const quantity = parseInt(quantityInput.value) || 0;
+                const duration = calculateDuration();
+                const productSubtotal = quantity * productPrice * duration;
+
+                totalElement.textContent = productSubtotal.toLocaleString('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                });
+
+                const finalTotal = productSubtotal + shippingCost;
+
+                finalTotalElement.textContent = finalTotal.toLocaleString('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                });
+            }
+
+            // Update biaya pengiriman berdasarkan opsi yang dipilih
+            shippingOptions.forEach(option => {
+                option.addEventListener('change', function() {
+                    shippingCost = parseInt(this.value === 'antar-jemput' ? 200000 : 0);
+                    shippingSubtotalElement.textContent = shippingCost.toLocaleString('id-ID', {
+                        style: 'currency',
+                        currency: 'IDR',
+                    });
+
+                    calculateTotal();
+                });
+            });
+
+            startDateInput.addEventListener('change', calculateTotal);
+            endDateInput.addEventListener('change', calculateTotal);
+            quantityInput.addEventListener('input', calculateTotal);
+        });
+    </script>
 @endsection

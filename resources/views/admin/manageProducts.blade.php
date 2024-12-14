@@ -1,24 +1,30 @@
 @extends('admin.main')
 
-
 @section('container')
     <div class="p-4 sm:ml-64">
-        <div class="p-4 min-h-screen">
-            <div class="sm:rounded-lg">
+        <div class="p-4 min-h-screen" data-aos="fade-up">
+            <div class="sm:rounded-lg" data-aos="fade-up">
                 <div class="pb-4 ">
                     <label for="table-search" class="sr-only">Search</label>
                     <div class="relative flex flex-row gap-3">
-                        <input type="text" id="table-search"
-                            class="block p-2 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#003A5B] focus:border-[#003A5B]"
-                            placeholder="Cari produk">
-                        <svg class="w-5 h-5 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"
-                            fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M12.9 14.32a8 8 0 111.414-1.414l4.387 4.387a1 1 0 01-1.414 1.414l-4.387-4.387zM8 14a6 6 0 100-12 6 6 0 000 12z"
-                                clip-rule="evenodd"></path>
-                        </svg>
+                        <form action="{{ route('products.search') }}" method="POST">
+                            @csrf
+                            <div class="flex">
+                                <input type="text" id="table-search" name="search"
+                                    class="block p-2 pl-10 w-[400px] text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#003A5B] focus:border-[#003A5B]"
+                                    placeholder="Cari produk">
+                                <button type="submit">
+                                    <svg class="w-5 h-5 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2"
+                                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M12.9 14.32a8 8 0 111.414-1.414l4.387 4.387a1 1 0 01-1.414 1.414l-4.387-4.387zM8 14a6 6 0 100-12 6 6 0 000 12z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
                         <a href="{{ route('products.create') }}"
-                            class="flex items-center justify-center px-4 py-2 bg-[#003A5B] w-36 rounded-md font-semibold text-xs text-white hover:bg-[#004870] active:bg-blue-900 transition">
+                            class="flex items-center justify-center px-4 py-2 w-36 rounded-md font-semibold text-xs text-white bg-[#002B43] hover:bg-[#004870] transition">
                             Tambah Produk
                         </a>
                     </div>
@@ -26,8 +32,8 @@
 
             </div>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-white bg-[#002B43] dark:bg-gray-700 dark:text-gray-400">
+                <table class="w-full text-sm text-left rtl:text-right text-black">
+                    <thead class="text-xs text-white bg-[#002B43]">
                         <tr>
                             <th scope="col" class="px-6 py-3">
                                 ID
@@ -48,12 +54,11 @@
                     </thead>
                     <tbody>
                         @foreach ($products as $product)
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <tr class="bg-white border-b font-medium text-gray-900 ">
                                 <td class="px-6 py-4">
                                     {{ ($products->currentPage() - 1) * $products->perPage() + $loop->iteration }}
                                 </td>
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <th scope="row" class="px-6 py-4">
                                     {{ $product->product_name }}
                                 </th>
                                 <td class="px-6 py-4">
@@ -62,19 +67,18 @@
                                 <td class="px-6 py-4">
                                     {{ $product->stock }}
                                 </td>
-                                <td class="flex justify-center my-2 gap-2">
-
+                                <td class="flex my-2 gap-2">
                                     <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                                        class="block text-white bg-red-600 hover:bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                                        class="block text-white bg-red-600 hover:bg-red-800 font-medium rounded-lg text-sm px-4 py-2 text-center"
                                         type="button">
                                         Hapus
                                     </button>
                                     <div id="popup-modal" tabindex="-1"
                                         class="bg-black bg-opacity-40 h-screen hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 max-h-full">
                                         <div class="relative p-4 w-full max-w-md max-h-full">
-                                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                            <div class="relative bg-white rounded-lg shadow">
                                                 <button type="button"
-                                                    class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                                    class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
                                                     data-modal-hide="popup-modal">
                                                     <svg class="w-3 h-3" aria-hidden="true"
                                                         xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -94,42 +98,38 @@
                                                             d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                     </svg>
                                                     <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                                                        Yakin ingin menghapus produk</h3>
-                                                    <form action="{{ route('products.delete', $product->id) }}"
-                                                        method="post">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button data-modal-hide="popup-modal" type="submit"
-                                                            class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                                                            Yakin
-                                                        </button>
-                                                    </form>
-                                                    <button data-modal-hide="popup-modal" type="button"
-                                                        class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Batal</button>
-
+                                                        Yakin ingin menghapus produk {{ $product->product_name }}?</h3>
+                                                    <div class="flex flex-row justify-center">
+                                                        <form action="{{ route('products.delete', $product->id) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button data-modal-hide="popup-modal" type="submit"
+                                                                class="text-white bg-red-600 hover:bg-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                                                Yakin
+                                                            </button>
+                                                        </form>
+                                                        <button data-modal-hide="popup-modal" type="button"
+                                                            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100">Batal</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <a href="{{ route('products.edit', $product->id) }}"
-                                        class="block text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        class="block text-white bg-[#003A5B] hover:bg-[#004870] font-medium rounded-lg text-sm px-4 py-2 text-center"
                                         type="button">
                                         Edit
                                 </td>
-                                {{-- <td class="px-6 py-4">
-                                    <a href="#"
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                        <span class="px-2">
-                                            <a href="#" class="text-red-600 hover:underline"> Delete</a></span>
-                                </td> --}}
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
-                {{ $products->links() }}
+                {{ $products->links('components.pagination') }}
             </div>
         </div>
     </div>
+    <script>
+        AOS.init();
+    </script>
 @endsection

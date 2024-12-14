@@ -1,35 +1,45 @@
 @extends('users.main')
 
 @section('container')
-    <div class="w-full bg-[#F6F6F6] flex flex-col justify-center items-center">
+    <div class="w-full bg-[#F6F6F6] flex flex-col justify-center items-center" data-aos="fade-up">
         <div class="w-[1200px] text-[28px] font-semibold flex items-center gap-4 mb-5 mt-16">
-            <a href="{{ route('listProducts') }}">
+            <a href="{{ route('products') }}">
                 <img class="h-6 " src="{{ asset('assets/images/backbutton.png') }}" alt="#">
             </a>
             <h1>Detail Produk</h1>
         </div>
         @if (session()->has('success'))
-            <p>{{session('success')}}</p>
+            <p>{{ session('success') }}</p>
         @else
-            <p>{{session('error')}}</p>
-
+            <p>{{ session('error') }}</p>
         @endif
         <div class="mb-10 w-[1200px] bg-white rounded-xl shadow-lg border border-[#AAAAAA] p-8">
             <div class="w-full flex">
                 <div class="flex flex-col items-start">
-                    <div class="w-[400px] h-[400px] flex items-center justify-center text-gray-500 rounded-lg">
-                        <img src="{{ asset('storage/' . $product->productImage->image_url1) }}" alt="{{ $product->name }}"
-                            class="h-full object-cover rounded-lg border-2 border-[#5C5C5C]">
+                    <div class="container rounded-lg mb-2">
+                        <span onclick="this.parentElement.style.display='none'" class="closebtn"></span>
+                        <img id="expandedImg" src="{{ asset('storage/' . $product->productImage->image_url1) }}"
+                            style="width:100%; aspect-ratio: 1 / 1;"
+                            class="object-cover cursor-pointer rounded-lg border-2 border-[5C5C5C]">
                     </div>
-                    <div class="flex justify-between gap-4 mt-4 w-[400px]">
-                        <div class="aspect-square w-[120px]  flex items-center justify-center text-gray-500  *:rounded-lg">
-                            <img src="{{ asset('assets\images\1.png') }}" alt="#" class="object-cover rounded-lg">
+                    <div class="grid grid-cols-3 gap-3">
+                        <div>
+                            <img src="{{ asset('storage/' . $product->productImage->image_url1) }}" alt=""
+                                style="width:100%; aspect-ratio: 1 / 1;"
+                                class="object-cover cursor-pointer rounded-lg border-2 border-[5C5C5C]"
+                                onclick="myFunction(this);">
                         </div>
-                        <div class="aspect-square w-[120px]  flex items-center justify-center text-gray-500  *:rounded-lg">
-                            <img src="{{ asset('assets\images\1.png') }}" alt="#" class="object-cover rounded-lg">
+                        <div>
+                            <img src="{{ asset('storage/' . $product->productImage->image_url2) }}" alt=""
+                                style="width:100%; aspect-ratio: 1 / 1;"
+                                class="object-cover cursor-pointer rounded-lg border-2 border-[5C5C5C]"
+                                onclick="myFunction(this);">
                         </div>
-                        <div class="aspect-square w-[120px]  flex justify-start text-gray-500  *:rounded-lg">
-                            <img src="{{ asset('assets\images\1.png') }}" alt="#" class="object-cover rounded-lg">
+                        <div>
+                            <img src="{{ asset('storage/' . $product->productImage->image_url3) }}" alt=""
+                                style="width:100%; aspect-ratio: 1 / 1;"
+                                class="object-cover cursor-pointer rounded-lg border-2 border-[5C5C5C]"
+                                onclick="myFunction(this);">
                         </div>
                     </div>
                     <div
@@ -40,46 +50,46 @@
                 <div class="ml-8 flex flex-col w-full">
                     <div class="text-[38px]">
                         <div class="font-bold">{{ $product->product_name }}</div>
-                        <div>Rp. {{ $product->price }}</div>
+                        <div>Rp. {{ number_format($product->price, 2, ',', '.') }}/hari</div>
+
                     </div>
                     <div class="mt-4 text-[20px] flex flex-col gap-3">
-                        <div>Tersedia: {{ $product->stock }}</div>
+                        <div>Tersedia: {{ $product->stock }} stok</div>
                         <div>Kondisi: {{ $product->condition }}</div>
+                        <div>Kategori: {{ $product->category->category_name }}</div>
                     </div>
-                    <div class="mt-4 text-[20px]">Deskripsi:
+                    <div class="mt-3 text-[20px]">Deskripsi:
                         <div
                             class="bg-white border-2 border-[#C6C6C6] rounded-lg w-[700px] h-48 text-[10px] overflow-scroll">
                             <div class="p-2 w-full text-[14px] text-justify ">{{ $product->description }}
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="w-full flex gap-4">
-                        <div class="mt-4">
-                            <label for="quantity" class="block text-sm font-medium text-black">Jumlah</label>
-                            <input type="number" id="quantity" name="quantity" class="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#003A5B]">
-                        </div>
-                        <div class="mt-4">
-                            <label for="start_date" class="block text-sm font-medium text-black">Tanggal Mulai</label>
-                            <input type="date" id="start_date" name="start_date"
-                                class="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#003A5B]">
-                        </div>
-                        <div class="mt-4">
-                            <label for="end_date" class="block text-sm font-medium text-black">Tanggal Kembali</label>
-                            <input type="date" id="end_date" name="end_date"
-                                class="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#003A5B]">
-                        </div>
-                    </div> --}}
-                    <div class="flex gap-4 mt-6">
-                        <form action="{{route('favorites.add', $product->id)}}" method="POST">
+                    <div class="flex gap-4 mt-6 ">
+                        <form action="{{ route('favorites.add', $product->id) }}" method="POST">
                             @csrf
-                            <button class="px-4 py-2 w-full bg-[#003A5B] text-white rounded-md shadow hover:bg-[#005484]">
+                            <button class="px-4 py-2 w-72 bg-[#003A5B] text-white rounded-md shadow hover:bg-[#005484]">
                                 Tambah ke Favorit
                             </button>
                         </form>
-                        <a href="{{route('index.transaction', $product->id)}}" class="px-4 py-2 w-full bg-[#FFDD00] text-black font-semibold rounded-md shadow hover:bg-[#B49C00]">Sewa Sekarang</a>
+                        <a href="{{ route('transaction.index', $product->id) }}"
+                            class="px-4 py-2 w-full bg-[#FFCC00] text-black font-semibold rounded-md shadow hover:bg-[#FFE57E] flex justify-center ">Sewa
+                            Sekarang</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        AOS.init();
+
+        function myFunction(imgs) {
+            var expandImg = document.getElementById("expandedImg");
+            var imgText = document.getElementById("imgtext");
+            expandImg.src = imgs.src;
+            imgText.innerHTML = imgs.alt;
+            expandImg.parentElement.style.display = "block";
+        }
+    </script>
+
 @endsection

@@ -20,21 +20,21 @@ class DatabaseSeeder extends Seeder
             'role_name' => 'Admin',
         ]);
 
-        // Category::create([
-        //     'category_name' => 'Alat Musik',
-        // ]);
+        Category::create([
+            'category_name' => 'Alat Musik',
+        ]);
 
-        // Category::create([
-        //     'category_name' => 'Multimedia',
-        // ]);
+        Category::create([
+            'category_name' => 'Multimedia',
+        ]);
 
-        // Category::create([
-        //     'category_name' => 'Audio',
-        // ]);
+        Category::create([
+            'category_name' => 'Audio',
+        ]);
 
-        // Category::create([
-        //     'category_name' => 'Alat Panggung',
-        // ]);
+        Category::create([
+            'category_name' => 'Alat Panggung',
+        ]);
 
         Role::create([
             'role_name' => 'User',

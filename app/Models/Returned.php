@@ -7,9 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Returned extends Model
 {
     protected $fillable = [
-        'product_id',
         'user_id',
-        'quantity',
+        'product_id',
+        'payment_id',
+        'delay_price',
+        'status',
+        'delay_payment_img',
+        'product_condition_img',
     ];
 
     public function product()
@@ -20,6 +24,11 @@ class Returned extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class);
     }
 
 }

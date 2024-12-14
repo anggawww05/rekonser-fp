@@ -22,19 +22,13 @@
                                 <div class="flex flex-col gap-8 w-[450px] h-[400px] justify-center items-center">
                                     <div class="w-60 h-60 rounded-full border border-black">
                                         <img src="{{ asset('storage/' . $user->picture_profile) }}" alt="#"
-                                            class="object-cover rounded-full overflow-hidden img-preview">
+                                            class="object-cover rounded-full overflow-hidden img-preview w-60 h-60">
                                     </div>
                                     <input type="file" name="picture_profile" id="picture_profile" class="hidden img-preview" accept="image/*">
                                     <label for="picture_profile"
                                         class="w-[140px] h-[40px] bg-[#F4F4F4] border-[2px] border-[#A4A4A4] rounded-lg text-[#A4A4A4] flex items-center justify-center cursor-pointer">
                                         Pilih Gambar
                                     </label>
-                                    {{-- <div class="mb-4">
-                                        <label for="productImage" class="block text-sm font-medium text-gray-700">Edit Foto</label>
-                                        <img src="{{asset('storage/' . $product->product_img)}}" alt="image" class="img-preview w-[300px] h-[300px] object-cover border-2 border-black rounded-lg">
-                                        <input type="file" id="productImage" name="product_img" accept="image/*"
-                                        class="input-file mt-1 block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-50 border-2 border-black">
-                                    </div> --}}
                                 </div>
 
                                 <div>
