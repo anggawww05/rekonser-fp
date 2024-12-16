@@ -8,12 +8,24 @@
             </a>
             <h1>Detail Produk</h1>
         </div>
-        @if (session()->has('success'))
-            <p>{{ session('success') }}</p>
-        @else
-            <p>{{ session('error') }}</p>
+        @if (session()->has('success') || session()->has('error'))
+            @if (session()->has('success'))
+            <div class="w-[1200px] h-[50px] rounded-lg p-3 bg-[#E5FFE7]  flex items-center border-2 border-[#007F00]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-[#007F00]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+                </svg>
+                <div class="text-[#007F00]">{{ session('success') }}</div>
+            </div>
+            @else
+            <div class="w-[1200px] h-[50px] rounded-lg p-3 bg-[#FFE5E5]  flex items-center border-2 border-[#7F0000]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-[#7F0000]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+                </svg>
+                <div class="text-[#7F0000]">{{ session('error') }}</div>
+            </div>
+            @endif
         @endif
-        <div class="mb-10 w-[1200px] bg-white rounded-xl shadow-lg border border-[#AAAAAA] p-8">
+        <div class="mb-10 w-[1200px] bg-white rounded-xl shadow-lg border border-[#AAAAAA] p-8 mt-2">
             <div class="w-full flex">
                 <div class="flex flex-col items-start">
                     <div class="container rounded-lg mb-2">

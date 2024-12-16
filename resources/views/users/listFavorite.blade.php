@@ -3,7 +3,7 @@
 @section('container')
     <div class="w-full bg-[#F6F6F6] pt-[80px] pb-[50px]">
         <div class="w-[1200px] flex justify-center mx-auto">
-            <div>
+            <div >
                 <div class="w-[1200px] text-[28px] font-semibold flex gap-4">
                     <div class="flex items-center gap-4 mb-5">
                         <a href="{{ route('profile') }}">
@@ -11,7 +11,7 @@
                         </a>
                         <h1>Favorit</h1>
                     </div>
-                    <form action="#" method="POST" class="ml-auto">
+                    <form action="{{route('favorites.view.search')}}" method="POST" class="ml-auto">
                         @csrf
                         <div class="relative">
                             <input type="text" name="search" placeholder="Cari Produk..."
@@ -27,7 +27,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="flex items-center flex-col gap-8 min-h-screen">
+                <div class="flex items-center flex-col gap-8">
                     <table class="w-[1220px] table-auto ">
                         <tbody>
                             @foreach ($user->favorites as $favoriteItem)
@@ -55,7 +55,7 @@
                         </tbody>
                     </table>
                 </div>
-                {{-- {{ $user->favorites->links('components.pagination') }} --}}
+                {{ $product->links('components.pagination') }}
             </div>
         </div>
     </div>

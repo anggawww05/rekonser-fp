@@ -81,6 +81,9 @@ class ReturnedController extends Controller
             ]);
         }
 
+        $product = Product::findOrFail($returned->product_id);
+        $product->increseStock($returned->payment->quantity);
+
         return redirect()->route('products')->with('success', 'Product created successfully.');
     }
 }
