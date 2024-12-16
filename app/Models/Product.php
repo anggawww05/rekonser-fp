@@ -45,5 +45,17 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function decreseStock($quantity)
+    {
+        $this->stock -= $quantity;
+        $this->save();
+    }
+
+    public function increseStock($quantity)
+    {
+        $this->stock += $quantity;
+        $this->save();
+    }
 }
 

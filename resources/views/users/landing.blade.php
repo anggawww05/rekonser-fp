@@ -36,13 +36,12 @@
             <h1 class="text-[40px] font-bold mb-2 text-[#002B43]" data-aos="flip-left">Kategori Produk</h1>
             <hr class="w-96 border-1 mb-24">
             <div class="flex items-center justify-center">
-                <div class="grid grid-cols-4 text-center gap-8">
+                <div class="grid grid-cols-4 text-center gap-8 mx-2">
                     <div data-aos="fade-up">
                         <img src="{{ asset('assets/images/kategori1.png') }}" class="w-28 h-28 mx-auto mb-2"
                             alt="Sound System">
                         <h2 class="text-2xl font-semibold text-[#002B43]">Multimedia</h2>
-                        <p class="text-lg text-gray-600 dark:text-gray-400">Peralatan audio berkualitas tinggi untuk acara
-                            musik Anda.</p>
+                        <p class="text-lg text-gray-600 dark:text-gray-400">Tersedia berbagai jenis</p>
                     </div>
                     <div data-aos="fade-up">
                         <img src="{{ asset('assets/images/kategori2.png') }}" class="w-28 h-28 mx-auto mb-2" alt="Lighting">
@@ -105,11 +104,6 @@
                 </ul>
                 </div>
             </div>
-
-            {{-- <div class="relative h-full w-full bg-fixed bg-center flex items-center justify-center text-center"
-                style="background-image: url('{{ asset('assets/images/benefit.jpg') }}');">
-                p
-            </div> --}}
         </div>
     </section>
     <script>

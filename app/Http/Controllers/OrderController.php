@@ -27,10 +27,10 @@ class OrderController extends Controller
         return view('users/listOrder', compact('payments'));
     }
 
-    public function indexhistorys()
-    {
-        $user_id = Auth::user()->id;
-        $payments = Payment::where('user_id', $user_id)->with('product')->get();
-        return view('users/historyUser', compact('payments'));
-    }
+    // public function indexhistorys()
+    // {
+    //     $user_id = Auth::user()->id;
+    //     $payments = Payment::where('user_id', $user_id)->with('product')->get();
+    //     return view('users/historyUser', compact('payments'));
+    // }
 }

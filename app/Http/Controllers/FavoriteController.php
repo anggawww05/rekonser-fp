@@ -14,7 +14,7 @@ class FavoriteController extends Controller
         $user = Auth::user();
 
         if (Favorite::where('user_id', $user->id)->where('product_id', $product->id)->first()) {
-            return redirect()->back()->with('error', 'Produk sudah ada di favorit.');
+            return redirect()->back()->with('error', 'Produk sudah ada di list favorit.');
         }
 
         $data = [
@@ -34,15 +34,13 @@ class FavoriteController extends Controller
 
     public function viewFavorites(Request $request)
     {
-        // if ($request->has('search')) {
-        //     $search = $request->input('search');
-        //     $product = Auth::user()->favorites()->where('name', 'like', '%' . $search . '%')->paginate(10);
-        // } else {
-        //     $product = Auth::user()->favorites()->paginate(10);
-        // }
-
-        $product = Auth::user()->favorites;
         $user = Auth::user();
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $product = Auth::user()->favorites()->where('product_id', 'like', '%' . $search . '%')->paginate(10);
+        } else {
+            $product = Auth::user()->favorites()->with('product')->product()->paginate(10);
+        }
         return view('users/listFavorite', compact('user', 'product'));
     }
 }

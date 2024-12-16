@@ -34,7 +34,6 @@ class TransactionController extends Controller
         $image = $request->file('transaction_img');
         $image_url = $image->storeAs('transaction_img', $image->hashName(), 'public');
 
-
         $payment = Payment::create([
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
@@ -49,21 +48,18 @@ class TransactionController extends Controller
             'user_id' => auth()->user()->id,
         ]);
 
+        $product = Product::findOrFail($request->product_id);
+        $product->decreseStock($request->quantity);
+
         Returned::create([
             'payment_id' => $payment->id,
             'user_id' => auth()->user()->id,
             'product_id' => $request->product_id,
         ]);
-        // dd($payment);
 
-        return redirect()->route('indexorder')->with('success', 'Product created successfully.');
+        return redirect()->route('indexorder')->with('success', 'Transaksi berhasil.');
     }
 
-    // public function indexHistory()
-    // {
-    //     $user = Auth::user();
-    //     $payments = Payment::where('user_id', $user->id)->get();
-    //     return view('admin/historyTransaction', compact('payments'));
-    // }
+
 
 }

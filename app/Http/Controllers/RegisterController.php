@@ -31,6 +31,4 @@ class RegisterController extends Controller
         ]);
         return redirect('/login');
     }
-
-
 }
