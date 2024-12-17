@@ -35,12 +35,8 @@ class FavoriteController extends Controller
     public function viewFavorites(Request $request)
     {
         $user = Auth::user();
-        if ($request->has('search')) {
-            $search = $request->input('search');
-            $product = Auth::user()->favorites()->where('product_id', 'like', '%' . $search . '%')->paginate(10);
-        } else {
-            $product = Auth::user()->favorites()->with('product')->product()->paginate(10);
-        }
-        return view('users/listFavorite', compact('user', 'product'));
+        $favorites = Favorite::where('user_id', $user->id)->get();
+        $product = Product::whereIn('id', $favorites->pluck('product_id'))->with('productImage')->paginate(10);
+        return view('users/listFavorite', compact('user', 'product', 'favorites'));
     }
 }

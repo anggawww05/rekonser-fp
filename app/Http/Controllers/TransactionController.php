@@ -19,7 +19,6 @@ class TransactionController extends Controller
 
     public function storeTransaction(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             'start_date' => ['required'],
             'end_date' => ['required'],

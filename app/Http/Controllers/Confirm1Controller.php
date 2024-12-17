@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Confirm1Controller extends Controller
 {
+    //menampilkan tabel konfirmasi pembayaran
     public function indexConfirm1(Request $request)
     {
         if ($request->has('search')) {
@@ -43,7 +44,6 @@ class Confirm1Controller extends Controller
     public function indexdetail($id)
     {
         $payment = Payment::find($id);
-
         return view('admin/proofRent', compact('payment'));
     }
 }

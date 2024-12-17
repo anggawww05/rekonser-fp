@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 
 class Confirm2Controller extends Controller
 {
+    //menampilkan tabel konfirmasi pengembalian
     public function indexConfirm2(Request $request)
     {
         if ($request->has('search')) {
@@ -23,6 +24,7 @@ class Confirm2Controller extends Controller
         return view('admin/confirmReturn', compact('returneds'));
     }
 
+    //tombol aksi persetujuan konfirmasi pengembalian
     public function edit(Returned $returned, Request $request)
     {
         $request->validate([
@@ -32,6 +34,7 @@ class Confirm2Controller extends Controller
         return redirect()->back()->with('success', 'Product created successfully.');
     }
 
+    //menampilkan detail konfirmasi pengembalian
     public function indexdetail(Product $product, Returned $returned)
     {
         $user_id = Auth::user()->id;

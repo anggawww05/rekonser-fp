@@ -74,6 +74,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/manage-confirm-return/proof-return/{returned}', [Confirm2Controller::class, 'indexdetail'])->name('index.proof.return');
     Route::get('/history-transactions', [HistoryController::class, 'indexhistorysadmin'])->name('history');
     Route::post('/history-transactions', [HistoryController::class, 'indexhistorysadmin'])->name('history.search');
+    Route::post('/profile/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
 

@@ -11,11 +11,11 @@
                         </a>
                         <h1>Pesanan Saya</h1>
                     </div>
-                    <form action="{{route('indexorder.search')}}" method="POST" class="ml-auto">
+                    <form action="{{ route('indexorder.search') }}" method="POST" class="ml-auto">
                         @csrf
                         <div class="relative">
-                            <input type="text" name="search" placeholder="Cari Pesanan..."
-                                class="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <input type="text" name="search" placeholder="Cari Produk..."
+                                class="font-normal pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-1 focus:ring-[#003A5B] focus:border-[#003A5B]">
                             <button type="submit" class="absolute inset-y-0 left-0 flex items-center pl-3">
                                 <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -41,7 +41,8 @@
                         </thead>
                         <tbody>
                             @foreach ($payments as $payment)
-                                <tr class="text-center w-full bg-white ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg" data-aos="fade-up">
+                                <tr class="text-center w-full bg-white ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg"
+                                    data-aos="fade-up">
                                     <td class=" w-[5%] p-4">
                                         {{ ($payments->currentPage() - 1) * $payments->perPage() + $loop->iteration }}</td>
                                     <td class=" w-[25%] p-4">{{ $payment->product->product_name }}</td>

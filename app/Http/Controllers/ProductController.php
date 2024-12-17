@@ -23,16 +23,31 @@ class ProductController extends Controller
     }
 
 
+    // public function indexProducts(Request $request)
+    // {
+
+    //     if ($request->has('search')) {
+    //         $search = $request->input('search');
+    //         $products = Product::where('product_name', 'like', '%' . $search . '%')->with('productImage')->paginate(12);
+    //     } else {
+    //         $products = Product::with('productImage')->paginate(12);
+    //     }
+    //     // dd($products[0]->productImage->image_url1);
+    //     return view('users/Products', compact('products'));
+    // }
+
     public function indexProducts(Request $request)
     {
-
         if ($request->has('search')) {
             $search = $request->input('search');
-            $products = Product::where('product_name', 'like', '%' . $search . '%')->with('productImage')->paginate(12);
+            $products = Product::where('product_name', 'like', '%' . $search . '%')->with('productImage')
+                ->inRandomOrder()
+                ->paginate(12);
         } else {
-            $products = Product::with('productImage')->paginate(12);
+            $products = Product::with('productImage')
+                ->inRandomOrder()
+                ->paginate(12);
         }
-        // dd($products[0]->productImage->image_url1);
         return view('users/Products', compact('products'));
     }
 
@@ -79,9 +94,9 @@ class ProductController extends Controller
 
         ProductImage::create([
             'product_id' => $product->id,
-            'image_url1' => $filePath[0]??null,
-            'image_url2' => $filePath[1]??null,
-            'image_url3' => $filePath[2]??null,
+            'image_url1' => $filePath[0] ?? null,
+            'image_url2' => $filePath[1] ?? null,
+            'image_url3' => $filePath[2] ?? null,
         ]);
         return redirect()->route('manage.products')->with('success', 'Product created successfully.');
     }
@@ -90,7 +105,6 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $category = Category::all();
-        // dd($product);
         return view('admin/editProduct', compact('product', 'category'));
     }
 
@@ -108,9 +122,9 @@ class ProductController extends Controller
         ]);
 
         $filePath = [];
-        if ($request->hasFile('product_img')){
-            foreach ($request->file('product_img') as $key => $image) {
-                $filePath[$key] = $image->storeAs('product_img', $image->hashName(), 'public');
+        if ($request->hasFile('product_img*')) {
+            foreach ($request->file('product_img*') as $key => $image) {
+                $filePath[$key] = $image->storeAs('product_img*', $image->hashName(), 'public');
             }
         }
 
@@ -124,28 +138,33 @@ class ProductController extends Controller
         ]);
 
         $productImage = ProductImage::where('product_id', $product->id)->first();
-        if (count($filePath) == 0){
+        if (empty($filePath)) {
             $productImage->update([
-                'image_url1' => $productImage->img_url1 ?? null,
-                'image_url2' => $productImage->img_url2 ?? null,
-                'image_url3' => $productImage->img_url3 ?? null,
+                'image_url1' => $productImage->image_url1 ?? null,
+                'image_url2' => $productImage->image_url2 ?? null,
+                'image_url3' => $productImage->image_url3 ?? null,
             ]);
-        }
-        else{
+        } else {
             $productImage->update([
                 'image_url1' => $filePath[0] ?? null,
                 'image_url2' => $filePath[1] ?? null,
                 'image_url3' => $filePath[2] ?? null,
             ]);
         }
+        dd($productImage);
         return redirect()->route('manage.products')->with('success', 'Product updated successfully.');
     }
 
     public function delete(string $id)
     {
         $product = Product::with('productImage')->find($id);
-        // $product->productImage->delete();
-        $product->delete();
-        return redirect()->route('manage.products')->with('success', 'Product deleted successfully.');
+
+        if ($product) {
+            $product->productImage()->delete();
+            $product->delete();
+            return redirect()->route('manage.products')->with('success', 'Product deleted successfully.');
+        }
+
+        return redirect()->route('manage.products')->with('error', 'Product not found.');
     }
 }

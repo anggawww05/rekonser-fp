@@ -1,7 +1,7 @@
 @extends('users.main')
 
 @section('container')
-    <div class="w-full h-screen bg-[#F6F6F6] pt-[80px] pb-24">
+    <div class="w-full bg-[#F6F6F6] pt-[80px] pb-24">
         <div class="w-[1200px] flex justify-center mx-auto">
             <div>
                 <div class="w-[1200px] text-[28px] font-semibold flex gap-4">
@@ -14,8 +14,8 @@
                     <form action="{{ route('returns.list.search') }}" method="POST" class="ml-auto">
                         @csrf
                         <div class="relative">
-                            <input type="text" name="search" placeholder="Cari Pesanan..."
-                                class="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <input type="text" name="search" placeholder="Cari Produk..."
+                                class="font-normal pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-1 focus:ring-[#003A5B] focus:border-[#003A5B]">
                             <button type="submit" class="absolute inset-y-0 left-0 flex items-center pl-3">
                                 <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">

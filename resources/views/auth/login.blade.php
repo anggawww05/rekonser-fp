@@ -26,7 +26,7 @@
                     <div class="text-[#7F0000]">{{ session('error') }}</div>
                 </div>
             @endif
-            <form action="{{ route('login') }}" method="POST">
+            <form action="{{ route('auth') }}" method="POST">
                 @csrf
                 <div class="flex flex-col gap-3" data-aos="fade-up">
                     <div class="text-black text-[20px] font-semibold">Email

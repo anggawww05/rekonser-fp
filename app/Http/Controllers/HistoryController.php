@@ -18,6 +18,7 @@ class HistoryController extends Controller
         return view('users/historyUser', compact('payments'));
     }
 
+    //menampilkan laporan transaksi di admin
     public function indexhistorysadmin(Request $request)
     {
         if ($request->has('search')) {

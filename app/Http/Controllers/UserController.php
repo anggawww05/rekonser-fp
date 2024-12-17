@@ -9,17 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function index(Request $request)
-    {
-        if ($request->has('search')) {
-            $search = $request->input('search');
-            $users = User::where('user_name', 'like', '%' . $search . '%')->paginate(10);
-        } else {
-            $users = User::paginate(10);
-        }
-        $role = Role::paginate(10);
-        return view('admin/manageUsers', compact('users', 'role'));
-    }
 
     public function indexprofile()
     {
@@ -72,6 +61,8 @@ class UserController extends Controller
         return view('admin/profileadmin', compact('user', 'role'));
     }
 
+
+
     public function updateadmin(Request $request, string $id)
     {
         $request->validate([
@@ -102,6 +93,20 @@ class UserController extends Controller
         return redirect()->route('dashboard')->with('success', 'User updated successfully.');
     }
 
+    //menampilkan halamaman manage user
+    public function index(Request $request)
+    {
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $users = User::where('user_name', 'like', '%' . $search . '%')->paginate(10);
+        } else {
+            $users = User::paginate(10);
+        }
+        $role = Role::paginate(10);
+        return view('admin/manageUsers', compact('users', 'role'));
+    }
+
+    //menampilkan halaman edit user
     public function profileUser($id)
     {
         $role = Role::all();
@@ -109,6 +114,7 @@ class UserController extends Controller
         return view('admin/profileuser', compact('user', 'role'));
     }
 
+    //mengirimkan data perubahan user ke database
     public function updateuser(Request $request, string $id)
     {
         $request->validate([
@@ -141,12 +147,10 @@ class UserController extends Controller
         return redirect()->route('users')->with('success', 'User updated successfully.');
     }
 
+    //menghapus user
     public function delete(string $id)
     {
         $user = User::find($id);
-        if (!$user) {
-            return redirect()->route('users')->with('error', 'User not found.');
-        }
         $user->delete();
         return redirect()->route('users')->with('success', 'User deleted successfully.');
     }
