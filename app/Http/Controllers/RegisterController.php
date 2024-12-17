@@ -16,7 +16,7 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $id_user = 2;
+        $id_user = 2; //role user
         $request->validate([
             'user_name' => 'required',
             'email' => 'required|email',

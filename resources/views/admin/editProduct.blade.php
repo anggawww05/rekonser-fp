@@ -25,12 +25,16 @@
                 <div class="flex flex-row gap-4 mt-5">
                     <div>
                         <div class="mb-4 text-lg font-medium ">
-                            <img src="{{ asset('storage/' . $product->product_img) }}" alt="image"
+                            {{-- <img src="{{ asset('storage/' . $product->product_img) }}" alt="image"
                                 class="img-preview w-[450px] h-[450px] object-cover border-2 border-gray-300 rounded-lg">
                             <input type="file" id="productImage" name="product_img[]" accept="image/*"
                                 class="font-normal text-sm mt-3 input-file w-60 rounded-md shadow-sm focus:ring focus:ring-opacity-50 border-2 border-gray-300"
-                                multiple>
+                                multiple> --}}
 
+                            <img src="{{ asset('storage/' . $product->product_img) }}" alt="image"
+                                class="img-preview  object-cover border-2 border-gray-300 rounded-lg w-[400px] h-[400px]">
+                            <input type="file" id="productImage" name="picture_profile" accept="image/*"
+                                class="font-normal text-sm mt-3 input-file w-60 rounded-md shadow-sm focus:ring focus:ring-opacity-50 border-2 border-gray-300" multiple>
                         </div>
                     </div>
                     <div class="w-full flex flex-col gap-2">

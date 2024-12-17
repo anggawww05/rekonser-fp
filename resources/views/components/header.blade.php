@@ -7,7 +7,7 @@
             <div class="flex flex-row justify-end md:order-2 space-x-3 md:space-x-1 rtl:space-x-reverse ">
 
                 @if (!auth()->user())
-                <a href="{{ route('register') }}"
+                <a href="{{ route('indexRegister') }}"
                     class="bg-white ring-1 ring-[#002B43] text-[#002B43] hover:text-white hover:bg-[#004870] focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-8 py-2 text-center">Daftar</a>
                 <a href="{{ route('login') }}"
                     class="text-white ring-1 ring-[#002B43] bg-[#002B43] hover:bg-[#004870] font-semibold rounded-lg text-sm px-8 py-2 text-center">Masuk</a>
@@ -29,11 +29,11 @@
                             aria-current="page">Beranda</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="#kategori"
                             class="block py-2 px-3 text-white bg-[#002B43] rounded md:bg-transparent md:text-[#002B43] md:p-0 md:dark:text-blue-500 hover:text-[#0067A0]">Kategori</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="#tentangKami"
                             class="block py-2 px-3 text-white bg-[#002B43] rounded md:bg-transparent md:text-[#002B43] md:p-0 md:dark:text-blue-500 hover:text-[#0067A0]">Tentang
                             Kami</a>
                     </li>
@@ -46,3 +46,4 @@
         </div>
     </nav>
 </header>
+

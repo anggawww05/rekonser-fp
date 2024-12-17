@@ -26,14 +26,13 @@
             @foreach ($products as $product)
                 <div class="bg-white p-4 rounded-lg shadow-md border-2 mb-5 flex flex-col gap-2" data-aos="fade-up">
                     @csrf
-
                     <div class="flex justify-center">
                         <img src="{{ $product->productImage && $product->productImage->image_url1 ? asset('storage/' . $product->productImage->image_url1) : 'https://placehold.co/600x400' }}"
                             alt="{{ $product->name }}"
-                            class="h-[290px] w-[290px] object-cover rounded border-2 border-black">
+                            class="h-[290px] w-[290px] object-cover rounded border-2 border-gray-300">
                     </div>
                     <div class="text-[22px] font-semibold">{{ $product->product_name }}</div>
-                    <div class="text-[20px]">Rp. {{ number_format($product->price, 2, ',', '.') }}/hari</div>
+                    <div class="text-[20px]">Rp {{ number_format($product->price, 2, ',', '.') }}/hari</div>
                     <a href="{{ route('detailProduct', $product->id) }}"
                         class="bg-[#023552] hover:bg-[#025E93] text-white font-sb py-2 px-10 rounded flex justify-center">Lihat
                         Detail</a>

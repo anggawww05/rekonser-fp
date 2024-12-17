@@ -13,7 +13,6 @@ class Product extends Model
         'condition',
         'stock',
         'category_id',
-
     ];
 
     public function productImage()

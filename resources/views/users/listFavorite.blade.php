@@ -15,7 +15,7 @@
                         @csrf
                         <div class="relative">
                             <input type="text" name="search" placeholder="Cari Produk..."
-                                class="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                class="font-normal pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-1 focus:ring-[#003A5B] focus:border-[#003A5B]">
                             <button type="submit" class="absolute inset-y-0 left-0 flex items-center pl-3">
                                 <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -30,19 +30,19 @@
                 <div class="flex items-center flex-col gap-8">
                     <table class="w-[1220px] table-auto ">
                         <tbody>
-                            @foreach ($user->favorites as $favoriteItem)
+                            @foreach ($product as $key => $item)
                                 <tr class="text-center w-full bg-white ring-1 ring-[#AAAAAA] inline-table my-1 rounded-lg text-xl">
                                     <td class="w-[7%]">
-                                        <img src="{{ asset('storage/' . $favoriteItem->product->productImage->image_url1) }}"
-                                            alt="#" class="aspect-square w-[80px] h-[80px] object-cover bg-gray-300 flex items-center justify-center text-gray-500 border rounded-lg m-2">
+                                        <img src="{{ asset('storage/' . $item->productImage->image_url1) }}"
+                                        alt="#" class="aspect-square w-[80px] h-[80px] object-cover bg-gray-300 flex items-center justify-center text-gray-500 border rounded-lg m-2">
                                     </td>
                                     <td class=" w-[73%] p-4 text-left ">
-                                        <p class=" font-semibold">{{ $favoriteItem->product->product_name }}</p>
-                                        <p>Rp. {{ number_format($favoriteItem->product->price, 2, ',', '.') }}/hari</p>
+                                        <p class=" font-semibold">{{ $item->product_name }}</p>
+                                        <p>Rp. {{ number_format($item->price, 2, ',', '.') }}/hari</p>
                                     <td class="w-[20%]  p-4 text-center">
                                         <div class=" w-[120px] flex flex-row gap-2 text-sm">
-                                            <a href="{{route("detailProduct", $favoriteItem->product->id)}}",  class=" px-10 bg-[#003A5B] text-white rounded-lg hover:bg-[#004A73] transition flex items-center">Lihat</a>
-                                            <form action="{{route('favorites.remove', $favoriteItem->id)}}" method="POST">
+                                            <a href="{{route("detailProduct", $item->id)}}",  class=" px-10 bg-[#003A5B] text-white rounded-lg hover:bg-[#004A73] transition flex items-center">Lihat</a>
+                                            <form action="{{route('favorites.remove', $favorites[$key])}}" method="POST">
                                                 @csrf
                                                 <button type="submit"
                                                     class="w-[100px] h-[40px] bg-red-700 text-white rounded-lg hover:bg-red-500 transition">Hapus
