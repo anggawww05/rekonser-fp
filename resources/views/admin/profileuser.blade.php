@@ -25,7 +25,7 @@
                     <form action="{{ route('update-profile-admin', Auth::user()->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div>
-                            <div class="mb-4 text-lg font-medium ">
+                            <div class="mb-4 text-lg font-medium w-[450px] h-[450px]">
                                 <img src="{{ asset('storage/' . $user->picture_profile) }}" alt="image"
                                     class="img-preview w-[400px] h-[400px] object-cover border-2 border-gray-300 rounded-lg">
                                 <input type="file" id="productImage" name="picture_profile" accept="image/*"

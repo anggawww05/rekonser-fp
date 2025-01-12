@@ -4,8 +4,8 @@
     <div class="p-4 sm:ml-64">
         <div class="p-4">
             <div class="sm:rounded-lg" data-aos="fade-up">
-                <div class="pb-4">
-                    <form action="{{ route('confirm-return.search') }}" method="POST">
+                <div class="pb-4 flex flex-row gap-2 items-center">
+                    <form action="#" method="POST">
                         @csrf
                         <label for="table-search" class="sr-only">Search</label>
                         <div class="relative">
@@ -24,6 +24,18 @@
                     </form>
 
                 </div>
+                <form action="{{ route('view-pdf1') }}" method="POST">
+                    @csrf
+                    <div class="pb-4 flex flex-row gap-2 items-center">
+                        <input type="date" id="start-date" name="start_date"
+                            class="block w-[150px] text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-[#002B43]">
+                        -
+                        <input type="date" id="end-date" name="end_date"
+                            class="block w-[150px] text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-[#002B43]">
+
+                        <button type="submit" class="px-4 py-2 bg-[#002B43] hover:bg-[#025E93] transition text-white rounded-lg">Download</button>
+                    </div>
+                </form>
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-white bg-[#002B43] dark:bg-gray-700 dark:text-gray-400">
@@ -38,10 +50,10 @@
                                     Produk
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Detail Sewa
+                                    Total Pembayaran Denda
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Aksi
+                                    Tanggal Transaksi
                                 </th>
                             </tr>
                         </thead>
@@ -52,29 +64,21 @@
                                         {{ ($returneds->currentPage() - 1) * $returneds->perPage() + $loop->iteration }}
                                     </td>
                                     <th scope="row" class="px-6 py-4 font-medium">
-                                        {{ $returned->user->user_name }}
+                                        {{ $returned->payment->user->user_name }}
                                     </th>
                                     <td class="px-6 py-4">
-                                        {{ $returned->product->product_name }}
+                                        {{ $returned->payment->product->product_name }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <a href="{{ route('index.proof.return', $returned->id) }}"
-                                            class="bg-[#002B43] w-16 h-7 p-2 rounded-lg text-white hover:bg-[#003654]">
-                                            Lihat Detail
-                                        </a>
+                                        Rp.
+                                        {{ number_format($returned->delay_price, 2, ',', '.') }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <form action="{{ route('confirm-return.edit', $returned->id) }}" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="status" value="success">
-                                            @if ($returned->payment->status == 'active')
-                                                <button
-                                                    class = "bg-green-500 p-4 w-20 h-5 flex items-center justify-center rounded-lg text-white hover:bg-green-400"
-                                                    type="submit">
-                                                    Setuju
-                                                </button>
-                                            @endif
-                                        </form>
+                                        @if ($returned->delay_price==0)
+                                            -
+                                        @else
+                                            {{ \Carbon\Carbon::parse($returned->created_at)->translatedFormat('d F Y') }}
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

@@ -67,6 +67,13 @@
                                                 </div>
                                             @break
 
+                                            @case('success')
+                                                <div
+                                                    class="w-36 mx-auto m-2 bg-[#ECECEC] text-[#404040] rounded-lg py-1 border-2 border-[#404040]">
+                                                    Selesai
+                                                </div>
+                                            @break
+
                                             @default
                                                 <div
                                                     class=" w-36 mx-auto m-2 box-border bg-[#FFF8CD] text-[#655800] rounded-lg py-1 border-2 border-[#655800]">

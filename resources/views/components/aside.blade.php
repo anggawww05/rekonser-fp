@@ -79,12 +79,23 @@
                         <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
                         <path d="M14 3v5h5M16 13H8M16 17H8M10 9H8" />
                     </svg>
-                    <span class="flex-1 ms-3 whitespace-nowrap">Laporan Transaksi</span>
+                    <span class="flex-1 ms-3 whitespace-nowrap">Laporan Sewa</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('returned.report')}}"
+                    class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93] @if(Route::is('returned.report')) bg-[#025E93] @endif">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
+                        <path d="M14 3v5h5M16 13H8M16 17H8M10 9H8" />
+                    </svg>
+                    <span class="flex-1 ms-3 whitespace-nowrap">Laporan Kembali</span>
                 </a>
             </li>
         </ul>
         <div class="mt-5">
-            <form action="{{ route('logout') }}" method="POST">
+            <form action="{{ route('logout.admin') }}" method="POST">
                 @csrf
                 <button type="submit"
                     class="w-full px-4 py-2 text-white bg-red-600 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">

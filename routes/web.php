@@ -74,9 +74,13 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/manage-confirm-return/proof-return/{returned}', [Confirm2Controller::class, 'indexdetail'])->name('index.proof.return');
     Route::get('/history-transactions', [HistoryController::class, 'indexhistorysadmin'])->name('history');
     Route::post('/history-transactions', [HistoryController::class, 'indexhistorysadmin'])->name('history.search');
-    Route::post('/profile/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/returneds-report', [HistoryController::class, 'indexReturnedsreport'])->name('returned.report');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout.admin');
 });
 
+Route::post('/view-rent-report-pdf', [PageController::class, 'viewPDF'])->name('view-pdf');
+Route::post('/view-returned-report-pdf', [PageController::class, 'viewPDF1'])->name('view-pdf1');
+// Route::post('/view-pdf', [PageController::class, 'postPDF'])->name('view-pdf');
 
 
 

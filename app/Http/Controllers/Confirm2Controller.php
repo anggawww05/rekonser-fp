@@ -7,7 +7,6 @@ use App\Models\Product;
 use App\Models\Returned;
 // use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-// use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 
 class Confirm2Controller extends Controller
@@ -17,9 +16,9 @@ class Confirm2Controller extends Controller
     {
         if ($request->has('search')) {
             $search = $request->input('search');
-            $returneds = Returned::where('user_name', 'like', '%' . $search . '%')->whereNotIn('status', ['active', 'success'])->paginate(10);
+            $returneds = Returned::where('user_name', 'like', '%' . $search . '%')->whereIn('status', ['pending'])->paginate(10);
         } else {
-            $returneds = Returned::whereNotIn('status', ['active', 'success'])->paginate(10);
+            $returneds = Returned::with('payment')->whereIn('status', ['pending', 'pending'])->paginate(10);
         }
         return view('admin/confirmReturn', compact('returneds'));
     }
@@ -30,7 +29,11 @@ class Confirm2Controller extends Controller
         $request->validate([
             'status' => ['required', 'string'],
         ]);
+
         $returned->update(['status' => $request->status]);
+        $payment = Payment::where('id', $returned->payment_id)->first();
+        $payment->update(['status' => $request->status]);
+        // dd($request->status);
         return redirect()->back()->with('success', 'Product created successfully.');
     }
 

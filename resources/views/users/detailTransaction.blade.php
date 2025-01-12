@@ -19,6 +19,19 @@
                     </ul>
                 </div>
             @endif
+
+            @if (session()->has('error'))
+                <div class="w-full h-[50px] rounded-lg p-3 bg-[#FFE5E5]  flex items-center border-2 border-[#7F0000]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-[#7F0000]" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+                    </svg>
+                    <div class="text-[#7F0000]">{{ session('error') }}</div>
+                </div>
+            @endif
+
+
             <form action="{{ route('transaction.store', $product->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -87,13 +100,13 @@
 
                             <div class="flex items-center gap-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="size-8">
-                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                <line x1="16" y1="2" x2="16" y2="6"></line>
-                                <line x1="8" y1="2" x2="8" y2="6"></line>
-                                <line x1="3" y1="10" x2="21" y2="10"></line>
-                            </svg>
+                                    fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="size-8">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
 
                                 <div>
                                     <p class="text-[15px] ">Mulai Sewa</p>
@@ -101,13 +114,16 @@
                                 </div>
                             </div>
 
-                            <!-- Durasi Sewa -->
                             <div class="flex items-center gap-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="size-8 flex-shrink-0">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                <svg class="w-16 h-16 text-gray-800 dark:text-white" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z" />
                                 </svg>
+
+
                                 <div>
                                     <p class="text-[15px]">Jumlah Produk</p>
                                     <input type="number" name="quantity" class="quantity rounded-lg">
@@ -115,8 +131,9 @@
                             </div>
 
                             <div class="flex items-center gap-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="#000000" stroke-width="2" class="size-8">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2"
+                                    class="size-8">
                                     <line x1="12" y1="1" x2="12" y2="23"></line>
                                     <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                                 </svg>
@@ -131,14 +148,15 @@
 
                             <!-- Lama Sewa -->
                             <div class="flex items-center gap-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="size-8">
-                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                <line x1="16" y1="2" x2="16" y2="6"></line>
-                                <line x1="8" y1="2" x2="8" y2="6"></line>
-                                <line x1="3" y1="10" x2="21" y2="10"></line>
-                            </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="size-8">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2">
+                                    </rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
                                 <div>
                                     <p class="text-[15px] ">Sewa Kembali</p>
                                     <input type="date" name="end_date" class="end_date rounded-lg">
@@ -146,14 +164,14 @@
                             </div>
 
                             <div class="flex items-center gap-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2"
-                                    class="size-8">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2">
-                                    </rect>
-                                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100"
+                                    height="100" class="w-11 h-11">
+                                    <circle cx="50" cy="50" r="45" stroke="black" stroke-width="8"
+                                        fill="none" />
+                                    <line x1="50" y1="50" x2="50" y2="20" stroke="black"
+                                        stroke-width="8" />
+                                    <line x1="50" y1="50" x2="75" y2="50" stroke="black"
+                                        stroke-width="8" />
                                 </svg>
                                 <div>
                                     <p class="text-[15px]">Durasi Sewa</p>

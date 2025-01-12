@@ -32,8 +32,9 @@ class ReturnedController extends Controller
             $return->status = 'delay';
             }
         }
-
+        // dd($returns);
         return view('users/listReturned', compact('returns'));
+
     }
 
     public function indexreturn(Payment $payment)

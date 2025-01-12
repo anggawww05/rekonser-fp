@@ -24,18 +24,15 @@ class Confirm1Controller extends Controller
 
     public function edit(Payment $payment, Request $request)
     {
+        // dd($request->status);
         $request->validate([
             'status' => ['required', 'string'],
         ]);
         $payment->update(['status' => $request->status]);
+        $returned = Returned::where('payment_id', $payment->id)->first();
 
-        Returned::create([
-            'delay_payment_img' => NULL,
-            'product_condition_img' => NULL,
+        $returned->update([
             'status' => $request->status,
-            'user_id' => auth()->user()->id,
-            'product_id' => $payment->product_id,
-            'payment_id' => $payment->id,
         ]);
 
         return redirect()->back()->with('success', 'Product created successfully.');

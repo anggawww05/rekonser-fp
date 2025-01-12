@@ -43,9 +43,42 @@
                     </div>
                 </div>
             </div>
+            <div class="w-full h-full mt-5 px-8 border-2 border-[#7F7F7F]x rounded-xl" data-aos="fade-up">
+                <canvas id="income_payment" class="w-full">
+                </canvas>
+            </div>
         </div>
     </div>
     <script>
         AOS.init();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const ctx = document.getElementById('income_payment');
+        const data = @json ($chart_datas);
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober',
+                    'November', 'Desember'
+                ],
+                datasets: [{
+                    label: 'Grafik Pendapatan',
+                    data: [data.januari, data.februari, data.maret, data.april, data.mei, data.juni, data.juli,
+                        data.agustus, data.september, data.oktober, data.november, data.desember
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
     </script>
 @endsection

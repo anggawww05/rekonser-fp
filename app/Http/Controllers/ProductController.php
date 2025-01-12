@@ -118,13 +118,14 @@ class ProductController extends Controller
             'category' => ['required'],
             'condition' => ['required'],
             'stock' => ['required', 'numeric'],
-            'product_img*' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
-        ]);
+            'product_img*' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
 
+        ]);
+        // dd($request->all());
         $filePath = [];
-        if ($request->hasFile('product_img*')) {
-            foreach ($request->file('product_img*') as $key => $image) {
-                $filePath[$key] = $image->storeAs('product_img*', $image->hashName(), 'public');
+        if ($request->hasFile('product_img')) {
+            foreach ($request->file('product_img') as $key => $image) {
+                $filePath[$key] = $image->storeAs('product_img', $image->hashName(), 'public');
             }
         }
 
@@ -151,7 +152,7 @@ class ProductController extends Controller
                 'image_url3' => $filePath[2] ?? null,
             ]);
         }
-        dd($productImage);
+        // dd($productImage);
         return redirect()->route('manage.products')->with('success', 'Product updated successfully.');
     }
 

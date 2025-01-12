@@ -23,8 +23,8 @@
                 <hr class="mt-2 border-1 border-gray-300">
                 <div class="flex flex-row gap-4 mt-5">
                     <div>
-                        <div class="mb-4 text-lg font-medium ">
-                            <img src="#" alt="image"
+                        <div class="mb-4 text-lg font-medium w-[450px] h-[450px]">
+                            <img src="https://placehold.co/600x600?text=Upload+Foto" alt="image"
                                 class="img-preview w-[450px] h-[450px] object-cover border-2 border-gray-300 rounded-lg aspect-square">
                             <input type="file" id="productImage" name="product_img[]" accept="image/*"
                                 class="font-normal text-sm mt-3 input-file w-60 rounded-md shadow-sm focus:ring focus:ring-opacity-50 border-2 border-gray-300" required multiple>

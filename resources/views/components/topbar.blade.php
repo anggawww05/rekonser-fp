@@ -26,6 +26,8 @@
             <h1 class="text-2xl font-semibold">Konfirmasi Pengembalian</h1>
         @elseif(Route::is('history'))
             <h1 class="text-2xl font-semibold">Laporan Transaksi</h1>
+        @elseif(Route::is('returned.report'))
+            <h1 class="text-2xl font-semibold">Laporan Pengembalian</h1>
         @endif
 
         <div class="flex items-center">
