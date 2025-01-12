@@ -4,12 +4,13 @@
     <div class="p-4 sm:ml-64">
         <div class="p-4">
             <div class="sm:rounded-lg" data-aos="fade-up">
-                <div class="pb-4">
+                <div class="pb-4 flex flex-row gap-2 items-center">
                     <form action="{{ route('history.search') }}" method="POST">
                         @csrf
                         <label for="table-search" class="sr-only">Search</label>
                         <div class="relative">
-                            <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <div
+                                class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
                                 <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -20,8 +21,21 @@
                                 class="block w-[400px] pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-[#002B43]"
                                 placeholder="Cari nama pengguna">
                         </div>
-                        <form action=""></form>
+                    </form>
+
                 </div>
+                <form action="{{route('view-pdf')}}" method="POST">
+                    @csrf
+                    <div class="pb-4 flex flex-row gap-2 items-center">
+                        <input type="date" id="start-date" name="start_date"
+                            class="block w-[150px] text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-[#002B43]">
+                        -
+                        <input type="date" id="end-date" name="end_date"
+                            class="block w-[150px] text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-[#002B43]">
+
+                        <button type="submit" class="px-4 py-2 bg-[#002B43] hover:bg-[#025E93] transition text-white rounded-lg">Download</button>
+                    </div>
+                </form>
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-white bg-[#002B43] dark:bg-gray-700 dark:text-gray-400">
@@ -39,7 +53,7 @@
                                     Total Pembayaran
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Periode Sewa
+                                    Tanggal Transaksi
                                 </th>
                             </tr>
                         </thead>
@@ -57,10 +71,10 @@
                                     </td>
                                     <td class="px-6 py-4">
                                         Rp.
-                                        {{ number_format($payment->product->price * $payment->quantity * $payment->duration + $payment->delivery_price + $payment->returned->delay_price, 2, ',', '.') }}
+                                        {{ number_format($payment->product->price * $payment->quantity * $payment->duration + $payment->delivery_price, 2, ',', '.') }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $payment->start_date }} / {{ $payment->end_date }}
+                                        {{ \Carbon\Carbon::parse($payment->created_at)->translatedFormat('d F Y') }}
                                     </td>
                                 </tr>
                             @endforeach

@@ -55,8 +55,6 @@
                     </div>
                 </div>
 
-
-                <!-- Detail Pesanan -->
                 <div class="border rounded-lg shadow-sm p-4 bg-white">
                     <h2 class="text-lg font-semibold mb-3">Detail Pesanan</h2>
 

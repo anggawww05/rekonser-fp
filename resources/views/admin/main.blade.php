@@ -47,7 +47,7 @@
     <main>
         @yield('container')
     </main>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 
 </html>

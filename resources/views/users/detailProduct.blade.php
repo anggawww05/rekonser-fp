@@ -84,9 +84,9 @@
                                 Tambah ke Favorit
                             </button>
                         </form>
-                        <a href="{{ route('transaction.index', $product->id) }}"
-                            class="px-4 py-2 w-full bg-[#FFCC00] text-black font-semibold rounded-md shadow hover:bg-[#FFE57E] flex justify-center ">Sewa
-                            Sekarang</a>
+                        <button class="px-4 py-2 w-full bg-[#FFCC00] text-black font-semibold rounded-md shadow hover:bg-[#FFE57E] flex justify-center disabled:bg-red-600 disabled:text-white" onclick="window.location.href='{{ route('transaction.index', $product->id) }}'" @if ($product->stock==0) disabled @endif>
+                            @if ($product->stock==0) Produk Habis @else Sewa Sekarang @endif
+                        </button>
                     </div>
                 </div>
             </div>

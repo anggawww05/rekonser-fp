@@ -4,8 +4,8 @@
     <div class="p-4 sm:ml-64">
         <div class="p-4">
             <div class="sm:rounded-lg" data-aos="fade-up">
-                <div class="pb-4">
-                    <form action="{{ route('confirm-return.search') }}" method="POST">
+                <div class="pb-4 flex">
+                    <form action="{{ route('history.search') }}" method="POST">
                         @csrf
                         <label for="table-search" class="sr-only">Search</label>
                         <div class="relative">
@@ -22,7 +22,9 @@
                                 placeholder="Cari nama pengguna">
                         </div>
                     </form>
-
+                    <div class="px-8 py-4 bg-black text-white">
+                        <a href="{{route('view-pdf')}}">Download</a>
+                    </div>
                 </div>
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -38,49 +40,37 @@
                                     Produk
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Detail Sewa
+                                    Total Pembayaran
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Aksi
+                                    Periode Sewa
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($returneds as $returned)
+                            @foreach ($payments as $payment)
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-black">
                                     <td class="px-6 py-4">
-                                        {{ ($returneds->currentPage() - 1) * $returneds->perPage() + $loop->iteration }}
+                                        {{ ($payments->currentPage() - 1) * $payments->perPage() + $loop->iteration }}
                                     </td>
                                     <th scope="row" class="px-6 py-4 font-medium">
-                                        {{ $returned->user->user_name }}
+                                        {{ $payment->user->user_name }}
                                     </th>
                                     <td class="px-6 py-4">
-                                        {{ $returned->product->product_name }}
+                                        {{ $payment->product->product_name }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <a href="{{ route('index.proof.return', $returned->id) }}"
-                                            class="bg-[#002B43] w-16 h-7 p-2 rounded-lg text-white hover:bg-[#003654]">
-                                            Lihat Detail
-                                        </a>
+                                        Rp.
+                                        {{ number_format($payment->product->price * $payment->quantity * $payment->duration + $payment->delivery_price + $payment->returned->delay_price, 2, ',', '.') }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <form action="{{ route('confirm-return.edit', $returned->id) }}" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="status" value="success">
-                                            @if ($returned->payment->status == 'active')
-                                                <button
-                                                    class = "bg-green-500 p-4 w-20 h-5 flex items-center justify-center rounded-lg text-white hover:bg-green-400"
-                                                    type="submit">
-                                                    Setuju
-                                                </button>
-                                            @endif
-                                        </form>
+                                        {{ $payment->start_date }} / {{ $payment->end_date }}
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $returneds->links('components.pagination') }}
+                    {{ $payments->links('components.pagination') }}
                 </div>
             </div>
         </div>

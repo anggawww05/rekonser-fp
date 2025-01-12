@@ -30,6 +30,11 @@ class TransactionController extends Controller
             'product_id' => ['required', 'numeric'],
         ]);
 
+        $quantity = Product::findOrFail($request->product_id)->stock;
+        if ($quantity < $request->quantity) {
+            return redirect()->back()->with('error', 'Stok tidak mencukupi.');
+        }
+
         $image = $request->file('transaction_img');
         $image_url = $image->storeAs('transaction_img', $image->hashName(), 'public');
 
@@ -52,6 +57,7 @@ class TransactionController extends Controller
 
         Returned::create([
             'payment_id' => $payment->id,
+            'status' => 'pending',
             'user_id' => auth()->user()->id,
             'product_id' => $request->product_id,
         ]);

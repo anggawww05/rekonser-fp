@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained()->cascadeOnDelete();
             $table->foreignId('payment_id')->constrained()->cascadeOnDelete();
             $table->decimal('delay_price')->nullable();
-            $table->enum('status', ['active', 'pending', 'delay', 'success'])->default('active');
+            $table->enum('status', ['active', 'pending', 'delay', 'success']);
             $table->softDeletes('deleted_at', 0);
             $table->text('delay_payment_img')->nullable();
             $table->text('product_condition_img')->nullable();
