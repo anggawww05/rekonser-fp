@@ -4,7 +4,7 @@
     <div class="p-4 sm:ml-64">
         <div class="p-4">
             <div class="sm:rounded-lg" data-aos="fade-up">
-                <div class="pb-4 flex flex-row gap-2 items-center">
+                {{-- <div class="pb-4 flex flex-row gap-2 items-center">
                     <form action="{{ route('history.search') }}" method="POST">
                         @csrf
                         <label for="table-search" class="sr-only">Search</label>
@@ -23,7 +23,7 @@
                         </div>
                     </form>
 
-                </div>
+                </div> --}}
                 <form action="{{route('view-pdf')}}" method="POST">
                     @csrf
                     <div class="pb-4 flex flex-row gap-2 items-center">
