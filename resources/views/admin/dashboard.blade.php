@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full h-full mt-5 px-8 border-2 border-[#7F7F7F]x rounded-xl" data-aos="fade-up">
+            <div class="w-full h-full mt-5 px-8 border-2 border-[#7F7F7F] rounded-xl" data-aos="fade-up">
                 <canvas id="income_payment" class="w-full">
                 </canvas>
             </div>
