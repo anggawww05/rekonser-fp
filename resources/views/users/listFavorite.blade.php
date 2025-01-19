@@ -2,7 +2,7 @@
 
 @section('container')
     <div class="w-full bg-[#F6F6F6] pt-[80px] pb-[50px]">
-        <div class="w-[1200px] flex justify-center mx-auto">
+        <div class="w-[1200px] flex justify-center mx-auto" >
             <div >
                 <div class="w-[1200px] text-[28px] font-semibold flex gap-4">
                     <div class="flex items-center gap-4 mb-5">
@@ -27,7 +27,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="flex items-center flex-col gap-8">
+                <div class="flex items-center flex-col gap-8" data-aos="fade-up">
                     <table class="w-[1220px] table-auto ">
                         <tbody>
                             @foreach ($product as $key => $item)
@@ -59,4 +59,7 @@
             </div>
         </div>
     </div>
+    <script>
+        AOS.init();
+    </script>
 @endsection
