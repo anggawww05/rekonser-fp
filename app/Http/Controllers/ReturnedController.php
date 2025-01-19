@@ -20,7 +20,7 @@ class ReturnedController extends Controller
         if ($request->has('search')) {
             $search = $request->input('search');
             $query->whereHas('product', function ($q) use ($search) {
-            $q->where('name', 'like', '%' . $search . '%');
+            $q->where('product_name', 'like', '%' . $search . '%');
             });
         }
 

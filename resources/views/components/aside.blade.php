@@ -22,8 +22,7 @@
             <li>
                 <a href="{{ route('manage.products') }}"
                     class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93]
-                    @if(Route::is('manage.products')) bg-[#025E93]
-                    {{-- @elseif (Route::is('products.create')) bg-[#025E93] --}}
+                     @if(Route::is('manage.products') || Route::is('products.create') || Route::is('products.edit')) bg-[#025E93]
                     @endif">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="#ffffff" stroke-width="2" class="size-6">
@@ -36,7 +35,7 @@
             </li>
             <li>
                 <a href="{{ route('users') }}"
-                    class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93] @if(Route::is('users')) bg-[#025E93] @endif">
+                    class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93] @if(Route::is('users') || Route::is('users.detail')) bg-[#025E93] @endif">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="#ffffff" stroke-width="2" class="size-6">
                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -50,7 +49,7 @@
             <li>
                 <a href="{{ route('confirm-rent') }}"
                     class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93]
-                    @if(Route::is('confirm-rent')) bg-[#025E93]
+                    @if(Route::is('confirm-rent') || Route::is('index.proof.rent ')) bg-[#025E93]
                     @endif">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="#ffffff" stroke-width="2" class="size-6">
@@ -62,7 +61,7 @@
             </li>
             <li>
                 <a href="{{ route('confirm-return') }}"
-                    class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93] @if(Route::is('confirm-return')) bg-[#025E93] @endif">
+                    class="flex items-center p-2 text-[#DFDFDF] rounded-lg dark:text-white hover:bg-[#025E93] @if(Route::is('confirm-return') || Route::is('index.proof.return')) bg-[#025E93] @endif">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="#ffffff" stroke-width="2" class="size-6">
                         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>

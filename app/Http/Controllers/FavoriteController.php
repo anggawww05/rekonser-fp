@@ -36,7 +36,15 @@ class FavoriteController extends Controller
     {
         $user = Auth::user();
         $favorites = Favorite::where('user_id', $user->id)->get();
-        $product = Product::whereIn('id', $favorites->pluck('product_id'))->with('productImage')->paginate(10);
+        $productQuery = Product::whereIn('id', $favorites->pluck('product_id'))->with('productImage');
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $productQuery = $productQuery->where('product_name', 'like', '%' . $search . '%');
+        }
+
+        $product = $productQuery->paginate(10);
+
         return view('users/listFavorite', compact('user', 'product', 'favorites'));
     }
 }

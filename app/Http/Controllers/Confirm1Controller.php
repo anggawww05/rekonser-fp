@@ -15,7 +15,9 @@ class Confirm1Controller extends Controller
     {
         if ($request->has('search')) {
             $search = $request->input('search');
-            $payments = Payment::where('user_name', 'like', '%' . $search . '%')->where('status', 'pending')->paginate(10);
+            $payments = Payment::whereHas('user', function ($query) use ($search) {
+            $query->where('user_name', 'like', '%' . $search . '%');
+            })->where('status', 'pending')->paginate(10);
         } else {
             $payments = Payment::where('status', 'pending')->paginate(10);
         }
