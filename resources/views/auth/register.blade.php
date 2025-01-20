@@ -30,22 +30,18 @@
                 @csrf
                 <div class="flex flex-col gap-3" data-aos="fade-up">
                     <div class="block text-[20px] font-semibold text-black">Nama
-                        {{-- <label for="user_name" class="block text-[20px] text-black">Nama</label> --}}
                         <input type="text" id="user_name" name="user_name" placeholder="Masukkan nama"
                             class="w-full border border-gray-300 rounded-lg px-4 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-[#025E93] h-12 font-normal text-[16px]">
                     </div>
                     <div class="block text-[20px] font-semibold text-black">Email
-                        {{-- <label for="email" class="block text-[20px] text-black">Email </label> --}}
                         <input type="email" id="email" name="email" placeholder="Masukkan email"
                             class="w-full border border-gray-300 rounded-lg px-4 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-[#025E93] h-12 font-normal text-[16px]">
                     </div>
                     <div class="block text-[20px] font-semibold text-black">Kata Sandi
-                        {{-- <label for="password" class="block text-[20px] text-black">Kata Sandi</label> --}}
                         <input type="password" id="password" name="password" placeholder="Masukkan kata sandi"
                             class="w-full border border-gray-300 rounded-lg px-4 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-[#025E93] h-12 font-normal text-[16px]">
                     </div>
                     <div class="block text-[20px] font-semibold text-black">Konfirmasi Kata Sandi
-                        {{-- <label for="password_confirmation" class="block text-[20px] text-black">Konfirmasi Kata Sandi</label> --}}
                         <input type="password" id="password_confirmation" name="password_confirmation"
                             placeholder="Masukkan kata sandi"
                             class="w-full border border-gray-300 rounded-lg px-4 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-[#025E93] h-12 font-normal text-[16px]">
@@ -63,8 +59,6 @@
                 <a href="{{ route('login') }}" class="text-[#266CA9] text-[16px] hover:underline">masuk disini</a>
             </p>
         </div>
-
-        <!-- Right Section: Image -->
         <div class="w-1/2 flex items-center justify-center h-full">
             <img src="{{ asset('assets/images/backgroundMain.jpg') }}" alt="Illustration"
                 class="h-full w-full object-cover">

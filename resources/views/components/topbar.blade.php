@@ -29,7 +29,6 @@
         @elseif(Route::is('returned.report'))
             <h1 class="text-2xl font-semibold">Laporan Pengembalian</h1>
         @endif
-
         <div class="flex items-center">
             <a href="{{ route('edit-profile-admin', Auth::user()->id) }}"
                 class="flex items-center w-24 h-10 bg-[#002B43] rounded-lg mr-4 text-white hover:bg-[#004870] justify-center">
@@ -42,6 +41,5 @@
                 Admin
             </a>
         </div>
-
     </div>
 </div>

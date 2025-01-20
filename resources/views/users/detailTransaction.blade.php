@@ -3,7 +3,6 @@
 @section('container')
     <section id="detail-transaksi" class="bg-gray-100 min-h-screen py-8">
         <div class="max-w-4xl mx-auto space-y-6" data-aos="fade-up">
-            <!-- Header -->
             <div class="w-[1200px] text-[28px] font-semibold flex items-center gap-4 mt-9 mb-3">
                 <a href="{{ route('detailProduct', $product->id) }}">
                     <img class="h-6 " src="{{ asset('assets/images/backbutton.png') }}" alt="#">
@@ -19,7 +18,6 @@
                     </ul>
                 </div>
             @endif
-
             @if (session()->has('error'))
                 <div class="w-full h-[50px] rounded-lg p-3 bg-[#FFE5E5]  flex items-center border-2 border-[#7F0000]">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-[#7F0000]" fill="none"
@@ -30,8 +28,6 @@
                     <div class="text-[#7F0000]">{{ session('error') }}</div>
                 </div>
             @endif
-
-
             <form action="{{ route('transaction.store', $product->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -50,7 +46,6 @@
                                     <p class="text-[18px] font-semibold">{{ $user->user_name }}</p>
                                 </div>
                             </div>
-
                             <div class="flex items-center gap-4 mb-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-8 flex-shrink-0">
@@ -63,7 +58,6 @@
                                     <p class="text-[18px] font-semibold">{{ $user->phone_number }}</p>
                                 </div>
                             </div>
-
                             <div class="flex items-center gap-4 mb-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-8 flex-shrink-0">
@@ -80,12 +74,9 @@
 
                         </div>
                     </div>
-
                     <div class="border rounded-lg shadow-sm p-4 bg-white">
                         <h2 class="text-lg font-semibold mb-3">Detail Pesanan</h2>
-
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
-
                             <div class="flex items-center gap-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="#000000" stroke-width="2" class="size-8">
@@ -97,7 +88,6 @@
                                     <p class="text-[18px] font-semibold">{{ $product->product_name }}</p>
                                 </div>
                             </div>
-
                             <div class="flex items-center gap-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"
@@ -107,13 +97,11 @@
                                     <line x1="8" y1="2" x2="8" y2="6"></line>
                                     <line x1="3" y1="10" x2="21" y2="10"></line>
                                 </svg>
-
                                 <div>
                                     <p class="text-[15px] ">Mulai Sewa</p>
                                     <input type="date" name="start_date" class="start_date rounded-lg">
                                 </div>
                             </div>
-
                             <div class="flex items-center gap-4">
                                 <svg class="w-16 h-16 text-gray-800 dark:text-white" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
@@ -122,14 +110,11 @@
                                         stroke-width="2"
                                         d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z" />
                                 </svg>
-
-
                                 <div>
                                     <p class="text-[15px]">Jumlah Produk</p>
                                     <input type="number" name="quantity" class="quantity rounded-lg">
                                 </div>
                             </div>
-
                             <div class="flex items-center gap-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2"
@@ -144,9 +129,6 @@
                                             id="product_price">{{ $product->price }}</span></p>
                                 </div>
                             </div>
-
-
-                            <!-- Lama Sewa -->
                             <div class="flex items-center gap-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2"
@@ -185,7 +167,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="flex flex-col gap-2 bg-white p-4 rounded-lg shadow-sm">
                         <h2 class="text-lg font-semibold ">Pengiriman</h2>
                         <label class="flex items-center justify-between border-2 rounded-lg px-4 py-2 cursor-pointer ">
@@ -203,7 +184,6 @@
                             <span class="text-[18px] font-semibold">Rp. 0</span>
                         </label>
                     </div>
-
                     <div class="border rounded-lg shadow-sm p-4 bg-white">
                         <h2 class="text-lg font-semibold mb-3">Total Pembayaran</h2>
                         <div class="space-y-2">
@@ -222,7 +202,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="flex flex-col gap-2 bg-white p-4 rounded-lg shadow-sm">
                         <h2 class="text-lg font-semibold ">Metode Pembayaran</h2>
                         <form class="flex flex-col gap-3">
@@ -254,7 +233,6 @@
                             </label>
                         </form>
                     </div>
-
                     <div class="border rounded-lg shadow-sm p-4 bg-white">
                         <h2 class="text-lg font-semibold mb-3">Bukti Pembayaran</h2>
                         <div class="relative">

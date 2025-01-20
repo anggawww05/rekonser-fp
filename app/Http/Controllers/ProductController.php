@@ -22,20 +22,6 @@ class ProductController extends Controller
         return view('admin/manageproducts', compact('products'));
     }
 
-
-    // public function indexProducts(Request $request)
-    // {
-
-    //     if ($request->has('search')) {
-    //         $search = $request->input('search');
-    //         $products = Product::where('product_name', 'like', '%' . $search . '%')->with('productImage')->paginate(12);
-    //     } else {
-    //         $products = Product::with('productImage')->paginate(12);
-    //     }
-    //     // dd($products[0]->productImage->image_url1);
-    //     return view('users/Products', compact('products'));
-    // }
-
     public function indexProducts(Request $request)
     {
         if ($request->has('search')) {
@@ -55,7 +41,6 @@ class ProductController extends Controller
     {
 
         $product = Product::findOrFail($id);
-        // $category = Category::findOrFail($id);
         return view('users.detailProduct', compact('product'));
     }
 
@@ -121,7 +106,6 @@ class ProductController extends Controller
             'product_img*' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
 
         ]);
-        // dd($request->all());
         $filePath = [];
         if ($request->hasFile('product_img')) {
             foreach ($request->file('product_img') as $key => $image) {
@@ -152,7 +136,6 @@ class ProductController extends Controller
                 'image_url3' => $filePath[2] ?? null,
             ]);
         }
-        // dd($productImage);
         return redirect()->route('manage.products')->with('success', 'Product updated successfully.');
     }
 

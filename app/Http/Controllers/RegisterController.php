@@ -15,14 +15,13 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
         $id_user = 2; //role user
         $request->validate([
             'user_name' => 'required',
             'email' => 'required|email',
             'password' => 'required|confirmed',
         ]);
-        // dd($request);
+
         $user = User::create([
             'user_name' => $request->user_name,
             'email' => $request->email,

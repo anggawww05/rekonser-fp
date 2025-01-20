@@ -6,7 +6,6 @@
             <h1 class="text-[24px] text-center font-semibold">Profil Pengguna</h1>
             <div class="line h-[0.8px] w-[200px] bg-[#AAAAAA]"></div>
         </div>
-
         <div class ="flex items-center mt-5 mx-auto justify-between w-[600px] h-[120px] bg-white outline outline-1 outline-[#AAAAAA] rounded-xl p-4" data-aos="fade-up"
             id="profil">
             <div class = "flex items-center space-x-4">
@@ -21,7 +20,6 @@
                 class="bg-[#003A5B] h-[35px] w-[100px] text-[15px] text-white px-4 py-2 rounded hover:bg-[#004A73] transition">Edit
                 Profil</a>
         </div>
-
         <div class="flex flex-col items-center gap-2 mt-4 " data-aos="fade-up">
             <a href="{{ route('indexorder') }}">
                 <div

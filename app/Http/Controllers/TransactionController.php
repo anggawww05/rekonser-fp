@@ -64,7 +64,4 @@ class TransactionController extends Controller
 
         return redirect()->route('indexorder')->with('success', 'Transaksi berhasil.');
     }
-
-
-
 }

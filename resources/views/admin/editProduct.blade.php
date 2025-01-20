@@ -51,24 +51,11 @@
                             </div>
                         </div>
                         <div class="mb-4 text-lg font-medium">
-                            {{-- <img src="{{ $product->productImage && $product->productImage->image_url1 ? asset('storage/' . $product->productImage->image_url1) : 'https://placehold.co/600x400' }}"
-                                alt="image"
-                                class="img-preview  object-cover border-2 border-gray-300 rounded-lg w-[400px] h-[400px]"> --}}
                             <input type="file" id="productImage" name="product_img[]" accept="image/*"
                                 class="font-normal text-sm mt-3 input-file w-60 rounded-md shadow-sm focus:ring focus:ring-opacity-50 border-2 border-gray-300"
                                 multiple>
                         </div>
                     </div>
-                    {{-- <div>
-                        <div class="mb-4 text-lg font-medium w-[450px] h-[450px]">
-                            <img src="{{ $product->productImage && $product->productImage->image_url1 ? asset('storage/' . $product->productImage->image_url1) : 'https://placehold.co/600x400' }}"
-                                alt="image"
-                                class="img-preview  object-cover border-2 border-gray-300 rounded-lg w-[400px] h-[400px]">
-                            <input type="file" id="productImage" name="product_img[]" accept="image/*"
-                                class="font-normal text-sm mt-3 input-file w-60 rounded-md shadow-sm focus:ring focus:ring-opacity-50 border-2 border-gray-300"
-                                multiple>
-                        </div>
-                    </div> --}}
                     <div class="w-full flex flex-col gap-2">
                         <div class="text-lg font-medium"> Nama Produk
                             <input type="text" id="product_name" name="product_name" value="{{ $product->product_name }}"
@@ -118,13 +105,4 @@
             expandImg.parentElement.style.display = "block";
         }
     </script>
-    {{-- <script>
-        AOS.init();
-        const tagImage = document.querySelector('.img-preview');
-        const inputImage = document.querySelector('.input-file');
-
-        inputImage.addEventListener('change', function() {
-            tagImage.src = URL.createObjectURL(inputImage.files[0]);
-        })
-    </script> --}}
 @endsection

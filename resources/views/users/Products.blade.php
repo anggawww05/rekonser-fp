@@ -21,7 +21,6 @@
                 </div>
             </div>
         </div>
-
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
             @foreach ($products as $product)
                 <div class="bg-white p-4 rounded-lg shadow-md border-2 mb-5 flex flex-col gap-2" data-aos="fade-up">

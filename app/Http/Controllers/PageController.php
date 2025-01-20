@@ -64,7 +64,6 @@ class PageController extends Controller
 
         $chart_datas = ['income' => $income, 'januari' => $januaris, 'februari' => $februaris, 'maret' => $marets, 'april' => $aprils, 'mei' => $meis, 'juni' => $junis, 'juli' => $julis, 'agustus' => $agutuss, 'september' => $septembers, 'oktober' => $oktobers, 'november' => $novembers, 'desember' => $desembers];
 
-        // dd($chart_data);
         return view('admin/dashboard', compact('payments', 'users', 'products', 'chart_datas'));
     }
 
@@ -76,14 +75,12 @@ class PageController extends Controller
 
     public function viewPDF(Request $request)
     {
-        // dd($request->all());
         $products = Product::all();
         $users = User::all();
         $payments = Payment::all();
         if ($request->has(['start_date', 'end_date'])) {
             if ($request->input('start_date') == null || $request->input('end_date') == null) {
                 $pdf = Pdf::loadView('pdf/transactionReport', compact('products', 'users', 'payments'))->setPaper('a4', 'potrait');
-                // return $pdf->download('report.pdf');
                 return $pdf->stream('report.pdf');
             } else {
 
@@ -91,10 +88,8 @@ class PageController extends Controller
                 $end_date = $request->input('end_date');
                 $payments = $payments->whereBetween('created_at', [$start_date, $end_date]);
                 $pdf = Pdf::loadView('pdf/transactionReport', compact('products', 'users', 'payments'))->setPaper('a4', 'potrait');
-                // return $pdf->download('report.pdf');
                 return $pdf->stream('report.pdf');
             }
-            // dd($payments);
         }
     }
 
@@ -107,7 +102,6 @@ class PageController extends Controller
         if ($request->has(['start_date', 'end_date'])) {
             if ($request->input('start_date') == null || $request->input('end_date') == null) {
                 $pdf = Pdf::loadView('pdf/returnedReport', compact('products', 'users', 'returneds'))->setPaper('a4', 'potrait');
-                // return $pdf->download('report.pdf');
                 return $pdf->stream('report.pdf');
             } else {
 
@@ -115,10 +109,8 @@ class PageController extends Controller
                 $end_date = $request->input('end_date');
                 $returneds = $returneds->whereBetween('created_at', [$start_date, $end_date]);
                 $pdf = Pdf::loadView('pdf/returnedReport', compact('products', 'users', 'returneds'))->setPaper('a4', 'potrait');
-                // return $pdf->download('report.pdf');
                 return $pdf->stream('report.pdf');
             }
-            // dd($payments);
         }
     }
 }

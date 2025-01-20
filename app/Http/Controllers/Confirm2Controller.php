@@ -5,13 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Payment;
 use App\Models\Product;
 use App\Models\Returned;
-// use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class Confirm2Controller extends Controller
 {
-    //menampilkan tabel konfirmasi pengembalian
     public function indexConfirm2(Request $request)
     {
         if ($request->has('search')) {
@@ -25,7 +23,6 @@ class Confirm2Controller extends Controller
         return view('admin/confirmReturn', compact('returneds'));
     }
 
-    //tombol aksi persetujuan konfirmasi pengembalian
     public function edit(Returned $returned, Request $request)
     {
         $request->validate([

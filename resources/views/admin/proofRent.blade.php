@@ -25,7 +25,6 @@
                                 <p class="text-[18px] font-semibold">{{$payment->user->user_name}}</p>
                             </div>
                         </div>
-
                         <div class="flex items-center gap-4 mb-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="#000000" stroke-width="2" class="size-8">
@@ -38,7 +37,6 @@
                                 <p class="text-[18px] font-semibold">{{$payment->user->phone_number}}</p>
                             </div>
                         </div>
-
                         <div class="flex items-center gap-4 mb-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="#000000" stroke-width="2" class="size-12">
@@ -54,12 +52,9 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="border rounded-lg shadow-sm p-4 bg-white">
                     <h2 class="text-lg font-semibold mb-3">Detail Pesanan</h2>
-
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
-
                         <div class="flex items-center gap-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="#000000" stroke-width="2" class="size-8">
@@ -71,8 +66,6 @@
                                 <p class="text-[18px] font-semibold">{{$payment->product->product_name}}</p>
                             </div>
                         </div>
-
-                        <!-- Jumlah -->
                         <div class="flex items-center gap-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="#000000" stroke-width="2" class="size-8">
@@ -85,8 +78,6 @@
                                 <p class="text-[18px] font-semibold">{{$payment->quantity}}</p>
                             </div>
                         </div>
-
-                        <!-- Durasi Sewa -->
                         <div class="flex items-center gap-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="#000000" stroke-width="2" class="size-8">
@@ -100,8 +91,6 @@
                                 <p class="text-[18px] font-semibold">{{$payment->duration}} hari</p>
                             </div>
                         </div>
-
-                        <!-- Harga per hari -->
                         <div class="flex items-center gap-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="#000000" stroke-width="2" class="size-8">
@@ -115,9 +104,6 @@
 
                             </div>
                         </div>
-
-
-                        <!-- Lama Sewa -->
                         <div class="flex items-center gap-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"
@@ -132,7 +118,6 @@
                                 <p class="text-[18px] font-semibold">{{$payment->start_date}} - {{$payment->end_date}}</p>
                             </div>
                         </div>
-                        <!-- Metode Sewa -->
                         <div class="flex items-center gap-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="#000000" stroke-width="2" class="size-8">
@@ -147,8 +132,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Total Pembayaran -->
                 <div class="border rounded-lg shadow-sm p-4 bg-white">
                     <h2 class="text-lg font-semibold mb-3">Total Pembayaran</h2>
                     <div class="space-y-2">
@@ -168,7 +151,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="border rounded-lg shadow-sm p-4 bg-white">
                     <h2 class="text-lg font-semibold mb-3 text-center">Bukti Pembayaran</h2>
                     <div class="flex justify-center items-center">

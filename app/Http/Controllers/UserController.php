@@ -61,8 +61,6 @@ class UserController extends Controller
         return view('admin/profileadmin', compact('user', 'role'));
     }
 
-
-
     public function updateadmin(Request $request, string $id)
     {
         $request->validate([
@@ -93,7 +91,6 @@ class UserController extends Controller
         return redirect()->route('dashboard')->with('success', 'User updated successfully.');
     }
 
-    //menampilkan halamaman manage user
     public function index(Request $request)
     {
         if ($request->has('search')) {
@@ -106,7 +103,6 @@ class UserController extends Controller
         return view('admin/manageUsers', compact('users', 'role'));
     }
 
-    //menampilkan halaman edit user
     public function profileUser($id)
     {
         $role = Role::all();
@@ -114,7 +110,6 @@ class UserController extends Controller
         return view('admin/profileuser', compact('user', 'role'));
     }
 
-    //mengirimkan data perubahan user ke database
     public function updateuser(Request $request, string $id)
     {
         $request->validate([
@@ -147,7 +142,6 @@ class UserController extends Controller
         return redirect()->route('users')->with('success', 'User updated successfully.');
     }
 
-    //menghapus user
     public function delete(string $id)
     {
         $user = User::find($id);

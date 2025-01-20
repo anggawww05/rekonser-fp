@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,6 @@
     <title>PDF</title>
     <link rel="stylesheet" href="{{ public_path('css/style.css') }}">
 </head>
-
 <body class="container">
     <div class="header">
         <h1 class="headline">Laporan Transaksi Pengembalian</h1>

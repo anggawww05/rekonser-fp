@@ -3,9 +3,6 @@
 @section('container')
     <div class = "w-full h-screen bg-[#F6F6F6]">
         <div class="w-screen h-[700px]  flex flex-col gap-4  justify-center items-center mx-auto">
-            {{-- <div class="w-[1200px] text-[28px] font-semibold">
-                <h1>Edit Profil</h1>
-            </div> --}}
             <div class="w-[1200px] text-[28px] font-semibold flex items-center gap-4">
                 <a href="{{ route('profile') }}">
                     <img class="h-6 " src="{{ asset('assets/images/backbutton.png') }}" alt="#">

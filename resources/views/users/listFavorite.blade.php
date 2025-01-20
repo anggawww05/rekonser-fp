@@ -3,7 +3,7 @@
 @section('container')
     <div class="w-full bg-[#F6F6F6] pt-[80px] pb-[50px]">
         <div class="w-[1200px] flex justify-center mx-auto" >
-            <div >
+            <div>
                 <div class="w-[1200px] text-[28px] font-semibold flex gap-4">
                     <div class="flex items-center gap-4 mb-5">
                         <a href="{{ route('profile') }}">

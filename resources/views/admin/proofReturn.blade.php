@@ -25,7 +25,6 @@
                                 <p class="text-[18px] font-semibold">{{$returned->user->user_name}}</p>
                             </div>
                         </div>
-
                         <div class="flex items-center gap-4 mb-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="#000000" stroke-width="2" class="size-8">
@@ -38,7 +37,6 @@
                                 <p class="text-[18px] font-semibold">{{$returned->user->phone_number}}</p>
                             </div>
                         </div>
-
                         <div class="flex items-center gap-4 mb-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="#000000" stroke-width="2" class="size-12">
@@ -54,9 +52,6 @@
                         </div>
                     </div>
                 </div>
-
-
-                <!-- Detail Pesanan -->
                 <div class="border rounded-lg shadow-sm p-4 bg-white">
                     <h2 class="text-lg font-semibold mb-3">Detail Pesanan</h2>
 
@@ -73,8 +68,6 @@
                                 <p class="text-[18px] font-semibold">{{$returned->product->product_name}}</p>
                             </div>
                         </div>
-
-                        <!-- Jumlah -->
                         <div class="flex items-center gap-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="#000000" stroke-width="2" class="size-8">
@@ -87,8 +80,6 @@
                                 <p class="text-[18px] font-semibold">{{$returned->payment->quantity}}</p>
                             </div>
                         </div>
-
-                        <!-- Durasi Sewa -->
                         <div class="flex items-center gap-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="#000000" stroke-width="2" class="size-8">
@@ -102,8 +93,6 @@
                                 <p class="text-[18px] font-semibold">{{$returned->payment->duration}}</p>
                             </div>
                         </div>
-
-                        <!-- Harga per hari -->
                         <div class="flex items-center gap-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="#000000" stroke-width="2" class="size-8">
@@ -116,9 +105,6 @@
                                 <p class="text-[18px] font-semibold">Rp. {{ number_format($returned->product->price * $returned->payment->quantity * $returned->payment->duration + $returned->payment->delivery_price, 2, ',', '.') }}</p>
                             </div>
                         </div>
-
-
-                        <!-- Lama Sewa -->
                         <div class="flex items-center gap-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"
@@ -133,7 +119,6 @@
                                 <p class="text-[18px] font-semibold">{{$returned->payment->start_date}} - {{$returned->payment->end_date}}</p>
                             </div>
                         </div>
-                        <!-- Metode Sewa -->
                         <div class="flex items-center gap-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="#000000" stroke-width="2" class="size-8">
@@ -148,8 +133,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Total Pembayaran -->
                 <div class="border rounded-lg shadow-sm p-4 bg-white">
                     <h2 class="text-lg font-semibold mb-3">Pembayaran Denda (Jika Ada)</h2>
                     <div class="space-y-2">
@@ -167,8 +150,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Bukti Pembayaran -->
                 <div class="border rounded-lg shadow-sm p-4 bg-white">
                     <h2 class="text-lg font-semibold mb-3 text-center">Bukti Pembayaran</h2>
                     <div class="flex justify-center items-center">
@@ -176,7 +157,6 @@
 
                     </div>
                 </div>
-
                 <div class="border rounded-lg shadow-sm p-4 bg-white">
                     <h2 class="text-lg font-semibold mb-3 text-center">Kondisi Barang</h2>
                     <div class="flex justify-center items-center">
